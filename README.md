@@ -14,4 +14,4 @@ third_party/<name>/       # vendored plugins
 bun run pack              # writes dist/catalog + dist/catalog.tar.gz
 ```
 
-Push to `main` or `dev` publishes a `catalog-<sha>` GitHub Release. Local and staging API try `dev`, then `main`. Prod bakes `main`.
+Push to `main` or `dev` publishes a `catalog-<7-char-sha>` GitHub Release and deletes older catalog releases past the newest 10. Local and staging API try `dev`, then `main`. Prod bakes `main`.

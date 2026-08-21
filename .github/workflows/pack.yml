@@ -30,19 +30,30 @@ jobs:
             - name: Publish catalog-${{ github.sha }}
               env:
                   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  CATALOG_KEEP: '10'
               run: |
                   set -euo pipefail
-                  TAG="catalog-${GITHUB_SHA}"
-                  if gh release view "$TAG" >/dev/null 2>&1; then
+                  SHORT="${GITHUB_SHA:0:7}"
+                  TAG="catalog-${SHORT}"
+                  if ! gh release view "$TAG" >/dev/null 2>&1; then
+                    gh release create "$TAG" dist/catalog.tar.gz \
+                      --target "$GITHUB_SHA" \
+                      --title "$TAG" \
+                      --notes "Marketplace snapshot for ${GITHUB_SHA}" \
+                      || gh release view "$TAG"
+                  else
                     echo "Release $TAG already exists"
-                    exit 0
                   fi
-                  # Same SHA on main+dev races two publishes onto one tag. Pin the
-                  # commit and treat "already exists" as success.
-                  if gh release create "$TAG" dist/catalog.tar.gz \
-                    --target "$GITHUB_SHA" \
-                    --title "$TAG" \
-                    --notes "Marketplace snapshot for ${GITHUB_SHA}"; then
-                    exit 0
-                  fi
-                  gh release view "$TAG"
+
+                  mapfile -t stale < <(
+                    gh release list --limit 100 --json tagName,createdAt \
+                      --jq "[.[] | select(.tagName | startswith(\"catalog-\"))]
+                        | sort_by(.createdAt)
+                        | reverse
+                        | .[${CATALOG_KEEP}:]
+                        | .[].tagName"
+                  )
+                  for tag in "${stale[@]}"; do
+                    echo "Deleting $tag"
+                    gh release delete "$tag" --yes --cleanup-tag
+                  done
