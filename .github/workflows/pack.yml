@@ -31,11 +31,18 @@ jobs:
               env:
                   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               run: |
+                  set -euo pipefail
                   TAG="catalog-${GITHUB_SHA}"
                   if gh release view "$TAG" >/dev/null 2>&1; then
                     echo "Release $TAG already exists"
                     exit 0
                   fi
-                  gh release create "$TAG" dist/catalog.tar.gz \
+                  # Same SHA on main+dev races two publishes onto one tag. Pin the
+                  # commit and treat "already exists" as success.
+                  if gh release create "$TAG" dist/catalog.tar.gz \
+                    --target "$GITHUB_SHA" \
                     --title "$TAG" \
-                    --notes "Marketplace snapshot for ${GITHUB_SHA}"
+                    --notes "Marketplace snapshot for ${GITHUB_SHA}"; then
+                    exit 0
+                  fi
+                  gh release view "$TAG"
