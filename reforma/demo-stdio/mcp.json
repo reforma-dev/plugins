@@ -1,0 +1,13 @@
+{
+    "mcpServers": {
+        "demo-stdio": {
+            "command": "npx",
+            "args": ["-y", "@modelcontextprotocol/server-everything"],
+            "description": "Demo stdio MCP. DEMO_STDIO_TOKEN and DEMO_STDIO_REGION come from ${TOKEN} and ${REGION}.",
+            "env": {
+                "DEMO_STDIO_TOKEN": "${TOKEN}",
+                "DEMO_STDIO_REGION": "${REGION}"
+            }
+        }
+    }
+}

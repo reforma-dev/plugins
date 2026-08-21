@@ -1,0 +1,8 @@
+{
+    "name": "@reforma/plugins",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "pack": "bun run scripts/pack.ts"
+    }
+}

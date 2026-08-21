@@ -1,0 +1,36 @@
+{
+    "name": "context7",
+    "description": "Up-to-date library docs and code examples. MCP with an API key.",
+    "category": "docs",
+    "mcpServers": "./mcp.json",
+    "variables": {
+        "type": "object",
+        "properties": {
+            "API_KEY": {
+                "type": "string",
+                "title": "API key",
+                "description": "From context7.com. Sent as CONTEXT7_API_KEY on MCP requests. Stored in the vault, never returned on GET.",
+                "placeholder": "ctx7sk-…"
+            },
+            "defaultLibrary": {
+                "type": "string",
+                "title": "Default library",
+                "description": "Optional library id the agent prefers. Not a secret.",
+                "placeholder": "/vercel/next.js",
+                "secret": false
+            },
+            "includeCode": {
+                "type": "boolean",
+                "title": "Include code snippets",
+                "default": true
+            },
+            "topic": {
+                "type": "string",
+                "title": "Docs topic",
+                "default": "auto",
+                "enum": ["auto", "api", "guide"]
+            }
+        },
+        "required": ["API_KEY"]
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "categories": [
+        { "id": "demo", "name": "Demo" },
+        { "id": "docs", "name": "Documentation" },
+        { "id": "files", "name": "Files" }
+    ],
+    "plugins": [
+        { "name": "demo-kit", "source": "./reforma/demo-kit" },
+        { "name": "demo-skills", "source": "./reforma/demo-skills" },
+        { "name": "demo-stdio", "source": "./reforma/demo-stdio" },
+        { "name": "demo-system", "source": "./reforma/demo-system" },
+        { "name": "context7", "source": "./third_party/context7" },
+        { "name": "google-drive", "source": "./third_party/google-drive" },
+        {
+            "name": "notion-workspace",
+            "source": "https://github.com/makenotion/cursor-notion-plugin/tree/cf1324609edba6d617164f1dec138aeb43f26735"
+        },
+        {
+            "name": "dropbox",
+            "source": "https://github.com/dropbox/dropbox-ai-plugins/tree/4900430d6afa76fc2504e00e006895de424f3637/codex"
+        }
+    ]
+}

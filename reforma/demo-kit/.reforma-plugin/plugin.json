@@ -1,0 +1,7 @@
+{
+    "name": "demo-kit",
+    "description": "Test card: several agents and skills. No auth.",
+    "category": "demo",
+    "skills": "./skills/",
+    "agents": "./agents/"
+}
