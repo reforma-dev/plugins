@@ -3,10 +3,12 @@
         "demo-stdio": {
             "command": "npx",
             "args": ["-y", "@modelcontextprotocol/server-everything"],
-            "description": "Demo stdio MCP. DEMO_STDIO_TOKEN and DEMO_STDIO_REGION come from ${TOKEN} and ${REGION}.",
+            "description": "Demo stdio MCP. Env values come from ${TOKEN}, ${REGION}, ${INCLUDE_CODE}, and ${TOPIC}.",
             "env": {
                 "DEMO_STDIO_TOKEN": "${TOKEN}",
-                "DEMO_STDIO_REGION": "${REGION}"
+                "DEMO_STDIO_REGION": "${REGION}",
+                "DEMO_STDIO_INCLUDE_CODE": "${INCLUDE_CODE}",
+                "DEMO_STDIO_TOPIC": "${TOPIC}"
             }
         }
     }

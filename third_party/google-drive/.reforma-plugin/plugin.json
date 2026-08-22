@@ -3,5 +3,6 @@
     "description": "Search, read, create, and share files across Drive. Connect your Google account to let the agent find docs, upload drafts, and collaborate without leaving the workspace — useful when a task spans several folders or needs a quick link back to the source.",
     "category": "files",
     "auth": "oauth",
+    "logo": "assets/logo.svg",
     "mcpServers": "./mcp.json"
 }

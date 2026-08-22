@@ -2,5 +2,6 @@
     "name": "demo-skills",
     "description": "Test card: bundled skills, no auth.",
     "category": "demo",
+    "logo": "assets/logo.svg",
     "skills": "./skills/"
 }

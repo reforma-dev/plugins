@@ -8,6 +8,7 @@ import {
     mkdirSync,
     readFileSync,
     rmSync,
+    statSync,
     writeFileSync,
 } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
@@ -114,11 +115,306 @@ async function fetchGithubTree(source: string, dest: string): Promise<void> {
     }
 }
 
+const PLUGIN_MANIFESTS = [
+    '.reforma-plugin/plugin.json',
+    '.codex-plugin/plugin.json',
+    '.cursor-plugin/plugin.json',
+    '.claude-plugin/plugin.json',
+    'plugin.json',
+] as const;
+
+const LOGO_EXT = new Set(['svg', 'png', 'webp', 'jpg', 'jpeg']);
+const LOGO_MAX_BYTES = 512 * 1024;
+
+function findManifestPath(pluginDir: string): string | undefined {
+    for (const rel of PLUGIN_MANIFESTS) {
+        const path = join(pluginDir, rel);
+
+        if (existsSync(path)) {
+            return path;
+        }
+    }
+
+    return undefined;
+}
+
+function extOf(path: string): string {
+    return path.split('.').pop()?.toLowerCase() ?? '';
+}
+
+function logoExtFromDownload(contentType: string | null, urlPath: string): string {
+    const fromPath = extOf(urlPath.split('?')[0] ?? '');
+
+    if (LOGO_EXT.has(fromPath)) {
+        return fromPath === 'jpeg' ? 'jpg' : fromPath;
+    }
+
+    const mime = (contentType ?? '').split(';')[0]?.trim().toLowerCase() ?? '';
+
+    if (mime === 'image/svg+xml') {
+        return 'svg';
+    }
+
+    if (mime === 'image/png') {
+        return 'png';
+    }
+
+    if (mime === 'image/webp') {
+        return 'webp';
+    }
+
+    if (mime === 'image/jpeg') {
+        return 'jpg';
+    }
+
+    throw new Error(`unsupported logo type ${ mime || fromPath || 'unknown' }`);
+}
+
+async function materializeLogo(pluginDir: string, value: string, destStem: string): Promise<string> {
+    const trimmed = value.trim();
+
+    if (/^https?:\/\//i.test(trimmed)) {
+        const res = await fetch(trimmed);
+
+        if (!res.ok) {
+            throw new Error(`logo download failed ${ trimmed } (${ res.status })`);
+        }
+
+        const buf = Buffer.from(await res.arrayBuffer());
+
+        if (buf.length > LOGO_MAX_BYTES) {
+            throw new Error(`logo too large ${ trimmed }`);
+        }
+
+        const ext = logoExtFromDownload(res.headers.get('content-type'), new URL(trimmed).pathname);
+        const rel = `assets/${ destStem }.${ ext }`;
+
+        mkdirSync(join(pluginDir, 'assets'), { recursive: true });
+        writeFileSync(join(pluginDir, rel), buf);
+
+        return rel;
+    }
+
+    const rel = trimmed.replace(/^\.\//, '');
+    const abs = join(pluginDir, rel);
+
+    if (!existsSync(abs)) {
+        throw new Error(`logo missing: ${ rel }`);
+    }
+
+    const ext = extOf(rel);
+
+    if (!LOGO_EXT.has(ext)) {
+        throw new Error(`unsupported logo ${ rel }`);
+    }
+
+    if (statSync(abs).size > LOGO_MAX_BYTES) {
+        throw new Error(`logo too large ${ rel }`);
+    }
+
+    return rel;
+}
+
+function readLogoFields(json: Record<string, unknown>): { logo?: string; logoDark?: string } {
+    const iface = isRecord(json.interface) ? json.interface : undefined;
+
+    return {
+        logo: typeof json.logo === 'string'
+            ? json.logo
+            : (typeof iface?.logo === 'string' ? iface.logo : undefined),
+        logoDark: typeof json.logoDark === 'string'
+            ? json.logoDark
+            : (typeof iface?.logoDark === 'string' ? iface.logoDark : undefined),
+    };
+}
+
+function writeLogoFields(json: Record<string, unknown>, logo: string, logoDark: string): void {
+    json.logo = logo;
+    json.logoDark = logoDark;
+
+    if (isRecord(json.interface)) {
+        json.interface.logo = logo;
+        json.interface.logoDark = logoDark;
+    }
+}
+
+async function normalizePluginLogos(pluginDir: string): Promise<void> {
+    const manifestPath = findManifestPath(pluginDir);
+
+    if (!manifestPath) {
+        throw new Error(`no plugin.json in ${ pluginDir }`);
+    }
+
+    const json = JSON.parse(readFileSync(manifestPath, 'utf8')) as unknown;
+
+    if (!isRecord(json)) {
+        throw new Error(`invalid plugin.json ${ manifestPath }`);
+    }
+
+    const fields = readLogoFields(json);
+
+    if (!fields.logo) {
+        return;
+    }
+
+    const logo = await materializeLogo(pluginDir, fields.logo, 'logo');
+    const logoDark = (fields.logoDark && fields.logoDark !== fields.logo)
+        ? await materializeLogo(pluginDir, fields.logoDark, 'logo-dark')
+        : logo;
+
+    writeLogoFields(json, logo, logoDark);
+    writeFileSync(manifestPath, `${ JSON.stringify(json, null, 4) }\n`);
+}
+
+const MCP_JSON = ['mcp.json', '.mcp.json'] as const;
+const PLACEHOLDER = /\$\{[A-Za-z_][A-Za-z0-9_]*\}/;
+const MCP_PROBE_MS = 5_000;
+
+function mcpConfigPath(pluginDir: string): string | undefined {
+    for (const rel of MCP_JSON) {
+        const path = join(pluginDir, rel);
+
+        if (existsSync(path)) {
+            return path;
+        }
+    }
+
+    return undefined;
+}
+
+function mcpServerMap(raw: unknown): Record<string, unknown> | undefined {
+    if (!isRecord(raw)) {
+        return undefined;
+    }
+
+    if (isRecord(raw.mcpServers)) {
+        return raw.mcpServers;
+    }
+
+    const entries = Object.values(raw);
+
+    if (entries.some(entry => isRecord(entry) && (
+        typeof entry.url === 'string' || typeof entry.command === 'string'
+    ))) {
+        return raw;
+    }
+
+    return undefined;
+}
+
+function httpMcpUrls(raw: unknown): string[] {
+    const servers = mcpServerMap(raw);
+
+    if (!servers) {
+        return [];
+    }
+
+    const urls: string[] = [];
+
+    for (const entry of Object.values(servers)) {
+        if (!isRecord(entry)) {
+            continue;
+        }
+
+        if (typeof entry.command === 'string' && entry.command.trim() !== '') {
+            continue;
+        }
+
+        const url = typeof entry.url === 'string' ? entry.url.trim() : '';
+
+        if (!url || PLACEHOLDER.test(url) || !/^https?:\/\//i.test(url)) {
+            continue;
+        }
+
+        urls.push(url);
+    }
+
+    return urls;
+}
+
+function wwwAuthenticateHasResourceMetadata(header: string | null): boolean {
+    return Boolean(header && /resource_metadata\s*=/i.test(header));
+}
+
+async function mcpInitializeUnauthorized(url: string): Promise<boolean> {
+    const ac = new AbortController();
+    const timer = setTimeout(() => ac.abort(), MCP_PROBE_MS);
+
+    try {
+        const res = await fetch(url, {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json, text/event-stream',
+                'Content-Type': 'application/json',
+                'User-Agent': 'reforma-plugins',
+            },
+            body: JSON.stringify({
+                jsonrpc: '2.0',
+                id: 1,
+                method: 'initialize',
+                params: {
+                    protocolVersion: '2025-03-26',
+                    capabilities: {},
+                    clientInfo: { name: 'reforma-pack', version: '0' },
+                },
+            }),
+            redirect: 'manual',
+            signal: ac.signal,
+        });
+
+        return res.status === 401 && wwwAuthenticateHasResourceMetadata(res.headers.get('www-authenticate'));
+    }
+    catch {
+        return false;
+    }
+    finally {
+        clearTimeout(timer);
+    }
+}
+
+async function normalizePluginAuth(pluginDir: string): Promise<void> {
+    const manifestPath = findManifestPath(pluginDir);
+
+    if (!manifestPath) {
+        throw new Error(`no plugin.json in ${ pluginDir }`);
+    }
+
+    const json = JSON.parse(readFileSync(manifestPath, 'utf8')) as unknown;
+
+    if (!isRecord(json)) {
+        throw new Error(`invalid plugin.json ${ manifestPath }`);
+    }
+
+    if (json.auth === 'oauth') {
+        return;
+    }
+
+    const mcpPath = mcpConfigPath(pluginDir);
+
+    if (!mcpPath) {
+        return;
+    }
+
+    const urls = httpMcpUrls(JSON.parse(readFileSync(mcpPath, 'utf8')) as unknown);
+
+    for (const url of urls) {
+        if (await mcpInitializeUnauthorized(url)) {
+            json.auth = 'oauth';
+            writeFileSync(manifestPath, `${ JSON.stringify(json, null, 4) }\n`);
+            console.log(`  auth oauth ← ${ url }`);
+
+            return;
+        }
+    }
+}
+
 async function packPlugin(name: string, source: string): Promise<void> {
     const dest = join(OUT, name);
 
     if (/^https?:\/\//i.test(source)) {
         await fetchGithubTree(source, dest);
+        await normalizePluginLogos(dest);
+        await normalizePluginAuth(dest);
 
         return;
     }
@@ -131,6 +427,8 @@ async function packPlugin(name: string, source: string): Promise<void> {
 
     mkdirSync(dest, { recursive: true });
     cpSync(from, dest, { recursive: true });
+    await normalizePluginLogos(dest);
+    await normalizePluginAuth(dest);
 }
 
 const raw = JSON.parse(readFileSync(join(ROOT, 'marketplace.json'), 'utf8')) as unknown;

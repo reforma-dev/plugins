@@ -2,6 +2,7 @@
     "name": "demo-kit",
     "description": "Test card: several agents and skills. No auth.",
     "category": "demo",
+    "logo": "assets/logo.svg",
     "skills": "./skills/",
     "agents": "./agents/"
 }
