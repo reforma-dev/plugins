@@ -1,6 +1,6 @@
 # Reforma plugins
 
-Marketplace plugins for Reforma. Each plugin is a folder with `.reforma-plugin/plugin.json`. Cursor (`.cursor-plugin`), Codex (`.codex-plugin`), and Claude manifests are a fallback.
+Marketplace plugins for Reforma. Each plugin is a folder with `.reforma-plugin/plugin.json`. Pack renames `.cursor-plugin`, `.codex-plugin`, or `.claude-plugin` to `.reforma-plugin` when that folder is missing.
 
 ## Plugins
 
