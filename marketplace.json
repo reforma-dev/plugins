@@ -5,6 +5,7 @@
         { "id": "files", "name": "Files" }
     ],
     "plugins": [
+        { "name": "demo-hooks", "source": "./reforma/demo-hooks" },
         { "name": "demo-kit", "source": "./reforma/demo-kit" },
         { "name": "demo-skills", "source": "./reforma/demo-skills" },
         { "name": "demo-stdio", "source": "./reforma/demo-stdio" },
