@@ -7,6 +7,7 @@ import {
     existsSync,
     mkdirSync,
     readFileSync,
+    renameSync,
     rmSync,
     statSync,
     writeFileSync,
@@ -115,27 +116,50 @@ async function fetchGithubTree(source: string, dest: string): Promise<void> {
     }
 }
 
-const PLUGIN_MANIFESTS = [
-    '.reforma-plugin/plugin.json',
-    '.codex-plugin/plugin.json',
-    '.cursor-plugin/plugin.json',
-    '.claude-plugin/plugin.json',
-    'plugin.json',
-] as const;
+const REFORMA_PLUGIN_DIR = '.reforma-plugin';
+const VENDOR_PLUGIN_DIRS = ['.codex-plugin', '.cursor-plugin', '.claude-plugin'] as const;
 
 const LOGO_EXT = new Set(['svg', 'png', 'webp', 'jpg', 'jpeg']);
 const LOGO_MAX_BYTES = 512 * 1024;
 
-function findManifestPath(pluginDir: string): string | undefined {
-    for (const rel of PLUGIN_MANIFESTS) {
-        const path = join(pluginDir, rel);
+function pluginManifestPath(pluginDir: string): string {
+    return join(pluginDir, REFORMA_PLUGIN_DIR, 'plugin.json');
+}
 
-        if (existsSync(path)) {
-            return path;
-        }
+function findManifestPath(pluginDir: string): string | undefined {
+    const path = pluginManifestPath(pluginDir);
+
+    return existsSync(path) ? path : undefined;
+}
+
+/** Cursor / Codex / Claude folder → `.reforma-plugin`. Root `plugin.json` moves in. */
+function normalizePluginLayout(pluginDir: string): void {
+    if (findManifestPath(pluginDir)) {
+        return;
     }
 
-    return undefined;
+    const dest = join(pluginDir, REFORMA_PLUGIN_DIR);
+
+    for (const vendor of VENDOR_PLUGIN_DIRS) {
+        const vendorDir = join(pluginDir, vendor);
+
+        if (!existsSync(join(vendorDir, 'plugin.json'))) {
+            continue;
+        }
+
+        renameSync(vendorDir, dest);
+
+        return;
+    }
+
+    const root = join(pluginDir, 'plugin.json');
+
+    if (!existsSync(root)) {
+        return;
+    }
+
+    mkdirSync(dest, { recursive: true });
+    renameSync(root, pluginManifestPath(pluginDir));
 }
 
 function extOf(path: string): string {
@@ -413,6 +437,7 @@ async function packPlugin(name: string, source: string): Promise<void> {
 
     if (/^https?:\/\//i.test(source)) {
         await fetchGithubTree(source, dest);
+        normalizePluginLayout(dest);
         await normalizePluginLogos(dest);
         await normalizePluginAuth(dest);
 
@@ -427,6 +452,7 @@ async function packPlugin(name: string, source: string): Promise<void> {
 
     mkdirSync(dest, { recursive: true });
     cpSync(from, dest, { recursive: true });
+    normalizePluginLayout(dest);
     await normalizePluginLogos(dest);
     await normalizePluginAuth(dest);
 }
