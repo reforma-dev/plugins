@@ -4,5 +4,7 @@
     "category": "demo",
     "system": true,
     "logo": "assets/logo.svg",
-    "skills": "./skills/"
+    "interface": {
+        "brandColor": "#64748B"
+    }
 }

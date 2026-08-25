@@ -3,5 +3,7 @@
     "description": "Fixture plugin: SessionStart/End context, UserPromptSubmit echo, PreToolUse Bash guard.",
     "category": "demo",
     "logo": "assets/logo.svg",
-    "hooks": "./hooks/hooks.json"
+    "interface": {
+        "brandColor": "#7C3AED"
+    }
 }
