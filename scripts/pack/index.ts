@@ -18,6 +18,7 @@ import { normalizePluginHooks } from "./hooks.ts";
 import { normalizePluginLayout } from "./layout.ts";
 import { normalizePluginLogos } from "./logos.ts";
 import { isRecord, OUT, ROOT, TAR } from "./shared.ts";
+import { logCatalogSummary } from "./summary.ts";
 import { normalizePluginTools } from "./tools.ts";
 
 type Marketplace = {
@@ -105,3 +106,4 @@ if (tar.status !== 0) {
 }
 
 console.log(`wrote ${TAR}`);
+logCatalogSummary(OUT, "catalog summary");
