@@ -24,9 +24,11 @@ jobs:
               with:
                   bun-version: 1.4.0
 
+            - name: Install
+              run: bun install --frozen-lockfile
+
             - name: Pack
               run: bun run pack
-
             - name: Publish catalog-${{ github.sha }}
               env:
                   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

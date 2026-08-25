@@ -5,7 +5,7 @@
     "": {
       "name": "@reforma/plugins",
       "dependencies": {
-        "@reforma/plugin-sdk": "^0.1.0",
+        "@reforma/plugin-sdk": "^0.1.2",
         "zod": "^4.3.6",
       },
       "devDependencies": {
@@ -73,7 +73,7 @@
 
     "@esbuild/win32-x64": ["@esbuild/win32-x64@0.25.12", "", { "os": "win32", "cpu": "x64" }, "sha512-alJC0uCZpTFrSL0CCDjcgleBXPnCrEAhTBILpeAp7M/OFgoqtAetfBzX0xM00MUsVVPpVjlPuMbREqnZCXaTnA=="],
 
-    "@reforma/plugin-sdk": ["@reforma/plugin-sdk@0.1.0", "", { "peerDependencies": { "ai": "7.0.31", "zod": "^4.3.6" } }, "sha512-gU7PQqBBUihIoxtzKK8USYEpLTGq8553N+/rVwXMwGpB48UsCZdMEQlxKnhxov+5GSkC3c2610P8K1wer5pq6g=="],
+    "@reforma/plugin-sdk": ["@reforma/plugin-sdk@0.1.2", "", { "peerDependencies": { "ai": "7.0.31", "zod": "^4.3.6" } }, "sha512-b66jQgizqhCN2evNI/5iztguyWH5N+zOJXvETMUKx81Sp4svpgtRKQiXOP1OEUgby2FnQApC0941+JZR/R7Ylw=="],
 
     "@standard-schema/spec": ["@standard-schema/spec@1.1.0", "", {}, "sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w=="],
 
