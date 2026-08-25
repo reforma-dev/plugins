@@ -133,6 +133,90 @@ export function remapDirsToCanonical(
   }
 }
 
+function isMcpServerEntry(value: unknown): value is Record<string, unknown> {
+  if (!isRecord(value)) {
+    return false;
+  }
+
+  const url = typeof value.url === "string" ? value.url.trim() : "";
+  const command =
+    typeof value.command === "string" ? value.command.trim() : "";
+
+  return url.length > 0 !== command.length > 0;
+}
+
+function renameLoneKey(
+  servers: Record<string, unknown>,
+  pluginName: string,
+): { next: Record<string, unknown>; from: string } | undefined {
+  const keys = Object.keys(servers);
+
+  if (keys.length !== 1) {
+    return undefined;
+  }
+
+  const from = keys[0];
+
+  if (!from || from === pluginName) {
+    return undefined;
+  }
+
+  return { next: { [pluginName]: servers[from] }, from };
+}
+
+/** One MCP server → marketplace plugin name. Vendor keys like `chatgpt_app_mcp` go away. */
+export function renameLoneMcpServerKey(
+  raw: unknown,
+  pluginName: string,
+): { next: Record<string, unknown>; from: string } | undefined {
+  if (!isRecord(raw) || !pluginName) {
+    return undefined;
+  }
+
+  if (isRecord(raw.mcpServers)) {
+    const renamed = renameLoneKey(raw.mcpServers, pluginName);
+
+    if (!renamed) {
+      return undefined;
+    }
+
+    return { next: { ...raw, mcpServers: renamed.next }, from: renamed.from };
+  }
+
+  const values = Object.values(raw);
+
+  if (values.length === 0 || !values.every(isMcpServerEntry)) {
+    return undefined;
+  }
+
+  const renamed = renameLoneKey(raw, pluginName);
+
+  if (!renamed) {
+    return undefined;
+  }
+
+  return { next: renamed.next, from: renamed.from };
+}
+
+export function normalizePackedMcpServerId(pluginDir: string): void {
+  const mcpJson = join(pluginDir, "mcp.json");
+
+  if (!existsSync(mcpJson) || !statSync(mcpJson).isFile()) {
+    return;
+  }
+
+  const pluginName = basename(pluginDir);
+  const raw = JSON.parse(readFileSync(mcpJson, "utf8")) as unknown;
+  const renamed = renameLoneMcpServerKey(raw, pluginName);
+
+  if (!renamed) {
+    return;
+  }
+
+  writeFileSync(mcpJson, `${JSON.stringify(renamed.next, null, 4)}\n`);
+  console.log(`  mcp ${renamed.from} → ${pluginName}`);
+}
+
 /**
  * Convention folders need no manifest paths — catalog + sandbox discover them.
  * Custom paths are remapped into the canonical root layout, then path fields
@@ -247,6 +331,8 @@ export function normalizePluginContentPaths(pluginDir: string): void {
       rmSync(dotMcp, { force: true });
     }
   }
+
+  normalizePackedMcpServerId(pluginDir);
 
   if (record && typeof record.tools === "string" && record.tools.trim()) {
     const rel = stripPath(record.tools);
