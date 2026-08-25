@@ -5,6 +5,10 @@
             "name": "Demo"
         },
         {
+            "id": "moods",
+            "name": "Moods"
+        },
+        {
             "id": "docs",
             "name": "Documentation"
         },
@@ -37,6 +41,30 @@
         {
             "name": "demo-system",
             "source": "./reforma/demo-system"
+        },
+        {
+            "name": "bro-mode",
+            "source": "./reforma/moods/bro-mode"
+        },
+        {
+            "name": "zen-mode",
+            "source": "./reforma/moods/zen-mode"
+        },
+        {
+            "name": "ship-it",
+            "source": "./reforma/moods/ship-it"
+        },
+        {
+            "name": "professor",
+            "source": "./reforma/moods/professor"
+        },
+        {
+            "name": "hype-man",
+            "source": "./reforma/moods/hype-man"
+        },
+        {
+            "name": "caveman-mode",
+            "source": "./reforma/moods/caveman-mode"
         },
         {
             "name": "context7",

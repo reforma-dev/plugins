@@ -1,0 +1,10 @@
+{
+    "name": "caveman-mode",
+    "description": "Ultra-short replies in the simplest words possible.",
+    "category": "moods",
+    "logo": "assets/logo.svg",
+    "interface": {
+        "displayName": "Caveman",
+        "brandColor": "#78716F"
+    }
+}

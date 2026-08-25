@@ -12,6 +12,12 @@ Marketplace plugins for Reforma. Each plugin is a folder with `.reforma-plugin/p
 | demo-skills      | [Demo Skills](reforma/demo-skills)                                       | Reforma     | Demo          | Test card: bundled skills + rule, no auth.                                         |
 | demo-stdio       | [Demo Stdio](reforma/demo-stdio)                                         | Reforma     | Demo          | Stdio MCP: command/args stay as written. Variables substitute into env at connect. |
 | demo-system      | [Demo System](reforma/demo-system)                                       | Reforma     | Demo          | Always-on test card. Cannot disable or uninstall.                                  |
+| bro-mode         | [Bro Mode](reforma/moods/bro-mode)                                       | Reforma     | Moods         | Brother energy — blunt, warm, pushes back.                                         |
+| zen-mode         | [Zen Mode](reforma/moods/zen-mode)                                       | Reforma     | Moods         | Calm, minimal, one clear step at a time.                                           |
+| ship-it          | [Ship It](reforma/moods/ship-it)                                         | Reforma     | Moods         | Smallest shippable change — merge beats polish.                                    |
+| professor        | [Professor](reforma/moods/professor)                                     | Reforma     | Moods         | Explain the why — context and tradeoffs.                                           |
+| hype-man         | [Hype Man](reforma/moods/hype-man)                                       | Reforma     | Moods         | Founder energy — vision, momentum, this thing wins.                                |
+| caveman-mode     | [Caveman](reforma/moods/caveman-mode)                                    | Reforma     | Moods         | Ultra-short replies in the simplest words.                                         |
 | context7         | [Context7](third_party/context7)                                         | Reforma     | Documentation | Up-to-date library docs and code examples. MCP with an API key.                    |
 | google-drive     | [Google Drive](third_party/google-drive)                                 | Reforma     | Files         | Search, read, create, and share files across Drive.                                |
 | notion-workspace | [Notion Workspace](https://github.com/makenotion/cursor-notion-plugin)   | Notion Labs | —             | Notion Skills + Notion MCP server packaged as a Cursor plugin.                     |
@@ -26,18 +32,18 @@ Root `marketplace.json` lists plugins. `source` is a path in this repo or a GitH
 ```
 plugins/
 ├── marketplace.json           # categories + plugin index
-├── reforma/<name>/            # first-party
-│   ├── .reforma-plugin/
-│   │   └── plugin.json
-│   ├── mcp.json / .mcp.json   # optional (pack normalizes to mcp.json)
-│   ├── hooks/                 # optional, hooks.json + scripts
-│   ├── tools/                 # optional defineTool modules (*.ts → pack tools.mjs)
-│   ├── skills/                # optional, SKILL.md per folder
-│   ├── rules/                 # optional, always-on *.md
-│   └── agents/                # optional
+├── reforma/
+│   ├── demo-<name>/           # first-party fixtures
+│   └── moods/<name>/          # agent tone / persona (rules only)
+│       ├── .reforma-plugin/
+│       │   └── plugin.json
+│       ├── assets/logo.svg
+│       └── rules/*.md
 ├── third_party/<name>/        # vendored
 └── scripts/pack/              # snapshot for the API (entry: scripts/pack.ts)
 ```
+
+Other plugin layouts (skills, hooks, tools, MCP) follow the same convention folders as demos — see [demo-kit](reforma/demo-kit).
 
 ```sh
 bun install
