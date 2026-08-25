@@ -3,7 +3,9 @@
     "description": "Stdio MCP: command/args stay as written. Variables substitute into env at connect.",
     "category": "demo",
     "logo": "assets/logo.svg",
-    "mcpServers": "./mcp.json",
+    "interface": {
+        "brandColor": "#F59E0B"
+    },
     "variables": {
         "type": "object",
         "properties": {

@@ -3,6 +3,9 @@
     "description": "Up-to-date library docs and code examples. MCP with an API key.",
     "category": "docs",
     "logo": "assets/logo.svg",
+    "interface": {
+        "brandColor": "#EA580C"
+    },
     "mcpServers": "./mcp.json",
     "variables": {
         "type": "object",

@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "demo-kit": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-everything"],
+      "description": "Kitchen-sink stdio MCP. Env from ${TOKEN} and ${REGION}.",
+      "env": {
+        "DEMO_KIT_TOKEN": "${TOKEN}",
+        "DEMO_KIT_REGION": "${REGION}"
+      }
+    }
+  }
+}

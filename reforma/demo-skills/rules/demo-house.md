@@ -1,6 +1,4 @@
 ---
-name: demo-house
-instruction: true
 description: Always-on house rules for this demo plugin.
 ---
 
