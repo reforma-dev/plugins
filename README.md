@@ -17,7 +17,7 @@ Marketplace plugins for Reforma. Each plugin is a folder with `.reforma-plugin/p
 | ship-it          | [Ship It](reforma/moods/ship-it)                                         | Reforma     | Moods         | Smallest shippable change — merge beats polish.                                    |
 | professor        | [Professor](reforma/moods/professor)                                     | Reforma     | Moods         | Explain the why — context and tradeoffs.                                           |
 | hype-man         | [Hype Man](reforma/moods/hype-man)                                       | Reforma     | Moods         | Founder energy — vision, momentum, this thing wins.                                |
-| caveman-mode     | [Caveman](reforma/moods/caveman-mode)                                    | Reforma     | Moods         | Ultra-short replies in the simplest words.                                         |
+| caveman-mode     | [Caveman](reforma/moods/caveman-mode)                                    | Reforma     | Moods         | Cave-person talk. Broken words. Me do work.                                        |
 | context7         | [Context7](third_party/context7)                                         | Reforma     | Documentation | Up-to-date library docs and code examples. MCP with an API key.                    |
 | google-drive     | [Google Drive](third_party/google-drive)                                 | Reforma     | Files         | Search, read, create, and share files across Drive.                                |
 | notion-workspace | [Notion Workspace](https://github.com/makenotion/cursor-notion-plugin)   | Notion Labs | —             | Notion Skills + Notion MCP server packaged as a Cursor plugin.                     |
