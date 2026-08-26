@@ -9,6 +9,10 @@
             "name": "Moods"
         },
         {
+            "id": "ui",
+            "name": "UI"
+        },
+        {
             "id": "docs",
             "name": "Documentation"
         },
@@ -20,59 +24,63 @@
     "plugins": [
         {
             "name": "demo-hooks",
-            "source": "./reforma/demo-hooks"
+            "source": "./marketplace/demo/demo-hooks"
         },
         {
             "name": "demo-tools",
-            "source": "./reforma/demo-tools"
+            "source": "./marketplace/demo/demo-tools"
         },
         {
             "name": "demo-kit",
-            "source": "./reforma/demo-kit"
+            "source": "./marketplace/demo/demo-kit"
         },
         {
             "name": "demo-skills",
-            "source": "./reforma/demo-skills"
+            "source": "./marketplace/demo/demo-skills"
         },
         {
             "name": "demo-stdio",
-            "source": "./reforma/demo-stdio"
+            "source": "./marketplace/demo/demo-stdio"
         },
         {
             "name": "demo-system",
-            "source": "./reforma/demo-system"
+            "source": "./marketplace/demo/demo-system"
         },
         {
             "name": "bro-mode",
-            "source": "./reforma/moods/bro-mode"
+            "source": "./marketplace/moods/bro-mode"
         },
         {
             "name": "zen-mode",
-            "source": "./reforma/moods/zen-mode"
+            "source": "./marketplace/moods/zen-mode"
         },
         {
             "name": "ship-it",
-            "source": "./reforma/moods/ship-it"
+            "source": "./marketplace/moods/ship-it"
         },
         {
             "name": "professor",
-            "source": "./reforma/moods/professor"
+            "source": "./marketplace/moods/professor"
         },
         {
             "name": "hype-man",
-            "source": "./reforma/moods/hype-man"
+            "source": "./marketplace/moods/hype-man"
         },
         {
             "name": "caveman-mode",
-            "source": "./reforma/moods/caveman-mode"
+            "source": "./marketplace/moods/caveman-mode"
+        },
+        {
+            "name": "shadcn-tailwind",
+            "source": "./marketplace/ui/shadcn-tailwind"
         },
         {
             "name": "context7",
-            "source": "./third_party/context7"
+            "source": "./marketplace/docs/context7"
         },
         {
             "name": "google-drive",
-            "source": "./third_party/google-drive"
+            "source": "./marketplace/files/google-drive"
         },
         {
             "name": "notion-workspace",
