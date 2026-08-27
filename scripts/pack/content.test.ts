@@ -99,6 +99,32 @@ describe("normalizePackedMcpServerId", () => {
     });
   });
 
+  it("lowercases every server key when a plugin ships several", () => {
+    const dir = mkdtempSync(join(tmpdir(), "motion-"));
+    const pluginDir = join(dir, "motion");
+
+    dirs.push(dir);
+    mkdirSync(pluginDir, { recursive: true });
+    writeFileSync(
+      join(pluginDir, "mcp.json"),
+      `${JSON.stringify({
+        mcpServers: {
+          Motion: { url: "https://mcp.motion.dev" },
+          "Motion+": { url: "https://mcp.motion.dev/plus" },
+        },
+      })}\n`,
+    );
+
+    normalizePackedMcpServerId(pluginDir);
+
+    expect(JSON.parse(readFileSync(join(pluginDir, "mcp.json"), "utf8"))).toEqual({
+      mcpServers: {
+        motion: { url: "https://mcp.motion.dev" },
+        "motion+": { url: "https://mcp.motion.dev/plus" },
+      },
+    });
+  });
+
   it("wraps a Cursor top-level map and renames the lone server key", () => {
     const dir = mkdtempSync(join(tmpdir(), "notion-"));
     const pluginDir = join(dir, "notion-workspace");
