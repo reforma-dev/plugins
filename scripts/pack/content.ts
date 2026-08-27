@@ -370,15 +370,11 @@ export function normalizePluginContentPaths(pluginDir: string): void {
   writeFileSync(manifestPath, `${JSON.stringify(record, null, 4)}\n`);
 }
 
-/** Remote pins have no Reforma category — marketplace.json row stamps the packed manifest. */
+/** Parent shelf in marketplace.json stamps the packed manifest. */
 export function stampPluginCategory(
   pluginDir: string,
-  category: string | undefined,
+  category: string,
 ): void {
-  if (!category) {
-    return;
-  }
-
   const manifestPath = findManifestPath(pluginDir);
 
   if (!manifestPath) {

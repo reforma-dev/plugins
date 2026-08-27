@@ -1,0 +1,15 @@
+{
+    "name": "flexnative",
+    "description": "Opt-in Flexnative kit. Blocks, patterns, and intents from the @flx registry — add one piece at a time on top of shadcn / Tailwind.",
+    "logo": "assets/logo.svg",
+    "author": {
+        "name": "Flexnative"
+    },
+    "homepage": "https://ui.flexnative.com",
+    "repository": "https://github.com/felipemenezes098/ui-flx",
+    "license": "AGPL-3.0",
+    "interface": {
+        "displayName": "Flexnative",
+        "brandColor": "#0A0A0A"
+    }
+}

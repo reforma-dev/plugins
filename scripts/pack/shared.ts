@@ -42,6 +42,78 @@ export function sameRelPath(left: string, right: string): boolean {
   return normalize(left) === normalize(right);
 }
 
+export type MarketplaceListing = {
+  name: string;
+  source: string;
+  category: string;
+};
+
+/** Nested `categories[].plugins` → flat listings. Shelf is the parent category. */
+export function parseMarketplace(raw: unknown): {
+  categories: unknown;
+  plugins: MarketplaceListing[];
+} {
+  if (!isRecord(raw) || !Array.isArray(raw.categories)) {
+    throw new Error("marketplace.json needs categories[]");
+  }
+
+  if (raw.plugins !== undefined) {
+    throw new Error("marketplace.json plugins live under categories[].plugins");
+  }
+
+  const plugins: MarketplaceListing[] = [];
+  const names = new Set<string>();
+  const categoryIds = new Set<string>();
+
+  for (const [index, item] of raw.categories.entries()) {
+    if (
+      !isRecord(item) ||
+      typeof item.id !== "string" ||
+      !item.id.trim() ||
+      typeof item.name !== "string"
+    ) {
+      throw new Error(`marketplace.json categories[${index}] needs id and name`);
+    }
+
+    const id = item.id.trim();
+
+    if (categoryIds.has(id)) {
+      throw new Error(`marketplace.json has duplicate category id: ${id}`);
+    }
+
+    categoryIds.add(id);
+
+    if (item.plugins === undefined) {
+      continue;
+    }
+
+    if (!Array.isArray(item.plugins)) {
+      throw new Error(`marketplace.json categories[${index}].plugins must be an array`);
+    }
+
+    for (const [pluginIndex, plugin] of item.plugins.entries()) {
+      if (
+        !isRecord(plugin) ||
+        typeof plugin.name !== "string" ||
+        typeof plugin.source !== "string"
+      ) {
+        throw new Error(
+          `marketplace.json categories[${index}].plugins[${pluginIndex}] needs name and source`,
+        );
+      }
+
+      if (names.has(plugin.name)) {
+        throw new Error(`Duplicate plugin name: ${plugin.name}`);
+      }
+
+      names.add(plugin.name);
+      plugins.push({ name: plugin.name, source: plugin.source, category: id });
+    }
+  }
+
+  return { categories: raw.categories, plugins };
+}
+
 export function asPathList(raw: unknown, label: string): string[] | undefined {
   if (raw === undefined) {
     return undefined;

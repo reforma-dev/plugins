@@ -1,0 +1,10 @@
+{
+    "name": "fonts",
+    "description": "Always-on font wiring for the starter — next/font faces, role tokens, and ImportAsset WOFF2. Cannot disable.",
+    "system": true,
+    "logo": "assets/logo.svg",
+    "interface": {
+        "displayName": "Fonts",
+        "brandColor": "#171717"
+    }
+}

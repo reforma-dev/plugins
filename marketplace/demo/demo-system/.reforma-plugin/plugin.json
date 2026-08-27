@@ -1,7 +1,6 @@
 {
     "name": "demo-system",
     "description": "Always-on test card. Cannot disable or uninstall.",
-    "category": "demo",
     "system": true,
     "logo": "assets/logo.svg",
     "interface": {

@@ -1,7 +1,6 @@
 {
     "name": "demo-stdio",
     "description": "Stdio MCP: command/args stay as written. Variables substitute into env at connect.",
-    "category": "demo",
     "logo": "assets/logo.svg",
     "interface": {
         "brandColor": "#F59E0B"

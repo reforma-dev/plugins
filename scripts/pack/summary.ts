@@ -3,7 +3,7 @@
  */
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
-import { findManifestPath, isRecord, OUT } from "./shared.ts";
+import { findManifestPath, isRecord, OUT, parseMarketplace } from "./shared.ts";
 
 const DESC_MAX = 88;
 
@@ -136,25 +136,13 @@ function readMarketplacePlugins(
       .map((name) => ({ name }));
   }
 
-  const raw = JSON.parse(readFileSync(path, "utf8")) as unknown;
-
-  if (!isRecord(raw) || !Array.isArray(raw.plugins)) {
+  try {
+    return parseMarketplace(
+      JSON.parse(readFileSync(path, "utf8")) as unknown,
+    ).plugins;
+  } catch {
     return [];
   }
-
-  return raw.plugins.flatMap((plugin) => {
-    if (!isRecord(plugin) || typeof plugin.name !== "string") {
-      return [];
-    }
-
-    return [
-      {
-        name: plugin.name,
-        source:
-          typeof plugin.source === "string" ? plugin.source : undefined,
-      },
-    ];
-  });
 }
 
 /** Print a CI-friendly catalog summary to stdout. */

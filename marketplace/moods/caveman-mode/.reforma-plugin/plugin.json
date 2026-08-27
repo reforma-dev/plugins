@@ -1,7 +1,6 @@
 {
     "name": "caveman-mode",
     "description": "Talk like a cave person. Broken words. Me do work.",
-    "category": "moods",
     "logo": "assets/logo.svg",
     "interface": {
         "displayName": "Caveman",

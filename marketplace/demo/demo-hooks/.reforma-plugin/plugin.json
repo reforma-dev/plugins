@@ -1,7 +1,6 @@
 {
     "name": "demo-hooks",
     "description": "Fixture plugin: SessionStart/End context, UserPromptSubmit echo, PreToolUse Bash guard.",
-    "category": "demo",
     "logo": "assets/logo.svg",
     "interface": {
         "brandColor": "#7C3AED"

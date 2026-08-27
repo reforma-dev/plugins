@@ -1,0 +1,15 @@
+{
+    "name": "coss",
+    "description": "Opt-in coss UI kit. Primitives and particles from the @coss registry — add one piece at a time on top of shadcn / Tailwind.",
+    "logo": "assets/logo.svg",
+    "author": {
+        "name": "coss"
+    },
+    "homepage": "https://coss.com/ui",
+    "repository": "https://github.com/cosscom/coss",
+    "license": "MIT",
+    "interface": {
+        "displayName": "coss",
+        "brandColor": "#111111"
+    }
+}
