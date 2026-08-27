@@ -145,6 +145,11 @@ function isMcpServerEntry(value: unknown): value is Record<string, unknown> {
   return url.length > 0 !== command.length > 0;
 }
 
+/** Same rule as reforma `normalizeMcpServerId` — trim, lowercase, spaces → `_`. */
+function normalizeMcpServerId(raw: string): string {
+  return raw.trim().toLowerCase().replace(/\s+/g, "_");
+}
+
 function renameLoneKey(
   servers: Record<string, unknown>,
   pluginName: string,
@@ -162,6 +167,35 @@ function renameLoneKey(
   }
 
   return { next: { [pluginName]: servers[from] }, from };
+}
+
+function normalizeServerKeys(
+  servers: Record<string, unknown>,
+  pluginName: string,
+): Record<string, unknown> {
+  const next: Record<string, unknown> = {};
+
+  for (const [id, entry] of Object.entries(servers)) {
+    const key = normalizeMcpServerId(id);
+
+    if (!key) {
+      throw new Error(`${pluginName}: mcp server id is empty`);
+    }
+
+    if (key in next) {
+      throw new Error(
+        `${pluginName}: mcp server id ${key} collides after normalize`,
+      );
+    }
+
+    if (key !== id) {
+      console.log(`  mcp ${id} → ${key}`);
+    }
+
+    next[key] = entry;
+  }
+
+  return next;
 }
 
 /** One MCP server → marketplace plugin name. Vendor keys like `chatgpt_app_mcp` go away. */
@@ -238,6 +272,8 @@ export function normalizePackedMcpServerId(pluginDir: string): void {
     servers = renamed.next;
     console.log(`  mcp ${renamed.from} → ${pluginName}`);
   }
+
+  servers = normalizeServerKeys(servers, pluginName);
 
   const next = { mcpServers: servers };
   const current = isRecord(raw) && isRecord(raw.mcpServers) ? raw : undefined;
