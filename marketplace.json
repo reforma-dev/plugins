@@ -109,6 +109,10 @@
                 {
                     "name": "notion-workspace",
                     "source": "https://github.com/makenotion/cursor-notion-plugin/tree/cf1324609edba6d617164f1dec138aeb43f26735"
+                },
+                {
+                    "name": "linear",
+                    "source": "https://github.com/linear/cursor-plugin/tree/c2c4cb2ab23206c9219b0dd31c9571e4c922faeb"
                 }
             ]
         },

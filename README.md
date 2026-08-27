@@ -20,6 +20,7 @@ Marketplace plugins for Reforma. Each plugin is a folder with `.reforma-plugin/p
 | context7         | [Context7](marketplace/workspace/context7)                               | Reforma     | Workspace | Up-to-date library docs and examples. Needs an API key.                |
 | google-drive     | [Google Drive](marketplace/files/google-drive)                           | Reforma     | Files     | Search, read, create, and share files across Drive.                    |
 | notion-workspace | [Notion Workspace](https://github.com/makenotion/cursor-notion-plugin)   | Notion Labs | Workspace | Notion Skills + Notion MCP server packaged as a Cursor plugin.         |
+| linear           | [Linear](https://github.com/linear/cursor-plugin)                        | Linear      | Workspace | Issues, projects, and docs from the Linear workspace.                  |
 | dropbox          | [Dropbox](https://github.com/dropbox/dropbox-ai-plugins/tree/main/codex) | Dropbox     | Files     | Access, save and share files with Dropbox.                             |
 
 Author is `plugin.json` `author.name` when present, else Reforma. Shelf is the parent `categories[]` entry — `plugin.json` has no `category`.
