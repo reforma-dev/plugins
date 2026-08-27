@@ -11,6 +11,7 @@ import { join } from "node:path";
 import {
   normalizePackedMcpServerId,
   renameLoneMcpServerKey,
+  stampPluginCategory,
 } from "./content.ts";
 
 describe("renameLoneMcpServerKey", () => {
@@ -95,5 +96,35 @@ describe("normalizePackedMcpServerId", () => {
         dropbox: { url: "https://mcp.dropbox.com/chatgpt_app_mcp" },
       },
     });
+  });
+});
+
+describe("stampPluginCategory", () => {
+  const dirs: string[] = [];
+
+  afterEach(() => {
+    for (const dir of dirs.splice(0)) {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("writes category onto a pin with no plugin.json category", () => {
+    const dir = mkdtempSync(join(tmpdir(), "stamp-"));
+    const pluginDir = join(dir, "dropbox");
+
+    dirs.push(dir);
+    mkdirSync(join(pluginDir, ".reforma-plugin"), { recursive: true });
+    writeFileSync(
+      join(pluginDir, ".reforma-plugin/plugin.json"),
+      `${JSON.stringify({ name: "dropbox" }, null, 4)}\n`,
+    );
+
+    stampPluginCategory(pluginDir, "files");
+
+    expect(
+      JSON.parse(
+        readFileSync(join(pluginDir, ".reforma-plugin/plugin.json"), "utf8"),
+      ),
+    ).toMatchObject({ name: "dropbox", category: "files" });
   });
 });

@@ -1,24 +1,60 @@
 {
     "categories": [
         {
-            "id": "demo",
-            "name": "Demo"
+            "id": "ui",
+            "name": "UI"
+        },
+        {
+            "id": "backend",
+            "name": "Backend"
+        },
+        {
+            "id": "auth",
+            "name": "Auth"
+        },
+        {
+            "id": "payments",
+            "name": "Payments"
+        },
+        {
+            "id": "messaging",
+            "name": "Messaging"
+        },
+        {
+            "id": "files",
+            "name": "Files"
+        },
+        {
+            "id": "design",
+            "name": "Design"
+        },
+        {
+            "id": "media",
+            "name": "Media"
+        },
+        {
+            "id": "analytics",
+            "name": "Analytics"
+        },
+        {
+            "id": "cms",
+            "name": "CMS"
+        },
+        {
+            "id": "workspace",
+            "name": "Workspace"
+        },
+        {
+            "id": "automation",
+            "name": "Automation"
         },
         {
             "id": "moods",
             "name": "Moods"
         },
         {
-            "id": "ui",
-            "name": "UI"
-        },
-        {
-            "id": "docs",
-            "name": "Documentation"
-        },
-        {
-            "id": "files",
-            "name": "Files"
+            "id": "demo",
+            "name": "Demo"
         }
     ],
     "plugins": [
@@ -76,7 +112,7 @@
         },
         {
             "name": "context7",
-            "source": "./marketplace/docs/context7"
+            "source": "./marketplace/workspace/context7"
         },
         {
             "name": "google-drive",
@@ -84,11 +120,13 @@
         },
         {
             "name": "notion-workspace",
-            "source": "https://github.com/makenotion/cursor-notion-plugin/tree/cf1324609edba6d617164f1dec138aeb43f26735"
+            "source": "https://github.com/makenotion/cursor-notion-plugin/tree/cf1324609edba6d617164f1dec138aeb43f26735",
+            "category": "workspace"
         },
         {
             "name": "dropbox",
-            "source": "https://github.com/dropbox/dropbox-ai-plugins/tree/4900430d6afa76fc2504e00e006895de424f3637/codex"
+            "source": "https://github.com/dropbox/dropbox-ai-plugins/tree/4900430d6afa76fc2504e00e006895de424f3637/codex",
+            "category": "files"
         }
     ]
 }

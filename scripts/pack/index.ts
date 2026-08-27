@@ -11,22 +11,29 @@ import {
   writeFileSync,
 } from "node:fs";
 import { dirname, join, resolve } from "node:path";
-import { normalizePluginAuth } from "./auth.ts";
-import { normalizePluginContentPaths } from "./content.ts";
+import {
+  normalizePluginContentPaths,
+  stampPluginCategory,
+} from "./content.ts";
 import { fetchGithubTree } from "./github.ts";
 import { normalizePluginHooks } from "./hooks.ts";
 import { normalizePluginLayout } from "./layout.ts";
 import { normalizePluginLogos } from "./logos.ts";
+import { discoverMcpTools } from "./mcp-tools.ts";
 import { isRecord, OUT, ROOT, TAR } from "./shared.ts";
 import { logCatalogSummary } from "./summary.ts";
 import { normalizePluginTools } from "./tools.ts";
 
 type Marketplace = {
   categories: unknown;
-  plugins: Array<{ name: string; source: string }>;
+  plugins: Array<{ name: string; source: string; category?: string }>;
 };
 
-async function packPlugin(name: string, source: string): Promise<void> {
+async function packPlugin(
+  name: string,
+  source: string,
+  category: string | undefined,
+): Promise<void> {
   const dest = join(OUT, name);
 
   if (/^https?:\/\//i.test(source)) {
@@ -36,7 +43,8 @@ async function packPlugin(name: string, source: string): Promise<void> {
     normalizePluginHooks(dest);
     await normalizePluginTools(dest);
     await normalizePluginLogos(dest);
-    await normalizePluginAuth(dest);
+    await discoverMcpTools(dest);
+    stampPluginCategory(dest, category);
 
     return;
   }
@@ -54,7 +62,8 @@ async function packPlugin(name: string, source: string): Promise<void> {
   normalizePluginHooks(dest);
   await normalizePluginTools(dest);
   await normalizePluginLogos(dest);
-  await normalizePluginAuth(dest);
+  await discoverMcpTools(dest);
+  stampPluginCategory(dest, category);
 }
 
 const raw = JSON.parse(
@@ -70,6 +79,13 @@ if (
 }
 
 const marketplace = raw as Marketplace;
+const categoryIds = new Set(
+  marketplace.categories.flatMap((item) =>
+    isRecord(item) && typeof item.id === "string" && item.id.trim()
+      ? [item.id.trim()]
+      : [],
+  ),
+);
 const names = new Set<string>();
 
 rmSync(join(ROOT, "dist"), { recursive: true, force: true });
@@ -84,9 +100,15 @@ for (const plugin of marketplace.plugins) {
     throw new Error(`Duplicate plugin name: ${plugin.name}`);
   }
 
+  if (plugin.category !== undefined && !categoryIds.has(plugin.category)) {
+    throw new Error(
+      `plugins[] ${plugin.name}: unknown category ${plugin.category}`,
+    );
+  }
+
   names.add(plugin.name);
   console.log(`pack ${plugin.name} ← ${plugin.source}`);
-  await packPlugin(plugin.name, plugin.source);
+  await packPlugin(plugin.name, plugin.source, plugin.category);
 }
 
 writeFileSync(

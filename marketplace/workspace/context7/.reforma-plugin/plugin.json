@@ -1,7 +1,7 @@
 {
     "name": "context7",
     "description": "Up-to-date library docs and code examples. MCP with an API key.",
-    "category": "docs",
+    "category": "workspace",
     "logo": "assets/logo.svg",
     "interface": {
         "brandColor": "#EA580C"

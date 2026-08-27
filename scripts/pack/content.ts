@@ -370,3 +370,34 @@ export function normalizePluginContentPaths(pluginDir: string): void {
   writeFileSync(manifestPath, `${JSON.stringify(record, null, 4)}\n`);
 }
 
+/** Remote pins have no Reforma category — marketplace.json row stamps the packed manifest. */
+export function stampPluginCategory(
+  pluginDir: string,
+  category: string | undefined,
+): void {
+  if (!category) {
+    return;
+  }
+
+  const manifestPath = findManifestPath(pluginDir);
+
+  if (!manifestPath) {
+    throw new Error(
+      `${basename(pluginDir)}: cannot stamp category (no plugin.json)`,
+    );
+  }
+
+  const raw = JSON.parse(readFileSync(manifestPath, "utf8")) as unknown;
+
+  if (!isRecord(raw)) {
+    throw new Error(`${basename(pluginDir)}: plugin.json must be an object`);
+  }
+
+  if (raw.category === category) {
+    return;
+  }
+
+  raw.category = category;
+  writeFileSync(manifestPath, `${JSON.stringify(raw, null, 4)}\n`);
+}
+
