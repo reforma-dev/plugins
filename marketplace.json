@@ -54,15 +54,33 @@
         },
         {
             "id": "backend",
-            "name": "Backend"
+            "name": "Backend",
+            "plugins": [
+                {
+                    "name": "supabase",
+                    "source": "https://github.com/supabase-community/supabase-plugin/tree/8629243d1cd72309b533090a4c742f21747d02fa"
+                }
+            ]
         },
         {
             "id": "auth",
-            "name": "Auth"
+            "name": "Auth",
+            "plugins": [
+                {
+                    "name": "clerk",
+                    "source": "./marketplace/auth/clerk"
+                }
+            ]
         },
         {
             "id": "payments",
-            "name": "Payments"
+            "name": "Payments",
+            "plugins": [
+                {
+                    "name": "stripe",
+                    "source": "https://github.com/stripe/ai/tree/1dc126b93cc62e28aff7e00e51406dfeb8ac88d5/providers/cursor/plugin"
+                }
+            ]
         },
         {
             "id": "messaging",
@@ -88,11 +106,23 @@
         },
         {
             "id": "media",
-            "name": "Media"
+            "name": "Media",
+            "plugins": [
+                {
+                    "name": "higgsfield",
+                    "source": "https://github.com/higgsfield-ai/cursor-plugin/tree/c9215059e409dc81c69ff0fe77ea2740c5fc6249"
+                }
+            ]
         },
         {
             "id": "analytics",
-            "name": "Analytics"
+            "name": "Analytics",
+            "plugins": [
+                {
+                    "name": "sentry",
+                    "source": "https://github.com/getsentry/plugin-cursor/tree/134bed9804c249664daf8be62938e4d754b1c249"
+                }
+            ]
         },
         {
             "id": "cms",
@@ -113,6 +143,14 @@
                 {
                     "name": "linear",
                     "source": "https://github.com/linear/cursor-plugin/tree/c2c4cb2ab23206c9219b0dd31c9571e4c922faeb"
+                },
+                {
+                    "name": "slack",
+                    "source": "./marketplace/workspace/slack"
+                },
+                {
+                    "name": "github-mcp",
+                    "source": "./marketplace/workspace/github-mcp"
                 }
             ]
         },

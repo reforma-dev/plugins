@@ -1,0 +1,10 @@
+{
+    "name": "github-mcp",
+    "description": "Search issues, pull requests, and code in GitHub repositories.",
+    "author": {
+        "name": "GitHub",
+        "url": "https://github.com"
+    },
+    "logo": "assets/logo.svg",
+    "mcpServers": "./mcp.json"
+}

@@ -1,0 +1,10 @@
+{
+    "name": "slack",
+    "description": "Search channels, read threads, and post to the Slack workspace.",
+    "author": {
+        "name": "Slack",
+        "url": "https://slack.com"
+    },
+    "logo": "assets/logo.svg",
+    "mcpServers": "./mcp.json"
+}
