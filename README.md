@@ -4,28 +4,23 @@ Marketplace plugins for Reforma. Each plugin is a folder with `.reforma-plugin/p
 
 ## Plugins
 
-| name             | Plugin                                                                   | Author      | Category  | description                                                                               |
-| ---------------- | ------------------------------------------------------------------------ | ----------- | --------- | ----------------------------------------------------------------------------------------- |
-| demo-hooks       | [Demo Hooks](marketplace/demo/demo-hooks)                                | Reforma     | Demo      | Fixture: SessionStart/End, UserPromptSubmit, PreToolUse Bash guard.                       |
-| demo-tools       | [Demo Tools](marketplace/demo/demo-tools)                                | Reforma     | Demo      | Fixture: Fortune + Grep override (`defineTool`).                                          |
-| demo-kit         | [Demo Kit](marketplace/demo/demo-kit)                                    | Reforma     | Demo      | Kitchen-sink: skills, command, rule, agents, hooks, tools, MCP.                           |
-| demo-skills      | [Demo Skills](marketplace/demo/demo-skills)                              | Reforma     | Demo      | Test card: bundled skills + rule, no auth.                                                |
-| demo-stdio       | [Demo Stdio](marketplace/demo/demo-stdio)                                | Reforma     | Demo      | Stdio MCP: command/args stay as written. Variables substitute into env at connect.        |
-| demo-system      | [Demo System](marketplace/demo/demo-system)                              | Reforma     | Demo      | Always-on test card. Cannot disable or uninstall.                                         |
-| bro-mode         | [Bro Mode](marketplace/moods/bro-mode)                                   | Reforma     | Moods     | Brother energy — blunt, warm, pushes back.                                                |
-| zen-mode         | [Zen Mode](marketplace/moods/zen-mode)                                   | Reforma     | Moods     | Calm, minimal, one clear step at a time.                                                  |
-| ship-it          | [Ship It](marketplace/moods/ship-it)                                     | Reforma     | Moods     | Smallest shippable change — merge beats polish.                                           |
-| professor        | [Professor](marketplace/moods/professor)                                 | Reforma     | Moods     | Explain the why — context and tradeoffs.                                                  |
-| hype-man         | [Hype Man](marketplace/moods/hype-man)                                   | Reforma     | Moods     | Founder energy — vision, momentum, this thing wins.                                       |
-| caveman-mode     | [Caveman](marketplace/moods/caveman-mode)                                | Reforma     | Moods     | Cave-person talk. Broken words. Me do work.                                               |
-| shadcn-tailwind  | [shadcn / Tailwind](marketplace/ui/shadcn-tailwind)                      | shadcn      | UI        | Always-on UI foundation. Official primitives + Tailwind. MCP search/view. Cannot disable. |
-| fonts            | [Fonts](marketplace/ui/fonts)                                            | Reforma     | UI        | Always-on font wiring. next/font faces, role tokens, ImportAsset WOFF2. Cannot disable.   |
-| coss             | [coss](marketplace/ui/coss)                                              | coss        | UI        | Opt-in @coss primitives and particles.                                                    |
-| flexnative       | [Flexnative](marketplace/ui/flexnative)                                  | Flexnative  | UI        | Opt-in @flx blocks, patterns, and intents.                                                |
-| context7         | [Context7](marketplace/workspace/context7)                               | Reforma     | Workspace | Up-to-date library docs and code examples. MCP with an API key.                           |
-| google-drive     | [Google Drive](marketplace/files/google-drive)                           | Reforma     | Files     | Search, read, create, and share files across Drive.                                       |
-| notion-workspace | [Notion Workspace](https://github.com/makenotion/cursor-notion-plugin)   | Notion Labs | Workspace | Notion Skills + Notion MCP server packaged as a Cursor plugin.                            |
-| dropbox          | [Dropbox](https://github.com/dropbox/dropbox-ai-plugins/tree/main/codex) | Dropbox     | Files     | Access, save and share files with Dropbox.                                                |
+| name             | Plugin                                                                   | Author      | Category  | description                                                            |
+| ---------------- | ------------------------------------------------------------------------ | ----------- | --------- | ---------------------------------------------------------------------- |
+| demo-kit         | [Demo Kit](marketplace/demo/demo-kit)                                    | Reforma     | Demo      | Sample plugin to try the catalog — skills, tools, hooks, and a server. |
+| bro-mode         | [Bro Mode](marketplace/moods/bro-mode)                                   | Reforma     | Moods     | Brother energy — blunt, warm, pushes back.                             |
+| zen-mode         | [Zen Mode](marketplace/moods/zen-mode)                                   | Reforma     | Moods     | Calm, minimal, one clear step at a time.                               |
+| ship-it          | [Ship It](marketplace/moods/ship-it)                                     | Reforma     | Moods     | Smallest shippable change — merge beats polish.                        |
+| professor        | [Professor](marketplace/moods/professor)                                 | Reforma     | Moods     | Explain the why — context and tradeoffs.                               |
+| hype-man         | [Hype Man](marketplace/moods/hype-man)                                   | Reforma     | Moods     | Founder energy — vision, momentum, this thing wins.                    |
+| caveman-mode     | [Caveman](marketplace/moods/caveman-mode)                                | Reforma     | Moods     | Cave-person talk. Broken words. Me do work.                            |
+| shadcn-tailwind  | [shadcn / Tailwind](marketplace/ui/shadcn-tailwind)                      | shadcn      | UI        | Official components and Tailwind utilities for the project.            |
+| fonts            | [Fonts](marketplace/ui/fonts)                                            | Reforma     | UI        | Google Fonts and custom typefaces for the project.                     |
+| coss             | [coss](marketplace/ui/coss)                                              | coss        | UI        | Extra components and particles on top of shadcn.                       |
+| flexnative       | [Flexnative](marketplace/ui/flexnative)                                  | Flexnative  | UI        | Ready-made blocks and patterns on top of shadcn.                       |
+| context7         | [Context7](marketplace/workspace/context7)                               | Reforma     | Workspace | Up-to-date library docs and examples. Needs an API key.                |
+| google-drive     | [Google Drive](marketplace/files/google-drive)                           | Reforma     | Files     | Search, read, create, and share files across Drive.                    |
+| notion-workspace | [Notion Workspace](https://github.com/makenotion/cursor-notion-plugin)   | Notion Labs | Workspace | Notion Skills + Notion MCP server packaged as a Cursor plugin.         |
+| dropbox          | [Dropbox](https://github.com/dropbox/dropbox-ai-plugins/tree/main/codex) | Dropbox     | Files     | Access, save and share files with Dropbox.                             |
 
 Author is `plugin.json` `author.name` when present, else Reforma. Shelf is the parent `categories[]` entry — `plugin.json` has no `category`.
 

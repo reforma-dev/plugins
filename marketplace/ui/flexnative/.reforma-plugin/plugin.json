@@ -1,6 +1,6 @@
 {
     "name": "flexnative",
-    "description": "Opt-in Flexnative kit. Blocks, patterns, and intents from the @flx registry — add one piece at a time on top of shadcn / Tailwind.",
+    "description": "Ready-made blocks and patterns on top of shadcn.",
     "logo": "assets/logo.svg",
     "author": {
         "name": "Flexnative"

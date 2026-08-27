@@ -2,7 +2,7 @@ import { defineTool, z } from '@reforma/plugin-sdk';
 
 /**
  * Shadows built-in Waiting (override: bare name). Demo-only joke stall so the
- * kitchen-sink card also shows an override tool without fighting demo-tools Grep.
+ * kitchen-sink card also shows an override tool.
  */
 export default defineTool({
     override: true,

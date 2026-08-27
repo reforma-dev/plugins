@@ -1,6 +1,6 @@
 {
     "name": "fonts",
-    "description": "Always-on font wiring for the starter — next/font faces, role tokens, and ImportAsset WOFF2. Cannot disable.",
+    "description": "Google Fonts and custom typefaces for the project.",
     "system": true,
     "logo": "assets/logo.svg",
     "interface": {
