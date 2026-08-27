@@ -7,9 +7,9 @@ import {
 } from "./shared.ts";
 
 const VENDOR_PLUGIN_DIRS = [
-  ".codex-plugin",
   ".cursor-plugin",
   ".claude-plugin",
+  ".codex-plugin",
 ] as const;
 
 /** Cursor / Codex / Claude folder → `.reforma-plugin`. Root `plugin.json` moves in. */

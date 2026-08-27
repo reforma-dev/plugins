@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "slack": {
+      "url": "https://mcp.slack.com/mcp"
+    }
+  }
+}
