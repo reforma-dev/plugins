@@ -1,0 +1,7 @@
+{
+    "mcpServers": {
+        "n8n": {
+            "url": "https://mcp.n8n.io/mcp"
+        }
+    }
+}

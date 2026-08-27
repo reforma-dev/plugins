@@ -1,0 +1,9 @@
+{
+    "name": "shopify",
+    "description": "Products, orders, and store data from Shopify.",
+    "author": {
+        "name": "Shopify",
+        "url": "https://www.shopify.com"
+    },
+    "mcpServers": "./mcp.json"
+}

@@ -69,6 +69,10 @@ const marketplace = parseMarketplace(raw);
 rmSync(join(ROOT, "dist"), { recursive: true, force: true });
 mkdirSync(OUT, { recursive: true });
 
+for (const name of marketplace.skipped) {
+  console.log(`skip ${name} (disabled)`);
+}
+
 for (const plugin of marketplace.plugins) {
   console.log(`pack ${plugin.name} ← ${plugin.source}`);
   await packPlugin(plugin.name, plugin.source, plugin.category);

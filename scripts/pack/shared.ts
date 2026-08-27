@@ -52,6 +52,7 @@ export type MarketplaceListing = {
 export function parseMarketplace(raw: unknown): {
   categories: unknown;
   plugins: MarketplaceListing[];
+  skipped: string[];
 } {
   if (!isRecord(raw) || !Array.isArray(raw.categories)) {
     throw new Error("marketplace.json needs categories[]");
@@ -62,6 +63,8 @@ export function parseMarketplace(raw: unknown): {
   }
 
   const plugins: MarketplaceListing[] = [];
+  const skipped: string[] = [];
+  const categories: Array<Record<string, unknown>> = [];
   const names = new Set<string>();
   const categoryIds = new Set<string>();
 
@@ -84,12 +87,15 @@ export function parseMarketplace(raw: unknown): {
     categoryIds.add(id);
 
     if (item.plugins === undefined) {
+      categories.push({ id, name: item.name });
       continue;
     }
 
     if (!Array.isArray(item.plugins)) {
       throw new Error(`marketplace.json categories[${index}].plugins must be an array`);
     }
+
+    const packed: Array<{ name: string; source: string }> = [];
 
     for (const [pluginIndex, plugin] of item.plugins.entries()) {
       if (
@@ -102,16 +108,33 @@ export function parseMarketplace(raw: unknown): {
         );
       }
 
+      if (plugin.disabled !== undefined && plugin.disabled !== true) {
+        throw new Error(
+          `marketplace.json categories[${index}].plugins[${pluginIndex}] disabled must be true`,
+        );
+      }
+
       if (names.has(plugin.name)) {
         throw new Error(`Duplicate plugin name: ${plugin.name}`);
       }
 
       names.add(plugin.name);
+
+      if (plugin.disabled === true) {
+        skipped.push(plugin.name);
+        continue;
+      }
+
+      packed.push({ name: plugin.name, source: plugin.source });
       plugins.push({ name: plugin.name, source: plugin.source, category: id });
     }
+
+    categories.push(
+      packed.length > 0 ? { id, name: item.name, plugins: packed } : { id, name: item.name },
+    );
   }
 
-  return { categories: raw.categories, plugins };
+  return { categories, plugins, skipped };
 }
 
 export function asPathList(raw: unknown, label: string): string[] | undefined {

@@ -1,0 +1,9 @@
+{
+    "name": "jira",
+    "description": "Issues and pages in Jira and Confluence.",
+    "author": {
+        "name": "Atlassian",
+        "url": "https://www.atlassian.com"
+    },
+    "mcpServers": "./mcp.json"
+}

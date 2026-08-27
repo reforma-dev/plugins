@@ -1,0 +1,9 @@
+{
+    "name": "figma",
+    "description": "Read designs and generate code from Figma files.",
+    "author": {
+        "name": "Figma",
+        "url": "https://www.figma.com"
+    },
+    "mcpServers": "./mcp.json"
+}

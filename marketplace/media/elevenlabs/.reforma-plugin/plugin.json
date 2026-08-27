@@ -1,0 +1,10 @@
+{
+    "name": "elevenlabs",
+    "description": "Generate speech and manage voices in ElevenLabs.",
+    "author": {
+        "name": "ElevenLabs",
+        "url": "https://elevenlabs.io"
+    },
+    "logo": "assets/logo.svg",
+    "mcpServers": "./mcp.json"
+}

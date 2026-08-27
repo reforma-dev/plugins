@@ -1,0 +1,9 @@
+{
+    "name": "neon",
+    "description": "Postgres databases, branches, and SQL on Neon.",
+    "author": {
+        "name": "Neon",
+        "url": "https://neon.tech"
+    },
+    "mcpServers": "./mcp.json"
+}

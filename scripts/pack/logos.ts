@@ -3,6 +3,7 @@ import {
   mkdirSync,
   readFileSync,
   statSync,
+  unlinkSync,
   writeFileSync,
 } from "node:fs";
 import { join } from "node:path";
@@ -50,7 +51,7 @@ export async function materializeLogo(
   pluginDir: string,
   value: string,
   destStem: string,
-): Promise<string> {
+): Promise<string | undefined> {
   const trimmed = value.trim();
 
   if (/^https?:\/\//i.test(trimmed)) {
@@ -63,7 +64,8 @@ export async function materializeLogo(
     const buf = Buffer.from(await res.arrayBuffer());
 
     if (buf.length > LOGO_MAX_BYTES) {
-      throw new Error(`logo too large ${trimmed}`);
+      console.warn(`  skip oversized logo ${trimmed}`);
+      return undefined;
     }
 
     const ext = logoExtFromDownload(
@@ -82,7 +84,8 @@ export async function materializeLogo(
   const abs = join(pluginDir, rel);
 
   if (!existsSync(abs)) {
-    throw new Error(`logo missing: ${rel}`);
+    console.warn(`  skip missing logo ${rel}`);
+    return undefined;
   }
 
   const ext = extOf(rel);
@@ -92,7 +95,9 @@ export async function materializeLogo(
   }
 
   if (statSync(abs).size > LOGO_MAX_BYTES) {
-    throw new Error(`logo too large ${rel}`);
+    console.warn(`  skip oversized logo ${rel}`);
+    unlinkSync(abs);
+    return undefined;
   }
 
   return rel;
@@ -159,7 +164,20 @@ export async function normalizePluginLogos(pluginDir: string): Promise<void> {
       ? await materializeLogo(pluginDir, fields.logoDark, "logo-dark")
       : logo;
 
-  writeLogoFields(json, logo, logoDark);
+  if (!logo) {
+    delete json.logo;
+    delete json.logoDark;
+
+    if (isRecord(json.interface)) {
+      delete json.interface.logo;
+      delete json.interface.logoDark;
+    }
+
+    writeFileSync(manifestPath, `${JSON.stringify(json, null, 4)}\n`);
+    return;
+  }
+
+  writeLogoFields(json, logo, logoDark ?? logo);
   writeFileSync(manifestPath, `${JSON.stringify(json, null, 4)}\n`);
 }
 

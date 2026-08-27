@@ -1,0 +1,9 @@
+{
+    "name": "make",
+    "description": "Run scenarios and look up data from connected Make apps.",
+    "author": {
+        "name": "Make",
+        "url": "https://www.make.com"
+    },
+    "mcpServers": "./mcp.json"
+}
