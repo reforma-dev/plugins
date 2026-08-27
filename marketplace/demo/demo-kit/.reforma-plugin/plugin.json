@@ -1,6 +1,6 @@
 {
     "name": "demo-kit",
-    "description": "Kitchen-sink demo: skills, slash command, rule, agents, hooks, tools, and stdio MCP with variables.",
+    "description": "Sample plugin to try the catalog — skills, tools, hooks, and a server.",
     "logo": "assets/logo.svg",
     "interface": {
         "brandColor": "#6366F1"

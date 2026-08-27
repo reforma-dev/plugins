@@ -121,28 +121,8 @@
             "name": "Demo",
             "plugins": [
                 {
-                    "name": "demo-hooks",
-                    "source": "./marketplace/demo/demo-hooks"
-                },
-                {
-                    "name": "demo-tools",
-                    "source": "./marketplace/demo/demo-tools"
-                },
-                {
                     "name": "demo-kit",
                     "source": "./marketplace/demo/demo-kit"
-                },
-                {
-                    "name": "demo-skills",
-                    "source": "./marketplace/demo/demo-skills"
-                },
-                {
-                    "name": "demo-stdio",
-                    "source": "./marketplace/demo/demo-stdio"
-                },
-                {
-                    "name": "demo-system",
-                    "source": "./marketplace/demo/demo-system"
                 }
             ]
         }

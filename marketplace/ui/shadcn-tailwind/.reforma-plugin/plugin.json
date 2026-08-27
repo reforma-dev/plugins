@@ -1,6 +1,6 @@
 {
     "name": "shadcn-tailwind",
-    "description": "Always-on UI foundation. Official shadcn primitives, Tailwind, and the project components.json — MCP search/view, CLI add.",
+    "description": "Official components and Tailwind utilities for the project.",
     "system": true,
     "logo": "assets/logo.png",
     "author": {

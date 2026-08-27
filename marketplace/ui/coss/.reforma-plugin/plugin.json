@@ -1,6 +1,6 @@
 {
     "name": "coss",
-    "description": "Opt-in coss UI kit. Primitives and particles from the @coss registry — add one piece at a time on top of shadcn / Tailwind.",
+    "description": "Extra components and particles on top of shadcn.",
     "logo": "assets/logo.svg",
     "author": {
         "name": "coss"
