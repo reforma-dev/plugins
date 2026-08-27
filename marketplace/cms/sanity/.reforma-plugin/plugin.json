@@ -1,0 +1,9 @@
+{
+    "name": "sanity",
+    "description": "Read and edit content in the Sanity dataset.",
+    "author": {
+        "name": "Sanity",
+        "url": "https://www.sanity.io"
+    },
+    "mcpServers": "./mcp.json"
+}

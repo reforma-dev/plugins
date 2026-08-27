@@ -49,6 +49,60 @@
                 {
                     "name": "flexnative",
                     "source": "./marketplace/ui/flexnative"
+                },
+                {
+                    "name": "magic-ui",
+                    "source": "./marketplace/ui/magic-ui"
+                },
+                {
+                    "name": "tailark",
+                    "source": "./marketplace/ui/tailark"
+                },
+                {
+                    "name": "aceternity",
+                    "source": "./marketplace/ui/aceternity"
+                },
+                {
+                    "name": "21st",
+                    "source": "./marketplace/ui/21st"
+                },
+                {
+                    "name": "gsap",
+                    "source": "https://github.com/greensock/gsap-skills/tree/aed9cfd3277740755f6bfc1155c7aa645403b760"
+                },
+                {
+                    "name": "motion",
+                    "source": "https://github.com/motiondivision/cursor-plugin/tree/1140efe9ad5e03c689ea6bb19d9d3850a4dae5f7/plugins/motion"
+                },
+                {
+                    "name": "remotion",
+                    "source": "https://github.com/remotion-dev/cursor-plugin/tree/bbb02cde0afb17f54329030581532067fb45f622"
+                },
+                {
+                    "name": "i18n",
+                    "source": "./marketplace/ui/i18n"
+                },
+                {
+                    "name": "react-best-practices",
+                    "source": "./marketplace/ui/react-best-practices"
+                },
+                {
+                    "name": "web-design-guidelines",
+                    "source": "./marketplace/ui/web-design-guidelines"
+                },
+                {
+                    "name": "frontend-design",
+                    "source": "./marketplace/ui/frontend-design"
+                }
+            ]
+        },
+        {
+            "id": "games",
+            "name": "Games",
+            "plugins": [
+                {
+                    "name": "game-creator",
+                    "source": "./marketplace/games/game-creator"
                 }
             ]
         },
@@ -59,6 +113,26 @@
                 {
                     "name": "supabase",
                     "source": "https://github.com/supabase-community/supabase-plugin/tree/8629243d1cd72309b533090a4c742f21747d02fa"
+                },
+                {
+                    "name": "firebase",
+                    "source": "https://github.com/firebase/agent-skills/tree/a0b4e143f40c1ebe05fe5f9a4787fecd4da8f478"
+                },
+                {
+                    "name": "convex",
+                    "source": "https://github.com/get-convex/convex-agent-plugins/tree/aec064132a824ae306b3c5d70b8bab1f3f90a551"
+                },
+                {
+                    "name": "neon",
+                    "source": "./marketplace/backend/neon"
+                },
+                {
+                    "name": "appwrite",
+                    "source": "https://github.com/appwrite/cursor-plugin/tree/a9ef9a11cd7f68c4f27bbd57db46ff46499ec049"
+                },
+                {
+                    "name": "prisma",
+                    "source": "https://github.com/prisma/cursor-plugin/tree/4584a0a9175ba74053d7ee946c6234d3369a5a33"
                 }
             ]
         },
@@ -68,7 +142,16 @@
             "plugins": [
                 {
                     "name": "clerk",
-                    "source": "./marketplace/auth/clerk"
+                    "source": "./marketplace/auth/clerk",
+                    "disabled": true
+                },
+                {
+                    "name": "auth0",
+                    "source": "./marketplace/auth/auth0"
+                },
+                {
+                    "name": "workos",
+                    "source": "./marketplace/auth/workos"
                 }
             ]
         },
@@ -79,12 +162,40 @@
                 {
                     "name": "stripe",
                     "source": "https://github.com/stripe/ai/tree/1dc126b93cc62e28aff7e00e51406dfeb8ac88d5/providers/cursor/plugin"
+                },
+                {
+                    "name": "shopify",
+                    "source": "./marketplace/payments/shopify"
                 }
             ]
         },
         {
             "id": "messaging",
-            "name": "Messaging"
+            "name": "Messaging",
+            "plugins": [
+                {
+                    "name": "resend",
+                    "source": "https://github.com/resend/resend-skills/tree/828340bd8a361c4e6e0c02bddf1575f131d5d77f"
+                }
+            ]
+        },
+        {
+            "id": "scheduling",
+            "name": "Scheduling",
+            "plugins": [
+                {
+                    "name": "cal-com",
+                    "source": "./marketplace/scheduling/cal-com"
+                },
+                {
+                    "name": "calendly",
+                    "source": "./marketplace/scheduling/calendly"
+                },
+                {
+                    "name": "booking",
+                    "source": "./marketplace/scheduling/booking"
+                }
+            ]
         },
         {
             "id": "files",
@@ -92,17 +203,44 @@
             "plugins": [
                 {
                     "name": "google-drive",
-                    "source": "./marketplace/files/google-drive"
+                    "source": "./marketplace/files/google-drive",
+                    "disabled": true
                 },
                 {
                     "name": "dropbox",
-                    "source": "https://github.com/dropbox/dropbox-ai-plugins/tree/4900430d6afa76fc2504e00e006895de424f3637/codex"
+                    "source": "https://github.com/dropbox/dropbox-ai-plugins/tree/4900430d6afa76fc2504e00e006895de424f3637/codex",
+                    "disabled": true
+                },
+                {
+                    "name": "cloudinary",
+                    "source": "./marketplace/files/cloudinary"
                 }
             ]
         },
         {
             "id": "design",
-            "name": "Design"
+            "name": "Design",
+            "plugins": [
+                {
+                    "name": "figma",
+                    "source": "./marketplace/design/figma",
+                    "disabled": true
+                }
+            ]
+        },
+        {
+            "id": "maps",
+            "name": "Maps",
+            "plugins": [
+                {
+                    "name": "google-maps",
+                    "source": "./marketplace/maps/google-maps"
+                },
+                {
+                    "name": "mapbox",
+                    "source": "https://github.com/mapbox/mapbox-agent-skills/tree/209e8c408fd65edfff45e491c941e8a00025a1a6"
+                }
+            ]
         },
         {
             "id": "media",
@@ -111,6 +249,43 @@
                 {
                     "name": "higgsfield",
                     "source": "https://github.com/higgsfield-ai/cursor-plugin/tree/c9215059e409dc81c69ff0fe77ea2740c5fc6249"
+                },
+                {
+                    "name": "quiver",
+                    "source": "https://github.com/quiverai/cursor-plugin/tree/630b8ffea8698db194ef6ac32948656522b6e7f5"
+                },
+                {
+                    "name": "svgator",
+                    "source": "./marketplace/media/svgator"
+                },
+                {
+                    "name": "lottiefiles",
+                    "source": "./marketplace/media/lottiefiles"
+                },
+                {
+                    "name": "recraft",
+                    "source": "./marketplace/media/recraft"
+                },
+                {
+                    "name": "replicate",
+                    "source": "./marketplace/media/replicate"
+                },
+                {
+                    "name": "heygen",
+                    "source": "./marketplace/media/heygen"
+                },
+                {
+                    "name": "fal",
+                    "source": "./marketplace/media/fal"
+                },
+                {
+                    "name": "elevenlabs",
+                    "source": "./marketplace/media/elevenlabs"
+                },
+                {
+                    "name": "cartesia",
+                    "source": "./marketplace/media/cartesia",
+                    "disabled": true
                 }
             ]
         },
@@ -121,12 +296,26 @@
                 {
                     "name": "sentry",
                     "source": "https://github.com/getsentry/plugin-cursor/tree/134bed9804c249664daf8be62938e4d754b1c249"
+                },
+                {
+                    "name": "posthog",
+                    "source": "./marketplace/analytics/posthog"
+                },
+                {
+                    "name": "amplitude",
+                    "source": "./marketplace/analytics/amplitude"
                 }
             ]
         },
         {
             "id": "cms",
-            "name": "CMS"
+            "name": "CMS",
+            "plugins": [
+                {
+                    "name": "sanity",
+                    "source": "./marketplace/cms/sanity"
+                }
+            ]
         },
         {
             "id": "workspace",
@@ -146,17 +335,37 @@
                 },
                 {
                     "name": "slack",
-                    "source": "./marketplace/workspace/slack"
+                    "source": "./marketplace/workspace/slack",
+                    "disabled": true
                 },
                 {
                     "name": "github-mcp",
-                    "source": "./marketplace/workspace/github-mcp"
+                    "source": "./marketplace/workspace/github-mcp",
+                    "disabled": true
                 }
             ]
         },
         {
             "id": "automation",
-            "name": "Automation"
+            "name": "Automation",
+            "plugins": [
+                {
+                    "name": "zapier",
+                    "source": "./marketplace/automation/zapier"
+                },
+                {
+                    "name": "composio",
+                    "source": "./marketplace/automation/composio"
+                },
+                {
+                    "name": "make",
+                    "source": "./marketplace/automation/make"
+                },
+                {
+                    "name": "n8n",
+                    "source": "./marketplace/automation/n8n"
+                }
+            ]
         },
         {
             "id": "demo",

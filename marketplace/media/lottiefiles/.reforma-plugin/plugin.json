@@ -1,0 +1,9 @@
+{
+    "name": "lottiefiles",
+    "description": "Search and manage Lottie animations in the LottieFiles workspace.",
+    "author": {
+        "name": "LottieFiles",
+        "url": "https://lottiefiles.com"
+    },
+    "mcpServers": "./mcp.json"
+}

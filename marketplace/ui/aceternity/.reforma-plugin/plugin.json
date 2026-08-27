@@ -1,0 +1,13 @@
+{
+    "name": "aceternity",
+    "description": "Motion-rich blocks and effects on top of shadcn.",
+    "logo": "assets/logo.png",
+    "author": {
+        "name": "Aceternity"
+    },
+    "homepage": "https://ui.aceternity.com",
+    "interface": {
+        "displayName": "Aceternity",
+        "brandColor": "#000000"
+    }
+}

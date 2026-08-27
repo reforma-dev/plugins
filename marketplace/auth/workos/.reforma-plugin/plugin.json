@@ -1,0 +1,9 @@
+{
+    "name": "workos",
+    "description": "Sign-in, SSO, and user management with WorkOS.",
+    "author": {
+        "name": "WorkOS",
+        "url": "https://workos.com"
+    },
+    "mcpServers": "./mcp.json"
+}

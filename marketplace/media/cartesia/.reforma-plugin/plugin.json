@@ -1,0 +1,9 @@
+{
+    "name": "cartesia",
+    "description": "Generate speech with Cartesia voices.",
+    "author": {
+        "name": "Cartesia",
+        "url": "https://cartesia.ai"
+    },
+    "mcpServers": "./mcp.json"
+}

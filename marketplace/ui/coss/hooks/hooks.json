@@ -1,0 +1,18 @@
+{
+  "hooks": {
+    "Install": [
+      {
+        "hooks": [
+          { "type": "command", "command": "sh ./hooks/install.sh", "timeout": 60 }
+        ]
+      }
+    ],
+    "Uninstall": [
+      {
+        "hooks": [
+          { "type": "command", "command": "sh ./hooks/uninstall.sh", "timeout": 10 }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+    "name": "fal",
+    "description": "Generate images, video, and audio from fal models.",
+    "author": {
+        "name": "fal",
+        "url": "https://fal.ai"
+    },
+    "mcpServers": "./mcp.json",
+    "variables": {
+        "type": "object",
+        "properties": {
+            "API_KEY": {
+                "type": "string",
+                "title": "API key",
+                "description": "From fal.ai dashboard. Sent as Authorization Bearer. Stored in the vault, never returned on GET.",
+                "placeholder": "key-…"
+            }
+        },
+        "required": ["API_KEY"]
+    }
+}

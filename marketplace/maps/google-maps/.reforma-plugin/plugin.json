@@ -1,0 +1,27 @@
+{
+    "name": "google-maps",
+    "description": "Places, routes, and weather from Google Maps.",
+    "logo": "assets/logo.svg",
+    "author": {
+        "name": "Google",
+        "url": "https://developers.google.com/maps"
+    },
+    "homepage": "https://developers.google.com/maps/ai/grounding-lite",
+    "interface": {
+        "displayName": "Google Maps",
+        "brandColor": "#4285F4"
+    },
+    "mcpServers": "./mcp.json",
+    "variables": {
+        "type": "object",
+        "properties": {
+            "API_KEY": {
+                "type": "string",
+                "title": "API key",
+                "description": "From Google Cloud, Maps Grounding Lite enabled. Sent as X-Goog-Api-Key. Stored in the vault, never returned on GET.",
+                "placeholder": "AIza…"
+            }
+        },
+        "required": ["API_KEY"]
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "name": "21st",
+    "description": "Search and install UI from the 21st catalog. Needs an API key.",
+    "logo": "assets/logo.svg",
+    "author": {
+        "name": "21st",
+        "url": "https://21st.dev"
+    },
+    "homepage": "https://21st.dev/mcp",
+    "interface": {
+        "displayName": "21st",
+        "brandColor": "#0A0A0A"
+    },
+    "mcpServers": "./mcp.json",
+    "variables": {
+        "type": "object",
+        "properties": {
+            "API_KEY": {
+                "type": "string",
+                "title": "API key",
+                "description": "From 21st.dev/settings/api-keys. Sent as x-api-key. Stored in the vault, never returned on GET.",
+                "placeholder": "21st_sk_…"
+            }
+        },
+        "required": ["API_KEY"]
+    }
+}

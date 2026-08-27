@@ -1,0 +1,9 @@
+{
+    "name": "zapier",
+    "description": "Run actions and look up data from connected Zapier apps.",
+    "author": {
+        "name": "Zapier",
+        "url": "https://zapier.com"
+    },
+    "mcpServers": "./mcp.json"
+}

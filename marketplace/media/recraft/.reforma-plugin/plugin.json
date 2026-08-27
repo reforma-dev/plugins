@@ -1,0 +1,9 @@
+{
+    "name": "recraft",
+    "description": "Generate and edit images with Recraft.",
+    "author": {
+        "name": "Recraft",
+        "url": "https://www.recraft.ai"
+    },
+    "mcpServers": "./mcp.json"
+}

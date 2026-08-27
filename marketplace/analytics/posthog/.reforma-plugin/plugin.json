@@ -1,0 +1,9 @@
+{
+    "name": "posthog",
+    "description": "Events, funnels, and session replay from PostHog.",
+    "author": {
+        "name": "PostHog",
+        "url": "https://posthog.com"
+    },
+    "mcpServers": "./mcp.json"
+}

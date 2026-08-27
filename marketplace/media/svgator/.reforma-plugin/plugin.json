@@ -1,0 +1,9 @@
+{
+    "name": "svgator",
+    "description": "Create, edit, and export animated SVG in SVGator.",
+    "author": {
+        "name": "SVGator",
+        "url": "https://www.svgator.com"
+    },
+    "mcpServers": "./mcp.json"
+}

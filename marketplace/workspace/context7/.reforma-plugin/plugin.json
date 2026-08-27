@@ -3,7 +3,7 @@
     "description": "Up-to-date library docs and examples. Needs an API key.",
     "logo": "assets/logo.svg",
     "interface": {
-        "brandColor": "#EA580C"
+        "brandColor": "#000000"
     },
     "mcpServers": "./mcp.json",
     "variables": {

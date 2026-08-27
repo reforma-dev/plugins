@@ -1,7 +1,22 @@
-import { mkdirSync, writeFileSync } from "node:fs";
+import { spawnSync } from "node:child_process";
+import { cpSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 
 const GITHUB_SHA = /^[0-9a-f]{7,40}$/i;
+
+function githubHeaders(): Record<string, string> {
+  const headers: Record<string, string> = {
+    Accept: "application/vnd.github+json",
+    "User-Agent": "reforma-plugins",
+  };
+  const token = process.env.GITHUB_TOKEN ?? process.env.GH_TOKEN;
+
+  if (token) {
+    headers.Authorization = `Bearer ${token}`;
+  }
+
+  return headers;
+}
 
 export function parseGithubTree(
   url: string,
@@ -34,12 +49,7 @@ export async function resolveCommitSha(
 
   const res = await fetch(
     `https://api.github.com/repos/${owner}/${repo}/commits/${ref}`,
-    {
-      headers: {
-        Accept: "application/vnd.github+json",
-        "User-Agent": "reforma-plugins",
-      },
-    },
+    { headers: githubHeaders() },
   );
 
   if (!res.ok) {
@@ -67,15 +77,15 @@ export async function fetchGithubTree(source: string, dest: string): Promise<voi
   const sha = await resolveCommitSha(parsed.owner, parsed.repo, parsed.ref);
   const treeRes = await fetch(
     `https://api.github.com/repos/${parsed.owner}/${parsed.repo}/git/trees/${sha}?recursive=1`,
-    {
-      headers: {
-        Accept: "application/vnd.github+json",
-        "User-Agent": "reforma-plugins",
-      },
-    },
+    { headers: githubHeaders() },
   );
 
   if (!treeRes.ok) {
+    if (treeRes.status === 403 || treeRes.status === 429) {
+      cloneGithubTree(parsed, sha, dest);
+      return;
+    }
+
     throw new Error(`Could not list tree ${source} (${treeRes.status})`);
   }
 
@@ -127,5 +137,42 @@ export async function fetchGithubTree(source: string, dest: string): Promise<voi
     mkdirSync(dirname(abs), { recursive: true });
     writeFileSync(abs, Buffer.from(await raw.arrayBuffer()));
   }
+}
+
+function cloneGithubTree(
+  parsed: { owner: string; repo: string; path: string },
+  sha: string,
+  dest: string,
+): void {
+  const tmp = `${dest}.gitclone`;
+  const url = `https://github.com/${parsed.owner}/${parsed.repo}.git`;
+
+  rmSync(tmp, { recursive: true, force: true });
+  mkdirSync(tmp, { recursive: true });
+
+  const run = (args: string[]) => {
+    const result = spawnSync("git", args, { encoding: "utf8" });
+
+    if (result.status !== 0) {
+      rmSync(tmp, { recursive: true, force: true });
+      throw new Error(
+        `git ${args.join(" ")} failed: ${result.stderr || result.stdout || result.status}`,
+      );
+    }
+  };
+
+  run(["init", "--quiet", tmp]);
+  run(["-C", tmp, "remote", "add", "origin", url]);
+  run(["-C", tmp, "fetch", "--depth", "1", "origin", sha]);
+  run(["-C", tmp, "checkout", "--quiet", "FETCH_HEAD"]);
+
+  const from = parsed.path ? join(tmp, parsed.path) : tmp;
+
+  mkdirSync(dest, { recursive: true });
+  cpSync(from, dest, {
+    recursive: true,
+    filter: (path) => !path.includes("/.git"),
+  });
+  rmSync(tmp, { recursive: true, force: true });
 }
 

@@ -1,0 +1,9 @@
+{
+    "name": "composio",
+    "description": "Run actions across the apps connected in Composio.",
+    "author": {
+        "name": "Composio",
+        "url": "https://composio.dev"
+    },
+    "mcpServers": "./mcp.json"
+}

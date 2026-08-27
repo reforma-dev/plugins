@@ -1,0 +1,7 @@
+{
+    "mcpServers": {
+        "auth0": {
+            "url": "https://mcp.auth0.com/mcp"
+        }
+    }
+}

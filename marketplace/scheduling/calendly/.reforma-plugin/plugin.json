@@ -1,0 +1,15 @@
+{
+    "name": "calendly",
+    "description": "Scheduling links, availability, and a Calendly embed for the app.",
+    "logo": "assets/logo.svg",
+    "author": {
+        "name": "Calendly",
+        "url": "https://calendly.com"
+    },
+    "homepage": "https://developer.calendly.com/calendly-mcp-server",
+    "interface": {
+        "displayName": "Calendly",
+        "brandColor": "#006BFF"
+    },
+    "mcpServers": "./mcp.json"
+}

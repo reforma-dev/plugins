@@ -1,0 +1,9 @@
+{
+    "name": "heygen",
+    "description": "Generate avatar videos with HeyGen.",
+    "author": {
+        "name": "HeyGen",
+        "url": "https://www.heygen.com"
+    },
+    "mcpServers": "./mcp.json"
+}

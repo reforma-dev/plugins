@@ -16,7 +16,7 @@ Do not add `@coss/ui` or `@coss/style` wholesale (fights the starter theme). One
 
 ## Register
 
-If `components.json` has no `@coss` key, add it under `registries`, then continue.
+The **Install** hook writes `@coss` into `components.json`. If that key is missing, add `@coss` → `https://coss.com/ui/r/{name}.json`, then continue.
 
 ## Find
 

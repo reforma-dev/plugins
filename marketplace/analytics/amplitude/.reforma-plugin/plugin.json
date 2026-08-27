@@ -1,0 +1,9 @@
+{
+    "name": "amplitude",
+    "description": "Events and charts from the Amplitude project.",
+    "author": {
+        "name": "Amplitude",
+        "url": "https://amplitude.com"
+    },
+    "mcpServers": "./mcp.json"
+}
