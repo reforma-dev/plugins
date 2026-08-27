@@ -1,0 +1,21 @@
+{
+    "name": "context7",
+    "description": "Up-to-date library docs and code examples. MCP with an API key.",
+    "logo": "assets/logo.svg",
+    "interface": {
+        "brandColor": "#EA580C"
+    },
+    "mcpServers": "./mcp.json",
+    "variables": {
+        "type": "object",
+        "properties": {
+            "API_KEY": {
+                "type": "string",
+                "title": "API key",
+                "description": "From context7.com. Sent as CONTEXT7_API_KEY on MCP requests. Stored in the vault, never returned on GET.",
+                "placeholder": "ctx7sk-…"
+            }
+        },
+        "required": ["API_KEY"]
+    }
+}

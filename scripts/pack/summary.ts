@@ -3,7 +3,7 @@
  */
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
-import { findManifestPath, isRecord, OUT } from "./shared.ts";
+import { findManifestPath, isRecord, OUT, parseMarketplace } from "./shared.ts";
 
 const DESC_MAX = 88;
 
@@ -12,7 +12,6 @@ type PluginRow = {
   source?: string;
   category?: string;
   description?: string;
-  auth?: string;
   features: string[];
 };
 
@@ -51,10 +50,6 @@ function featureList(
   const skills = countEntries(join(pluginDir, "skills"));
   const agents = countEntries(join(pluginDir, "agents"));
   const rules = countEntries(join(pluginDir, "rules"));
-
-  if (typeof manifest.auth === "string" && manifest.auth.trim()) {
-    features.push(manifest.auth.trim());
-  }
 
   if (tools > 0) {
     features.push(
@@ -114,17 +109,11 @@ function loadPluginRow(
     typeof manifest.description === "string" && manifest.description.trim()
       ? truncate(manifest.description, DESC_MAX)
       : undefined;
-  const auth =
-    typeof manifest.auth === "string" && manifest.auth.trim()
-      ? manifest.auth.trim()
-      : undefined;
-
   return {
     name,
     source,
     category,
     description,
-    auth,
     features: featureList(pluginDir, manifest),
   };
 }
@@ -147,25 +136,13 @@ function readMarketplacePlugins(
       .map((name) => ({ name }));
   }
 
-  const raw = JSON.parse(readFileSync(path, "utf8")) as unknown;
-
-  if (!isRecord(raw) || !Array.isArray(raw.plugins)) {
+  try {
+    return parseMarketplace(
+      JSON.parse(readFileSync(path, "utf8")) as unknown,
+    ).plugins;
+  } catch {
     return [];
   }
-
-  return raw.plugins.flatMap((plugin) => {
-    if (!isRecord(plugin) || typeof plugin.name !== "string") {
-      return [];
-    }
-
-    return [
-      {
-        name: plugin.name,
-        source:
-          typeof plugin.source === "string" ? plugin.source : undefined,
-      },
-    ];
-  });
 }
 
 /** Print a CI-friendly catalog summary to stdout. */
@@ -217,7 +194,6 @@ export function logCatalogSummary(
   }
 
   const byCategory = new Map<string, number>();
-  let oauth = 0;
   let mcp = 0;
   let withTools = 0;
   let withHooks = 0;
@@ -225,10 +201,6 @@ export function logCatalogSummary(
   for (const row of rows) {
     const key = row.category ?? "uncategorized";
     byCategory.set(key, (byCategory.get(key) ?? 0) + 1);
-
-    if (row.auth === "oauth") {
-      oauth += 1;
-    }
 
     if (row.features.includes("mcp")) {
       mcp += 1;
@@ -247,7 +219,6 @@ export function logCatalogSummary(
     .sort(([left], [right]) => left.localeCompare(right))
     .map(([id, count]) => `${id}×${count}`);
   const capabilityBits = [
-    oauth > 0 ? `oauth×${oauth}` : undefined,
     mcp > 0 ? `mcp×${mcp}` : undefined,
     withTools > 0 ? `tools×${withTools}` : undefined,
     withHooks > 0 ? `hooks×${withHooks}` : undefined,

@@ -1,0 +1,9 @@
+{
+    "name": "zen-mode",
+    "description": "Calm, minimal replies — no noise, no hype, one clear step at a time.",
+    "logo": "assets/logo.svg",
+    "interface": {
+        "displayName": "Zen Mode",
+        "brandColor": "#14B8A6"
+    }
+}

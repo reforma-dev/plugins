@@ -1,86 +1,150 @@
 {
     "categories": [
         {
-            "id": "demo",
-            "name": "Demo"
-        },
-        {
             "id": "moods",
-            "name": "Moods"
+            "name": "Moods",
+            "plugins": [
+                {
+                    "name": "bro-mode",
+                    "source": "./marketplace/moods/bro-mode"
+                },
+                {
+                    "name": "zen-mode",
+                    "source": "./marketplace/moods/zen-mode"
+                },
+                {
+                    "name": "ship-it",
+                    "source": "./marketplace/moods/ship-it"
+                },
+                {
+                    "name": "professor",
+                    "source": "./marketplace/moods/professor"
+                },
+                {
+                    "name": "hype-man",
+                    "source": "./marketplace/moods/hype-man"
+                },
+                {
+                    "name": "caveman-mode",
+                    "source": "./marketplace/moods/caveman-mode"
+                }
+            ]
         },
         {
-            "id": "docs",
-            "name": "Documentation"
+            "id": "ui",
+            "name": "UI",
+            "plugins": [
+                {
+                    "name": "shadcn-tailwind",
+                    "source": "./marketplace/ui/shadcn-tailwind"
+                },
+                {
+                    "name": "fonts",
+                    "source": "./marketplace/ui/fonts"
+                },
+                {
+                    "name": "coss",
+                    "source": "./marketplace/ui/coss"
+                },
+                {
+                    "name": "flexnative",
+                    "source": "./marketplace/ui/flexnative"
+                }
+            ]
+        },
+        {
+            "id": "backend",
+            "name": "Backend"
+        },
+        {
+            "id": "auth",
+            "name": "Auth"
+        },
+        {
+            "id": "payments",
+            "name": "Payments"
+        },
+        {
+            "id": "messaging",
+            "name": "Messaging"
         },
         {
             "id": "files",
-            "name": "Files"
-        }
-    ],
-    "plugins": [
-        {
-            "name": "demo-hooks",
-            "source": "./reforma/demo-hooks"
+            "name": "Files",
+            "plugins": [
+                {
+                    "name": "google-drive",
+                    "source": "./marketplace/files/google-drive"
+                },
+                {
+                    "name": "dropbox",
+                    "source": "https://github.com/dropbox/dropbox-ai-plugins/tree/4900430d6afa76fc2504e00e006895de424f3637/codex"
+                }
+            ]
         },
         {
-            "name": "demo-tools",
-            "source": "./reforma/demo-tools"
+            "id": "design",
+            "name": "Design"
         },
         {
-            "name": "demo-kit",
-            "source": "./reforma/demo-kit"
+            "id": "media",
+            "name": "Media"
         },
         {
-            "name": "demo-skills",
-            "source": "./reforma/demo-skills"
+            "id": "analytics",
+            "name": "Analytics"
         },
         {
-            "name": "demo-stdio",
-            "source": "./reforma/demo-stdio"
+            "id": "cms",
+            "name": "CMS"
         },
         {
-            "name": "demo-system",
-            "source": "./reforma/demo-system"
+            "id": "workspace",
+            "name": "Workspace",
+            "plugins": [
+                {
+                    "name": "context7",
+                    "source": "./marketplace/workspace/context7"
+                },
+                {
+                    "name": "notion-workspace",
+                    "source": "https://github.com/makenotion/cursor-notion-plugin/tree/cf1324609edba6d617164f1dec138aeb43f26735"
+                }
+            ]
         },
         {
-            "name": "bro-mode",
-            "source": "./reforma/moods/bro-mode"
+            "id": "automation",
+            "name": "Automation"
         },
         {
-            "name": "zen-mode",
-            "source": "./reforma/moods/zen-mode"
-        },
-        {
-            "name": "ship-it",
-            "source": "./reforma/moods/ship-it"
-        },
-        {
-            "name": "professor",
-            "source": "./reforma/moods/professor"
-        },
-        {
-            "name": "hype-man",
-            "source": "./reforma/moods/hype-man"
-        },
-        {
-            "name": "caveman-mode",
-            "source": "./reforma/moods/caveman-mode"
-        },
-        {
-            "name": "context7",
-            "source": "./third_party/context7"
-        },
-        {
-            "name": "google-drive",
-            "source": "./third_party/google-drive"
-        },
-        {
-            "name": "notion-workspace",
-            "source": "https://github.com/makenotion/cursor-notion-plugin/tree/cf1324609edba6d617164f1dec138aeb43f26735"
-        },
-        {
-            "name": "dropbox",
-            "source": "https://github.com/dropbox/dropbox-ai-plugins/tree/4900430d6afa76fc2504e00e006895de424f3637/codex"
+            "id": "demo",
+            "name": "Demo",
+            "plugins": [
+                {
+                    "name": "demo-hooks",
+                    "source": "./marketplace/demo/demo-hooks"
+                },
+                {
+                    "name": "demo-tools",
+                    "source": "./marketplace/demo/demo-tools"
+                },
+                {
+                    "name": "demo-kit",
+                    "source": "./marketplace/demo/demo-kit"
+                },
+                {
+                    "name": "demo-skills",
+                    "source": "./marketplace/demo/demo-skills"
+                },
+                {
+                    "name": "demo-stdio",
+                    "source": "./marketplace/demo/demo-stdio"
+                },
+                {
+                    "name": "demo-system",
+                    "source": "./marketplace/demo/demo-system"
+                }
+            ]
         }
     ]
 }

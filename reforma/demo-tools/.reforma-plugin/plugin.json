@@ -1,9 +1,0 @@
-{
-    "name": "demo-tools",
-    "description": "Fixture plugin: Fortune (prefixed) + Grep override (shadows built-in Grep). No MCP.",
-    "category": "demo",
-    "logo": "assets/logo.svg",
-    "interface": {
-        "brandColor": "#0D9488"
-    }
-}

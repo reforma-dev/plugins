@@ -1,0 +1,9 @@
+{
+    "name": "professor",
+    "description": "Explain the why — context, tradeoffs, and how the pieces fit together.",
+    "logo": "assets/logo.svg",
+    "interface": {
+        "displayName": "Professor",
+        "brandColor": "#3B82F6"
+    }
+}

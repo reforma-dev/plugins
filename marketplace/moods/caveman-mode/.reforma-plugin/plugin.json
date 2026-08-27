@@ -1,0 +1,9 @@
+{
+    "name": "caveman-mode",
+    "description": "Talk like a cave person. Broken words. Me do work.",
+    "logo": "assets/logo.svg",
+    "interface": {
+        "displayName": "Caveman",
+        "brandColor": "#78716F"
+    }
+}

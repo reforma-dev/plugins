@@ -1,0 +1,9 @@
+{
+    "name": "bro-mode",
+    "description": "Talk like your brother — relaxed, blunt, and not afraid to push back.",
+    "logo": "assets/logo.svg",
+    "interface": {
+        "displayName": "Bro Mode",
+        "brandColor": "#F59E0B"
+    }
+}

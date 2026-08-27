@@ -1,0 +1,9 @@
+{
+    "name": "ship-it",
+    "description": "Bias to the smallest shippable change — stop polishing, start merging.",
+    "logo": "assets/logo.svg",
+    "interface": {
+        "displayName": "Ship It",
+        "brandColor": "#22C55E"
+    }
+}

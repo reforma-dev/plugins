@@ -1,0 +1,8 @@
+{
+    "name": "demo-skills",
+    "description": "Test card: bundled skills, no auth.",
+    "logo": "assets/logo.svg",
+    "interface": {
+        "brandColor": "#0EA5E9"
+    }
+}
