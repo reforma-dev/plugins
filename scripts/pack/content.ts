@@ -198,6 +198,24 @@ export function renameLoneMcpServerKey(
   return { next: renamed.next, from: renamed.from };
 }
 
+function mcpServerBag(raw: unknown): Record<string, unknown> | undefined {
+  if (!isRecord(raw)) {
+    return undefined;
+  }
+
+  if (isRecord(raw.mcpServers)) {
+    return raw.mcpServers;
+  }
+
+  const values = Object.values(raw);
+
+  if (values.length === 0 || !values.every(isMcpServerEntry)) {
+    return undefined;
+  }
+
+  return raw;
+}
+
 export function normalizePackedMcpServerId(pluginDir: string): void {
   const mcpJson = join(pluginDir, "mcp.json");
 
@@ -207,14 +225,31 @@ export function normalizePackedMcpServerId(pluginDir: string): void {
 
   const pluginName = basename(pluginDir);
   const raw = JSON.parse(readFileSync(mcpJson, "utf8")) as unknown;
-  const renamed = renameLoneMcpServerKey(raw, pluginName);
+  const bag = mcpServerBag(raw);
 
-  if (!renamed) {
+  if (!bag) {
     return;
   }
 
-  writeFileSync(mcpJson, `${JSON.stringify(renamed.next, null, 4)}\n`);
-  console.log(`  mcp ${renamed.from} → ${pluginName}`);
+  let servers = bag;
+  const renamed = renameLoneKey(servers, pluginName);
+
+  if (renamed) {
+    servers = renamed.next;
+    console.log(`  mcp ${renamed.from} → ${pluginName}`);
+  }
+
+  const next = { mcpServers: servers };
+  const current = isRecord(raw) && isRecord(raw.mcpServers) ? raw : undefined;
+
+  if (
+    current &&
+    JSON.stringify(current) === JSON.stringify(next)
+  ) {
+    return;
+  }
+
+  writeFileSync(mcpJson, `${JSON.stringify(next, null, 4)}\n`);
 }
 
 /**
