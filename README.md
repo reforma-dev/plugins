@@ -45,7 +45,6 @@ Marketplace plugins for Reforma. Each plugin is a folder with `.reforma-plugin/p
 | heygen                | [HeyGen](marketplace/media/heygen)                                       | HeyGen        | Media      | Generate avatar videos with HeyGen.                                    |
 | fal                   | [fal](marketplace/media/fal)                                             | fal           | Media      | Generate images, video, and audio from fal models. Needs an API key.   |
 | elevenlabs            | [ElevenLabs](marketplace/media/elevenlabs)                               | ElevenLabs    | Media      | Generate speech and manage voices in ElevenLabs.                       |
-| cartesia              | [Cartesia](marketplace/media/cartesia)                                   | Cartesia      | Media      | Generate speech with Cartesia voices.                                  |
 | sentry                | [Sentry](https://github.com/getsentry/plugin-cursor)                     | Sentry        | Analytics  | Errors and traces from the Sentry org.                                 |
 | gsap                  | [GSAP](https://github.com/greensock/gsap-skills)                         | GreenSock     | UI         | Animation timelines, ScrollTrigger, and GSAP plugins.                  |
 | motion                | [Motion](https://github.com/motiondivision/cursor-plugin)                | Motion        | UI         | Web animation, springs, and Motion docs.                               |
@@ -78,7 +77,7 @@ Author is `plugin.json` `author.name` when present, else Reforma. Shelf is the p
 
 ## Repository structure
 
-Root `marketplace.json` lists plugins under `categories[].plugins`. `source` is a path in this repo or a GitHub `tree/…` URL. `"disabled": true` skips pack (folder stays); delete that line to ship after the vendor allowlists us.
+Root `marketplace.json` lists plugins under `categories[].plugins`. `source` is a path in this repo or a GitHub `tree/…` URL. `"disabled": true` skips pack (folder stays) when the hosted MCP only accepts catalog clients (Figma waitlist). OAuth apps you register yourself (Drive, Dropbox, Slack, GitHub) stay enabled — credentials go in IN → OAuth clients, not here.
 
 Local plugins live under `marketplace/<category>/<name>/`. Origin (first-party vs vendored) is `plugin.json` `author`, not the folder tree. Remote pins stay as GitHub URLs. Array order is section order; empty shelves omit `plugins`.
 

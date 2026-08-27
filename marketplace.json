@@ -142,8 +142,7 @@
             "plugins": [
                 {
                     "name": "clerk",
-                    "source": "./marketplace/auth/clerk",
-                    "disabled": true
+                    "source": "./marketplace/auth/clerk"
                 },
                 {
                     "name": "auth0",
@@ -203,13 +202,11 @@
             "plugins": [
                 {
                     "name": "google-drive",
-                    "source": "./marketplace/files/google-drive",
-                    "disabled": true
+                    "source": "./marketplace/files/google-drive"
                 },
                 {
                     "name": "dropbox",
-                    "source": "https://github.com/dropbox/dropbox-ai-plugins/tree/4900430d6afa76fc2504e00e006895de424f3637/codex",
-                    "disabled": true
+                    "source": "https://github.com/dropbox/dropbox-ai-plugins/tree/4900430d6afa76fc2504e00e006895de424f3637/codex"
                 },
                 {
                     "name": "cloudinary",
@@ -281,11 +278,6 @@
                 {
                     "name": "elevenlabs",
                     "source": "./marketplace/media/elevenlabs"
-                },
-                {
-                    "name": "cartesia",
-                    "source": "./marketplace/media/cartesia",
-                    "disabled": true
                 }
             ]
         },
@@ -335,13 +327,11 @@
                 },
                 {
                     "name": "slack",
-                    "source": "./marketplace/workspace/slack",
-                    "disabled": true
+                    "source": "./marketplace/workspace/slack"
                 },
                 {
                     "name": "github-mcp",
-                    "source": "./marketplace/workspace/github-mcp",
-                    "disabled": true
+                    "source": "./marketplace/workspace/github-mcp"
                 }
             ]
         },
