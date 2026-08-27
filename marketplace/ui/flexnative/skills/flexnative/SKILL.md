@@ -14,7 +14,7 @@ Registry: `@flx` → `https://ui.flexnative.com/r/{name}.json`. Browse: `https:/
 
 ## Register
 
-If `components.json` has no `@flx` key, add it under `registries`, then continue.
+The **Install** hook writes `@flx` into `components.json`. If that key is missing, add `@flx` → `https://ui.flexnative.com/r/{name}.json`, then continue.
 
 ## Find
 

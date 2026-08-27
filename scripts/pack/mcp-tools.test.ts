@@ -9,6 +9,8 @@ import {
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import {
+  configuredResourceTemplatesFromList,
+  configuredResourcesFromList,
   configuredToolsFromList,
   discoverMcpTools,
 } from "./mcp-tools.ts";
@@ -41,6 +43,10 @@ function jsonRpc(result: unknown, id = 1): Response {
     status: 200,
     headers: { "Content-Type": "application/json" },
   });
+}
+
+function readServer(dir: string, id = "docs") {
+  return JSON.parse(readFileSync(join(dir, "mcp.json"), "utf8")).mcpServers[id];
 }
 
 describe("configuredToolsFromList", () => {
@@ -78,8 +84,60 @@ describe("configuredToolsFromList", () => {
   });
 });
 
+describe("configuredResourcesFromList", () => {
+  it("maps resources/list entries that have a uri", () => {
+    expect(
+      configuredResourcesFromList({
+        resources: [
+          {
+            uri: "doc://quickstart",
+            name: "Quickstart",
+            mimeType: "text/markdown",
+          },
+          { name: "nope" },
+        ],
+      }),
+    ).toEqual([
+      {
+        uri: "doc://quickstart",
+        name: "Quickstart",
+        mimeType: "text/markdown",
+      },
+    ]);
+  });
+
+  it("returns undefined when nothing usable is listed", () => {
+    expect(
+      configuredResourcesFromList({ resources: [{ name: "x" }] }),
+    ).toBeUndefined();
+    expect(configuredResourcesFromList({})).toBeUndefined();
+  });
+});
+
+describe("configuredResourceTemplatesFromList", () => {
+  it("maps templates that have a uriTemplate", () => {
+    expect(
+      configuredResourceTemplatesFromList({
+        resourceTemplates: [
+          {
+            uriTemplate: "doc://{slug}",
+            name: "Doc",
+            mimeType: "text/markdown",
+          },
+        ],
+      }),
+    ).toEqual([
+      {
+        uriTemplate: "doc://{slug}",
+        name: "Doc",
+        mimeType: "text/markdown",
+      },
+    ]);
+  });
+});
+
 describe("discoverMcpTools", () => {
-  it("writes tools/list into mcp.json when the server has no tools", async () => {
+  it("writes tools and resources into mcp.json when missing", async () => {
     const dir = pluginDir({
       mcpServers: {
         docs: { url: "https://mcp.example/mcp" },
@@ -87,7 +145,7 @@ describe("discoverMcpTools", () => {
     });
     const calls: string[] = [];
 
-    await discoverMcpTools(dir, async (url, init) => {
+    await discoverMcpTools(dir, async (_url, init) => {
       const method = JSON.parse(String(init?.body)).method as string;
 
       calls.push(method);
@@ -108,26 +166,58 @@ describe("discoverMcpTools", () => {
         });
       }
 
+      if (method === "resources/list") {
+        return jsonRpc({
+          resources: [
+            {
+              uri: "doc://quickstart",
+              name: "Quickstart",
+              mimeType: "text/markdown",
+            },
+          ],
+        });
+      }
+
+      if (method === "resources/templates/list") {
+        return jsonRpc({
+          resourceTemplates: [
+            { uriTemplate: "doc://{slug}", name: "Doc" },
+          ],
+        });
+      }
+
       return jsonRpc({ protocolVersion: "2025-03-26", capabilities: {} });
     });
 
-    expect(calls).toEqual(["initialize", "tools/list"]);
-    expect(
-      JSON.parse(readFileSync(join(dir, "mcp.json"), "utf8")).mcpServers.docs
-        .tools,
-    ).toEqual({
-      "query-docs": {
-        description: "Fetch docs",
-        inputSchema: {
-          type: "object",
-          properties: { q: { type: "string" } },
-          required: ["q"],
+    expect(calls).toEqual([
+      "initialize",
+      "tools/list",
+      "resources/list",
+      "resources/templates/list",
+    ]);
+    expect(readServer(dir)).toMatchObject({
+      tools: {
+        "query-docs": {
+          description: "Fetch docs",
+          inputSchema: {
+            type: "object",
+            properties: { q: { type: "string" } },
+            required: ["q"],
+          },
         },
       },
+      resources: [
+        {
+          uri: "doc://quickstart",
+          name: "Quickstart",
+          mimeType: "text/markdown",
+        },
+      ],
+      resourceTemplates: [{ uriTemplate: "doc://{slug}", name: "Doc" }],
     });
   });
 
-  it("leaves handwritten tools alone", async () => {
+  it("leaves handwritten tools alone and still probes resources", async () => {
     const tools = {
       ping: {
         description: "Ping",
@@ -139,6 +229,90 @@ describe("discoverMcpTools", () => {
         docs: { url: "https://mcp.example/mcp", tools },
       },
     });
+    const calls: string[] = [];
+
+    await discoverMcpTools(dir, async (_url, init) => {
+      const method = JSON.parse(String(init?.body)).method as string;
+
+      calls.push(method);
+
+      if (method === "resources/list") {
+        return jsonRpc({
+          resources: [{ uri: "doc://guide", name: "Guide" }],
+        });
+      }
+
+      return jsonRpc({ protocolVersion: "2025-03-26", capabilities: {} });
+    });
+
+    expect(calls).toEqual([
+      "initialize",
+      "resources/list",
+      "resources/templates/list",
+    ]);
+    expect(readServer(dir).tools).toEqual(tools);
+    expect(readServer(dir).resources).toEqual([
+      { uri: "doc://guide", name: "Guide" },
+    ]);
+  });
+
+  it("leaves handwritten resources and templates alone", async () => {
+    const resources = [{ uri: "doc://guide", name: "Guide" }];
+    const resourceTemplates = [{ uriTemplate: "doc://{slug}", name: "Doc" }];
+    const dir = pluginDir({
+      mcpServers: {
+        docs: {
+          url: "https://mcp.example/mcp",
+          resources,
+          resourceTemplates,
+        },
+      },
+    });
+    const calls: string[] = [];
+
+    await discoverMcpTools(dir, async (_url, init) => {
+      const method = JSON.parse(String(init?.body)).method as string;
+
+      calls.push(method);
+
+      if (method === "tools/list") {
+        return jsonRpc({
+          tools: [
+            {
+              name: "ping",
+              inputSchema: { type: "object", properties: {} },
+            },
+          ],
+        });
+      }
+
+      return jsonRpc({ protocolVersion: "2025-03-26", capabilities: {} });
+    });
+
+    expect(calls).toEqual(["initialize", "tools/list"]);
+    expect(readServer(dir).resources).toEqual(resources);
+    expect(readServer(dir).resourceTemplates).toEqual(resourceTemplates);
+    expect(readServer(dir).tools).toEqual({
+      ping: { inputSchema: { type: "object", properties: {} } },
+    });
+  });
+
+  it("skips probing when tools, resources, and templates are declared", async () => {
+    const dir = pluginDir({
+      mcpServers: {
+        docs: {
+          url: "https://mcp.example/mcp",
+          tools: {
+            ping: {
+              description: "Ping",
+              inputSchema: { type: "object", properties: {} },
+            },
+          },
+          resources: [{ uri: "doc://guide" }],
+          resourceTemplates: [{ uriTemplate: "doc://{slug}" }],
+        },
+      },
+    });
     let fetched = 0;
 
     await discoverMcpTools(dir, async () => {
@@ -148,10 +322,6 @@ describe("discoverMcpTools", () => {
     });
 
     expect(fetched).toBe(0);
-    expect(
-      JSON.parse(readFileSync(join(dir, "mcp.json"), "utf8")).mcpServers.docs
-        .tools,
-    ).toEqual(tools);
   });
 
   it("skips probing when the server returns 401", async () => {
@@ -170,10 +340,8 @@ describe("discoverMcpTools", () => {
       JSON.parse(readFileSync(join(dir, ".reforma-plugin/plugin.json"), "utf8"))
         .auth,
     ).toBeUndefined();
-    expect(
-      JSON.parse(readFileSync(join(dir, "mcp.json"), "utf8")).mcpServers.drive
-        .tools,
-    ).toBeUndefined();
+    expect(readServer(dir, "drive").tools).toBeUndefined();
+    expect(readServer(dir, "drive").resources).toBeUndefined();
   });
 
   it("skips stdio servers", async () => {

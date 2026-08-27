@@ -1,8 +1,0 @@
-{
-    "name": "algorithmic-art",
-    "description": "Generative art with p5.js — seeded sketches and interactive parameters.",
-    "author": {
-        "name": "Anthropic",
-        "url": "https://github.com/anthropics/skills"
-    }
-}

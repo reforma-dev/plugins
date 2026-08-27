@@ -1,0 +1,15 @@
+{
+    "name": "magic-ui",
+    "description": "Animated marketing components on top of shadcn.",
+    "logo": "assets/logo.svg",
+    "author": {
+        "name": "Magic UI"
+    },
+    "homepage": "https://magicui.design",
+    "repository": "https://github.com/magicuidesign/magicui",
+    "license": "MIT",
+    "interface": {
+        "displayName": "Magic UI",
+        "brandColor": "#9E7AFF"
+    }
+}

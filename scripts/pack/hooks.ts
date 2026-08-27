@@ -38,6 +38,8 @@ export const HOOK_EVENT_NAMES = new Set([
   "PostToolUse",
   "PostToolUseFailure",
   "Stop",
+  "Install",
+  "Uninstall",
 ]);
 
 export type HookOffer = { name: string; description?: string };

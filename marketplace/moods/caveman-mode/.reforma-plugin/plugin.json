@@ -1,6 +1,6 @@
 {
     "name": "caveman-mode",
-    "description": "Talk like a cave person. Broken words. Me do work.",
+    "description": "Smart caveman. Brain big, mouth small. Same work, less fluff.",
     "logo": "assets/logo.svg",
     "interface": {
         "displayName": "Caveman",

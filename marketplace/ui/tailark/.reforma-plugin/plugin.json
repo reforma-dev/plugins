@@ -1,0 +1,13 @@
+{
+    "name": "tailark",
+    "description": "Marketing blocks and pages on top of shadcn.",
+    "logo": "assets/logo.svg",
+    "author": {
+        "name": "Tailark"
+    },
+    "homepage": "https://tailark.com",
+    "interface": {
+        "displayName": "Tailark",
+        "brandColor": "#9FA87F"
+    }
+}

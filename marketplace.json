@@ -51,6 +51,22 @@
                     "source": "./marketplace/ui/flexnative"
                 },
                 {
+                    "name": "magic-ui",
+                    "source": "./marketplace/ui/magic-ui"
+                },
+                {
+                    "name": "tailark",
+                    "source": "./marketplace/ui/tailark"
+                },
+                {
+                    "name": "aceternity",
+                    "source": "./marketplace/ui/aceternity"
+                },
+                {
+                    "name": "21st",
+                    "source": "./marketplace/ui/21st"
+                },
+                {
                     "name": "gsap",
                     "source": "https://github.com/greensock/gsap-skills/tree/aed9cfd3277740755f6bfc1155c7aa645403b760"
                 },
@@ -63,8 +79,30 @@
                     "source": "https://github.com/remotion-dev/cursor-plugin/tree/bbb02cde0afb17f54329030581532067fb45f622"
                 },
                 {
-                    "name": "algorithmic-art",
-                    "source": "./marketplace/ui/algorithmic-art"
+                    "name": "i18n",
+                    "source": "./marketplace/ui/i18n"
+                },
+                {
+                    "name": "react-best-practices",
+                    "source": "./marketplace/ui/react-best-practices"
+                },
+                {
+                    "name": "web-design-guidelines",
+                    "source": "./marketplace/ui/web-design-guidelines"
+                },
+                {
+                    "name": "frontend-design",
+                    "source": "./marketplace/ui/frontend-design"
+                }
+            ]
+        },
+        {
+            "id": "games",
+            "name": "Games",
+            "plugins": [
+                {
+                    "name": "game-creator",
+                    "source": "./marketplace/games/game-creator"
                 }
             ]
         },
@@ -87,10 +125,6 @@
                 {
                     "name": "neon",
                     "source": "./marketplace/backend/neon"
-                },
-                {
-                    "name": "planetscale",
-                    "source": "./marketplace/backend/planetscale"
                 },
                 {
                     "name": "appwrite",
@@ -146,6 +180,24 @@
             ]
         },
         {
+            "id": "scheduling",
+            "name": "Scheduling",
+            "plugins": [
+                {
+                    "name": "cal-com",
+                    "source": "./marketplace/scheduling/cal-com"
+                },
+                {
+                    "name": "calendly",
+                    "source": "./marketplace/scheduling/calendly"
+                },
+                {
+                    "name": "booking",
+                    "source": "./marketplace/scheduling/booking"
+                }
+            ]
+        },
+        {
             "id": "files",
             "name": "Files",
             "plugins": [
@@ -158,6 +210,10 @@
                     "name": "dropbox",
                     "source": "https://github.com/dropbox/dropbox-ai-plugins/tree/4900430d6afa76fc2504e00e006895de424f3637/codex",
                     "disabled": true
+                },
+                {
+                    "name": "cloudinary",
+                    "source": "./marketplace/files/cloudinary"
                 }
             ]
         },
@@ -169,10 +225,20 @@
                     "name": "figma",
                     "source": "./marketplace/design/figma",
                     "disabled": true
+                }
+            ]
+        },
+        {
+            "id": "maps",
+            "name": "Maps",
+            "plugins": [
+                {
+                    "name": "google-maps",
+                    "source": "./marketplace/maps/google-maps"
                 },
                 {
-                    "name": "miro",
-                    "source": "https://github.com/miroapp/miro-ai/tree/85c2c7347542b3ce185eb1d2793f8d79ad485c63/cursor-plugins/miro"
+                    "name": "mapbox",
+                    "source": "https://github.com/mapbox/mapbox-agent-skills/tree/209e8c408fd65edfff45e491c941e8a00025a1a6"
                 }
             ]
         },
@@ -276,14 +342,6 @@
                     "name": "github-mcp",
                     "source": "./marketplace/workspace/github-mcp",
                     "disabled": true
-                },
-                {
-                    "name": "granola",
-                    "source": "https://github.com/granola-inc/granola-cursor-plugin/tree/56583da6e4db7f311808543f18ac905b8de1ff85"
-                },
-                {
-                    "name": "jira",
-                    "source": "./marketplace/workspace/jira"
                 }
             ]
         },

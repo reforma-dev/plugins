@@ -1,0 +1,13 @@
+{
+    "name": "game-creator",
+    "description": "Phaser 2D and Three.js 3D browser games — skills, templates, and commands.",
+    "author": {
+        "name": "OpusGameLabs",
+        "url": "https://github.com/playableintelligence/game-creator"
+    },
+    "homepage": "https://github.com/playableintelligence/game-creator",
+    "interface": {
+        "displayName": "Game Creator",
+        "brandColor": "#7C3AED"
+    }
+}

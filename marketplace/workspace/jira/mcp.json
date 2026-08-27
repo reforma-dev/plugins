@@ -1,7 +1,0 @@
-{
-    "mcpServers": {
-        "jira": {
-            "url": "https://mcp.atlassian.com/v1/mcp"
-        }
-    }
-}

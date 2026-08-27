@@ -1,5 +1,6 @@
 /**
- * Probe HTTP MCP servers and fill `tools` into mcp.json when missing.
+ * Probe HTTP MCP servers and fill `tools` / `resources` / `resourceTemplates`
+ * into mcp.json when missing.
  */
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
@@ -23,6 +24,28 @@ type ConfiguredMcpTool = {
   title?: string;
   description?: string;
   inputSchema: Record<string, unknown>;
+};
+
+type ConfiguredMcpResource = {
+  uri: string;
+  name?: string;
+  title?: string;
+  description?: string;
+  mimeType?: string;
+};
+
+type ConfiguredMcpResourceTemplate = {
+  uriTemplate: string;
+  name?: string;
+  title?: string;
+  description?: string;
+  mimeType?: string;
+};
+
+type McpProbeNeed = {
+  tools: boolean;
+  resources: boolean;
+  templates: boolean;
 };
 
 function mcpConfigPath(pluginDir: string): string | undefined {
@@ -75,6 +98,23 @@ function httpMcpUrl(entry: unknown): string | undefined {
   return url;
 }
 
+function resourceMeta(
+  item: Record<string, unknown>,
+): Pick<ConfiguredMcpResource, "name" | "title" | "description" | "mimeType"> {
+  const name = typeof item.name === "string" ? item.name.trim() : "";
+  const title = typeof item.title === "string" ? item.title.trim() : "";
+  const description =
+    typeof item.description === "string" ? item.description.trim() : "";
+  const mimeType = typeof item.mimeType === "string" ? item.mimeType.trim() : "";
+
+  return {
+    ...(name ? { name } : {}),
+    ...(title ? { title } : {}),
+    ...(description ? { description } : {}),
+    ...(mimeType ? { mimeType } : {}),
+  };
+}
+
 export function configuredToolsFromList(
   result: unknown,
 ): Record<string, ConfiguredMcpTool> | undefined {
@@ -108,6 +148,53 @@ export function configuredToolsFromList(
   return Object.keys(tools).length > 0 ? tools : undefined;
 }
 
+export function configuredResourcesFromList(
+  result: unknown,
+): ConfiguredMcpResource[] | undefined {
+  if (!isRecord(result) || !Array.isArray(result.resources)) {
+    return undefined;
+  }
+
+  const resources: ConfiguredMcpResource[] = [];
+
+  for (const item of result.resources) {
+    if (!isRecord(item) || typeof item.uri !== "string" || !item.uri.trim()) {
+      continue;
+    }
+
+    resources.push({ uri: item.uri.trim(), ...resourceMeta(item) });
+  }
+
+  return resources.length > 0 ? resources : undefined;
+}
+
+export function configuredResourceTemplatesFromList(
+  result: unknown,
+): ConfiguredMcpResourceTemplate[] | undefined {
+  if (!isRecord(result) || !Array.isArray(result.resourceTemplates)) {
+    return undefined;
+  }
+
+  const templates: ConfiguredMcpResourceTemplate[] = [];
+
+  for (const item of result.resourceTemplates) {
+    if (
+      !isRecord(item) ||
+      typeof item.uriTemplate !== "string" ||
+      !item.uriTemplate.trim()
+    ) {
+      continue;
+    }
+
+    templates.push({
+      uriTemplate: item.uriTemplate.trim(),
+      ...resourceMeta(item),
+    });
+  }
+
+  return templates.length > 0 ? templates : undefined;
+}
+
 function serverHasDeclaredTools(entry: unknown): boolean {
   if (!isRecord(entry) || !isRecord(entry.tools)) {
     return false;
@@ -116,6 +203,37 @@ function serverHasDeclaredTools(entry: unknown): boolean {
   return Object.values(entry.tools).some(
     (tool) => isRecord(tool) && isRecord(tool.inputSchema),
   );
+}
+
+function serverHasDeclaredResources(entry: unknown): boolean {
+  if (!isRecord(entry) || !Array.isArray(entry.resources)) {
+    return false;
+  }
+
+  return entry.resources.some(
+    (item) => isRecord(item) && typeof item.uri === "string" && item.uri.trim(),
+  );
+}
+
+function serverHasDeclaredTemplates(entry: unknown): boolean {
+  if (!isRecord(entry) || !Array.isArray(entry.resourceTemplates)) {
+    return false;
+  }
+
+  return entry.resourceTemplates.some(
+    (item) =>
+      isRecord(item) &&
+      typeof item.uriTemplate === "string" &&
+      item.uriTemplate.trim(),
+  );
+}
+
+function probeNeed(entry: unknown): McpProbeNeed {
+  return {
+    tools: !serverHasDeclaredTools(entry),
+    resources: !serverHasDeclaredResources(entry),
+    templates: !serverHasDeclaredTemplates(entry),
+  };
 }
 
 async function mcpRpc(
@@ -187,26 +305,87 @@ async function readMcpBody(res: Response): Promise<unknown> {
 
 async function probeHttpMcp(
   url: string,
+  need: McpProbeNeed,
   fetchImpl: McpFetch,
-): Promise<Record<string, ConfiguredMcpTool> | undefined> {
+): Promise<{
+  tools?: Record<string, ConfiguredMcpTool>;
+  resources?: ConfiguredMcpResource[];
+  resourceTemplates?: ConfiguredMcpResourceTemplate[];
+}> {
   const started = await mcpRpc(url, "initialize", INIT_PARAMS, fetchImpl);
 
   if (!started) {
-    return undefined;
+    return {};
   }
 
-  const listed = await mcpRpc(
-    url,
-    "tools/list",
-    {},
-    fetchImpl,
-    started.sessionId,
-  );
+  let sessionId = started.sessionId;
+  let tools: Record<string, ConfiguredMcpTool> | undefined;
+  let resources: ConfiguredMcpResource[] | undefined;
+  let resourceTemplates: ConfiguredMcpResourceTemplate[] | undefined;
 
-  return configuredToolsFromList(listed?.result);
+  if (need.tools) {
+    const listed = await mcpRpc(url, "tools/list", {}, fetchImpl, sessionId);
+
+    sessionId = listed?.sessionId ?? sessionId;
+    tools = configuredToolsFromList(listed?.result);
+  }
+
+  if (need.resources) {
+    const listed = await mcpRpc(
+      url,
+      "resources/list",
+      {},
+      fetchImpl,
+      sessionId,
+    );
+
+    sessionId = listed?.sessionId ?? sessionId;
+    resources = configuredResourcesFromList(listed?.result);
+  }
+
+  if (need.templates) {
+    const listed = await mcpRpc(
+      url,
+      "resources/templates/list",
+      {},
+      fetchImpl,
+      sessionId,
+    );
+
+    resourceTemplates = configuredResourceTemplatesFromList(listed?.result);
+  }
+
+  return { tools, resources, resourceTemplates };
 }
 
-/** Fill missing HTTP MCP `tools` from a live tools/list probe. Stdio is skipped. */
+function probeLog(
+  url: string,
+  tools?: Record<string, ConfiguredMcpTool>,
+  resources?: ConfiguredMcpResource[],
+  templates?: ConfiguredMcpResourceTemplate[],
+): void {
+  const bits: string[] = [];
+
+  if (tools) {
+    bits.push(`tools×${Object.keys(tools).length}`);
+  }
+
+  if (resources) {
+    bits.push(`resources×${resources.length}`);
+  }
+
+  if (templates) {
+    bits.push(`templates×${templates.length}`);
+  }
+
+  if (bits.length === 0) {
+    return;
+  }
+
+  console.log(`  mcp ${bits.join(" ")} ← ${url}`);
+}
+
+/** Fill missing HTTP MCP tools/resources from a live probe. Stdio is skipped. */
 export async function discoverMcpTools(
   pluginDir: string,
   fetchImpl: McpFetch = fetch,
@@ -232,18 +411,34 @@ export async function discoverMcpTools(
 
   for (const entry of Object.values(servers)) {
     const url = httpMcpUrl(entry);
+    const need = probeNeed(entry);
 
-    if (!url || serverHasDeclaredTools(entry)) {
+    if (
+      !url ||
+      !isRecord(entry) ||
+      (!need.tools && !need.resources && !need.templates)
+    ) {
       continue;
     }
 
-    const tools = await probeHttpMcp(url, fetchImpl);
+    const probed = await probeHttpMcp(url, need, fetchImpl);
 
-    if (tools && isRecord(entry)) {
-      entry.tools = tools;
+    if (need.tools && probed.tools) {
+      entry.tools = probed.tools;
       mcpDirty = true;
-      console.log(`  mcp tools×${Object.keys(tools).length} ← ${url}`);
     }
+
+    if (need.resources && probed.resources) {
+      entry.resources = probed.resources;
+      mcpDirty = true;
+    }
+
+    if (need.templates && probed.resourceTemplates) {
+      entry.resourceTemplates = probed.resourceTemplates;
+      mcpDirty = true;
+    }
+
+    probeLog(url, probed.tools, probed.resources, probed.resourceTemplates);
   }
 
   if (mcpDirty) {

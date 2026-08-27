@@ -1,0 +1,10 @@
+{
+    "name": "cloudinary",
+    "description": "Upload, transform, and deliver images and videos from Cloudinary.",
+    "logo": "assets/logo.svg",
+    "author": {
+        "name": "Cloudinary",
+        "url": "https://cloudinary.com"
+    },
+    "mcpServers": "./mcp.json"
+}

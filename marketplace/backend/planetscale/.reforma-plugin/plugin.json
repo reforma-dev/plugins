@@ -1,9 +1,0 @@
-{
-    "name": "planetscale",
-    "description": "Databases, branches, and schema on PlanetScale.",
-    "author": {
-        "name": "PlanetScale",
-        "url": "https://planetscale.com"
-    },
-    "mcpServers": "./mcp.json"
-}
