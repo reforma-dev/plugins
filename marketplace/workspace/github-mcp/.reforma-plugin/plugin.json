@@ -9,7 +9,7 @@
     "mcpServers": "./mcp.json",
     "interface": {
         "displayName": "GitHub",
-        "brandColor": "#181717",
+        "brandColor": "#FFFFFF"
         "logo": "assets/logo.svg"
     }
 }

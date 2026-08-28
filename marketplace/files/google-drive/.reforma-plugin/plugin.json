@@ -4,6 +4,7 @@
     "logo": "assets/logo.svg",
     "mcpServers": "./mcp.json",
     "interface": {
-        "displayName": "Google Drive"
+        "displayName": "Google Drive",
+        "brandColor": "#FFFFFF"
     }
 }

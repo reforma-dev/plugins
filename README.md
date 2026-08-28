@@ -14,10 +14,10 @@ Marketplace plugins for Reforma. Each plugin is a folder with `.reforma-plugin/p
 | caveman-mode          | [Caveman](marketplace/moods/caveman-mode)                                | Reforma       | Moods      | Chat like a caveman — savage mouth, real work.                                                                          |
 | react-best-practices  | [React Best Practices](marketplace/playbooks/react-best-practices)       | Vercel        | Playbooks  | Keep the app fast — React and Next.js performance patterns                                                              |
 | web-design-guidelines | [Web Design Guidelines](marketplace/playbooks/web-design-guidelines)     | Vercel        | Playbooks  | Catch accessibility, form, and focus issues before they ship                                                            |
-| frontend-design       | [Frontend Design](marketplace/playbooks/frontend-design)                 | Anthropic     | Playbooks  | A look that is not a template — palette, type, and layout with a point of view                                          |
-| shadcn-tailwind       | [shadcn / Tailwind](marketplace/system/shadcn-tailwind)                  | shadcn        | System     | The UI kit the project is built on — components, forms, and Tailwind                                                    |
-| fonts                 | [Fonts](marketplace/system/fonts)                                        | Reforma       | System     | Google Fonts and custom typefaces for the project                                                                       |
-| nextjs                | [Next.js](marketplace/system/nextjs)                                     | Reforma       | System     | Next.js App Router — routing, layouts, and the conventions the project follows                                          |
+| frontend-design       | [Frontend Design](marketplace/playbooks/frontend-design)                 | Anthropic     | Playbooks  | Give the UI a visual identity — palette, type, and layout for this product                                              |
+| shadcn-tailwind       | [shadcn / Tailwind](marketplace/system/shadcn-tailwind)                  | shadcn        | System     | Skills and MCP that help build components with shadcn and Tailwind.                                                     |
+| visuals               | [Visuals](marketplace/system/visuals)                                    | Reforma       | System     | Type, color, marks, and icons for this product                                                                          |
+| nextjs                | [Next.js](marketplace/system/nextjs)                                     | Reforma       | System     | App Router — routes, Server Actions, caching, and proxy.ts                                                              |
 | coss                  | [coss](marketplace/ui/coss)                                              | coss          | UI         | Extra components and particle effects beyond the default shadcn set                                                     |
 | flexnative            | [Flexnative](marketplace/ui/flexnative)                                  | Flexnative    | UI         | Ready-made page blocks and patterns — drop in a section instead of assembling it                                        |
 | magic-ui              | [Magic UI](marketplace/ui/magic-ui)                                      | Magic UI      | UI         | Animated marketing pieces — shine, marquee, shimmer, and that kind of polish                                            |
@@ -25,7 +25,6 @@ Marketplace plugins for Reforma. Each plugin is a folder with `.reforma-plugin/p
 | aceternity            | [Aceternity](marketplace/ui/aceternity)                                  | Aceternity    | UI         | Motion-heavy blocks and visual effects for landing pages                                                                |
 | 21st                  | [21st](marketplace/ui/21st)                                              | 21st          | UI         | A living library of React components, templates, and themes. Add them to the project, or generate new UI.               |
 | i18n                  | [i18n](marketplace/ui/i18n)                                              | Reforma       | UI         | Multiple languages — translated copy and a language switcher for the app                                                |
-| svg                   | [SVG](marketplace/ui/svg)                                                | Reforma       | UI         | Logos, favicons, and inline SVG. Icons stay on Lucide or the project’s pack.                                            |
 | context7              | [Context7](marketplace/workspace/context7)                               | Reforma       | Workspace  | Current docs and examples for the libraries in the project                                                              |
 | google-drive          | [Google Drive](marketplace/files/google-drive)                           | Reforma       | Files      | Docs and files in Google Drive — find them, upload drafts, share from the project                                       |
 | notion-workspace      | [Notion](https://github.com/makenotion/cursor-notion-plugin)             | Notion Labs   | Workspace  | The team’s Notion — notes, pages, and databases in the project                                                          |
@@ -97,6 +96,8 @@ marketplace/<category>/<name>/
 ├── assets/logo.svg
 └── …convention folders (skills/, rules/, hooks/, …)
 ```
+
+`interface.brandColor` is the hex plate behind the logo. Optional `interface.brandColorDark` is the same plate in dark theme.
 
 ```sh
 bun install

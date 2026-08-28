@@ -13,7 +13,7 @@ Starter is `app/` (no `src/`), bun.
 
 After the design plan lands, wire it on this stack:
 
-- **Color** — 4–6 hex values go in the active theme rule (`app/tokens/`, `collections.json` → `active` → `file`). Pages use semantic tokens (`bg-background`, `text-foreground`, `text-muted-foreground`).
+- **Color** — **Skill** `tokens`. 4–6 values in the active collection. Pages use semantic utilities (`bg-background`, `text-foreground`).
 - **Type** — **Skill** `fonts`. Faces via `next/font` in `app/fonts/index.ts`. Roles `--font-body` / `--font-heading` / `--font-display`. No CDN `<link>`.
 - **Components** — existing shadcn primitives. Restyle through tokens and classes. Do not add a second UI kit.
 - **Check** — **PageScreenshot** the page once. On timeout, stop.

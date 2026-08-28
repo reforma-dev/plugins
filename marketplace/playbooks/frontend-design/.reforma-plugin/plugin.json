@@ -1,6 +1,6 @@
 {
     "name": "frontend-design",
-    "description": "A look that is not a template — palette, type, and layout with a point of view",
+    "description": "Give the UI a visual identity — palette, type, and layout for this product",
     "logo": "assets/logo.svg",
     "author": {
         "name": "Anthropic",
@@ -11,6 +11,6 @@
     "license": "Apache-2.0",
     "interface": {
         "displayName": "Frontend Design",
-        "brandColor": "#191919"
+        "brandColor": "#000000"
     }
 }

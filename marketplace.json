@@ -9,8 +9,8 @@
                     "source": "./marketplace/system/shadcn-tailwind"
                 },
                 {
-                    "name": "fonts",
-                    "source": "./marketplace/system/fonts"
+                    "name": "visuals",
+                    "source": "./marketplace/system/visuals"
                 },
                 {
                     "name": "nextjs",
@@ -98,27 +98,26 @@
                     "name": "gsap",
                     "source": "https://github.com/greensock/gsap-skills/tree/aed9cfd3277740755f6bfc1155c7aa645403b760",
                     "displayName": "GSAP",
-                    "description": "Timeline animation, scroll effects, and motion — the GSAP toolkit"
+                    "description": "Timeline animation, scroll effects, and motion — the GSAP toolkit",
+                    "brandColor": "#000000"
                 },
                 {
                     "name": "motion",
                     "source": "https://github.com/motiondivision/cursor-plugin/tree/1140efe9ad5e03c689ea6bb19d9d3850a4dae5f7/plugins/motion",
                     "displayName": "Motion",
-                    "description": "Animation for the web — springs, gestures, and layout motion"
+                    "description": "Animation for the web — springs, gestures, and layout motion",
+                    "brandColor": "#000000"
                 },
                 {
                     "name": "remotion",
                     "source": "https://github.com/remotion-dev/cursor-plugin/tree/bbb02cde0afb17f54329030581532067fb45f622",
                     "displayName": "Remotion",
-                    "description": "Videos and motion graphics, written in React"
+                    "description": "Videos and motion graphics, written in React",
+                    "brandColor": "#000000"
                 },
                 {
                     "name": "i18n",
                     "source": "./marketplace/ui/i18n"
-                },
-                {
-                    "name": "svg",
-                    "source": "./marketplace/ui/svg"
                 }
             ]
         },
@@ -140,19 +139,22 @@
                     "name": "supabase",
                     "source": "https://github.com/supabase-community/supabase-plugin/tree/8629243d1cd72309b533090a4c742f21747d02fa",
                     "displayName": "Supabase",
-                    "description": "Backend for the app — database, auth, and file storage"
+                    "description": "Backend for the app — database, auth, and file storage",
+                    "brandColor": "#000000"
                 },
                 {
                     "name": "firebase",
                     "source": "https://github.com/firebase/agent-skills/tree/a0b4e143f40c1ebe05fe5f9a4787fecd4da8f478",
                     "displayName": "Firebase",
-                    "description": "Google’s backend — auth, database, and hosting"
+                    "description": "Google’s backend — auth, database, and hosting",
+                    "brandColor": "#FFFFFF"
                 },
                 {
                     "name": "convex",
                     "source": "https://github.com/get-convex/convex-agent-plugins/tree/aec064132a824ae306b3c5d70b8bab1f3f90a551",
                     "displayName": "Convex",
-                    "description": "A live backend — the database updates the UI as data changes"
+                    "description": "A live backend — the database updates the UI as data changes",
+                    "brandColor": "#000000"
                 },
                 {
                     "name": "neon",
@@ -162,13 +164,15 @@
                     "name": "appwrite",
                     "source": "https://github.com/appwrite/cursor-plugin/tree/a9ef9a11cd7f68c4f27bbd57db46ff46499ec049",
                     "displayName": "Appwrite",
-                    "description": "An open-source backend — auth, database, and storage"
+                    "description": "An open-source backend — auth, database, and storage",
+                    "brandColor": "#000000"
                 },
                 {
                     "name": "prisma",
                     "source": "https://github.com/prisma/cursor-plugin/tree/4584a0a9175ba74053d7ee946c6234d3369a5a33",
                     "displayName": "Prisma",
-                    "description": "Talk to the database — schema, migrations, and queries in TypeScript"
+                    "description": "Talk to the database — schema, migrations, and queries in TypeScript",
+                    "brandColor": "#000000"
                 }
             ]
         },
@@ -198,7 +202,8 @@
                     "name": "stripe",
                     "source": "https://github.com/stripe/ai/tree/1dc126b93cc62e28aff7e00e51406dfeb8ac88d5/providers/cursor/plugin",
                     "displayName": "Stripe",
-                    "description": "Accept payments, manage customers, and handle subscriptions"
+                    "description": "Accept payments, manage customers, and handle subscriptions",
+                    "brandColor": "#000000"
                 },
                 {
                     "name": "shopify",
@@ -214,7 +219,8 @@
                     "name": "resend",
                     "source": "https://github.com/resend/resend-skills/tree/828340bd8a361c4e6e0c02bddf1575f131d5d77f",
                     "displayName": "Resend",
-                    "description": "Send email from the app — transactional mail and templates"
+                    "description": "Send email from the app — transactional mail and templates",
+                    "brandColor": "#000000"
                 }
             ]
         },
@@ -248,7 +254,8 @@
                     "name": "dropbox",
                     "source": "https://github.com/dropbox/dropbox-ai-plugins/tree/4900430d6afa76fc2504e00e006895de424f3637/codex",
                     "displayName": "Dropbox",
-                    "description": "Files in Dropbox — save, share, and pull them into the project"
+                    "description": "Files in Dropbox — save, share, and pull them into the project",
+                    "brandColor": "#000000"
                 },
                 {
                     "name": "cloudinary",
@@ -279,7 +286,8 @@
                     "name": "mapbox",
                     "source": "https://github.com/mapbox/mapbox-agent-skills/tree/209e8c408fd65edfff45e491c941e8a00025a1a6",
                     "displayName": "Mapbox",
-                    "description": "Custom maps — your style, search, and location in the app"
+                    "description": "Custom maps — your style, search, and location in the app",
+                    "brandColor": "#000000"
                 }
             ]
         },
@@ -291,13 +299,15 @@
                     "name": "higgsfield",
                     "source": "https://github.com/higgsfield-ai/cursor-plugin/tree/c9215059e409dc81c69ff0fe77ea2740c5fc6249",
                     "displayName": "Higgsfield",
-                    "description": "AI images and video from one studio"
+                    "description": "AI images and video from one studio",
+                    "brandColor": "#D1FD17"
                 },
                 {
                     "name": "quiver",
                     "source": "https://github.com/quiverai/cursor-plugin/tree/630b8ffea8698db194ef6ac32948656522b6e7f5",
                     "displayName": "Quiver",
-                    "description": "Generate SVG and turn pictures into clean vectors"
+                    "description": "Generate SVG and turn pictures into clean vectors",
+                    "brandColor": "#FFFFFF"
                 },
                 {
                     "name": "svgator",
@@ -337,7 +347,8 @@
                     "name": "sentry",
                     "source": "https://github.com/getsentry/plugin-cursor/tree/134bed9804c249664daf8be62938e4d754b1c249",
                     "displayName": "Sentry",
-                    "description": "See crashes and traces from the live app, then fix them"
+                    "description": "See crashes and traces from the live app, then fix them",
+                    "brandColor": "#000000"
                 },
                 {
                     "name": "posthog",
@@ -371,13 +382,15 @@
                     "name": "notion-workspace",
                     "source": "https://github.com/makenotion/cursor-notion-plugin/tree/cf1324609edba6d617164f1dec138aeb43f26735",
                     "displayName": "Notion",
-                    "description": "The team’s Notion — notes, pages, and databases in the project"
+                    "description": "The team’s Notion — notes, pages, and databases in the project",
+                    "brandColor": "#FFFFFF"
                 },
                 {
                     "name": "linear",
                     "source": "https://github.com/linear/cursor-plugin/tree/c2c4cb2ab23206c9219b0dd31c9571e4c922faeb",
                     "displayName": "Linear",
-                    "description": "The issue tracker — bugs, projects, and docs from Linear"
+                    "description": "The issue tracker — bugs, projects, and docs from Linear",
+                    "brandColor": "#000000"
                 },
                 {
                     "name": "slack",
