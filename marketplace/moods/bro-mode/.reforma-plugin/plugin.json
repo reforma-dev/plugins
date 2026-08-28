@@ -1,6 +1,6 @@
 {
     "name": "bro-mode",
-    "description": "Talk like their brother and best friend — relaxed, blunt, and not afraid to push back.",
+    "description": "Turns the agent into a brutally honest bestie who knows the craft, calls out bad ideas, and ships better ones with you.",
     "logo": "assets/logo.svg",
     "interface": {
         "displayName": "Bro Mode",

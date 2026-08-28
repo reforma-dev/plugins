@@ -1,6 +1,6 @@
 {
     "name": "ship-it",
-    "description": "Bias to the smallest shippable change — stop polishing, start merging",
+    "description": "Cuts scope, kills gold-plating, and gets the smallest working change merged.",
     "logo": "assets/logo.svg",
     "interface": {
         "displayName": "Ship It",

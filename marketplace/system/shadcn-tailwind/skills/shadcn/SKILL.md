@@ -13,7 +13,7 @@ Starter already has `components.json`, Tailwind 4, shadcn v4 (Base UI), and Refo
 
 Official registry is the default. Other `@ns` kit registries only when that kit's card is installed — the kit **Install** hook writes `registries` in `components.json`. MCP reads every registry in that file.
 
-Layout classes, `gap-*`, `size-*`, token CSS: **Skill** `tailwind`.
+Layout classes, `gap-*`, `size-*`: **Skill** `tailwind`. Colors: **Skill** `tokens`.
 
 ## Find
 
@@ -26,7 +26,7 @@ Prefer a matching local `components/ui/*` if it already exists.
 
 1. **Bash:** `bunx shadcn add <name> -y` (optional: `--dry-run` / `--diff` first). MCP `get_add_command_for_items` only returns the command — still run it.
 2. If `package.json` / lockfile changed → **InstallDependencies**.
-3. Read the added file. Match neighboring primitives — reuse their class patterns / compose with existing `Button` / `Input` / `Field`. `cn` from `@/lib/utils`. Colors: active collection CSS (`app/tokens/collections.json` → `active` → `file`), not `tokens/tailwind.css`. No raw hex.
+3. Read the added file. Match neighboring primitives — reuse their class patterns / compose with existing `Button` / `Input` / `Field`. `cn` from `@/lib/utils`. Colors: **Skill** `tokens`. Icons: **Skill** `icons`.
 
 ## Compose
 

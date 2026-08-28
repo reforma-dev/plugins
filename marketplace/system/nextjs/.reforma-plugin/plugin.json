@@ -1,6 +1,6 @@
 {
     "name": "nextjs",
-    "description": "Next.js App Router — routing, layouts, and the conventions the project follows",
+    "description": "App Router — routes, Server Actions, caching, and proxy.ts",
     "system": true,
     "logo": "assets/logo.svg",
     "homepage": "https://nextjs.org/docs/app",

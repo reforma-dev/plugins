@@ -6,6 +6,10 @@
         "name": "Tailark"
     },
     "homepage": "https://tailark.com",
+    "agent": {
+        "discover": true,
+        "installApproval": false
+    },
     "interface": {
         "displayName": "Tailark",
         "brandColor": "#9FA87F",

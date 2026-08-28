@@ -8,6 +8,10 @@
     "homepage": "https://magicui.design",
     "repository": "https://github.com/magicuidesign/magicui",
     "license": "MIT",
+    "agent": {
+        "discover": true,
+        "installApproval": false
+    },
     "interface": {
         "displayName": "Magic UI",
         "brandColor": "#9E7AFF"

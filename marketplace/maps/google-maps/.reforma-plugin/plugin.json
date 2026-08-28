@@ -9,7 +9,7 @@
     "homepage": "https://developers.google.com/maps/ai/grounding-lite",
     "interface": {
         "displayName": "Google Maps",
-        "brandColor": "#4285F4",
+        "brandColor": "#FFFFFF",
         "logo": "assets/logo.svg"
     },
     "mcpServers": "./mcp.json",

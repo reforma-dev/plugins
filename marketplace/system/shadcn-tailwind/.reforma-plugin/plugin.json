@@ -1,6 +1,6 @@
 {
     "name": "shadcn-tailwind",
-    "description": "The UI kit the project is built on — components, forms, and Tailwind",
+    "description": "Skills and MCP that help build components with shadcn and Tailwind",
     "system": true,
     "logo": "assets/logo.png",
     "author": {

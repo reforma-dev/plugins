@@ -9,7 +9,7 @@
     "homepage": "https://cal.com/docs/mcp-server",
     "interface": {
         "displayName": "Cal.com",
-        "brandColor": "#292929",
+        "brandColor": "#000000",
         "logo": "assets/logo.svg"
     },
     "mcpServers": "./mcp.json"

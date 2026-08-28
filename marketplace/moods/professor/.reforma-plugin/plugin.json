@@ -1,6 +1,6 @@
 {
     "name": "professor",
-    "description": "Grill first — research, ask, settle the tree — then build.",
+    "description": "Grills the problem first — researches, challenges assumptions, settles every major fork with you — then builds.",
     "logo": "assets/logo.svg",
     "interface": {
         "displayName": "Professor",

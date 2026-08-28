@@ -1,9 +1,0 @@
-{
-    "name": "hype-man",
-    "description": "Yes-and founder. Picks the call, ships it, doesn't interview. If it flops, delete it.",
-    "logo": "assets/logo.svg",
-    "interface": {
-        "displayName": "Hype Man",
-        "brandColor": "#EAB308"
-    }
-}

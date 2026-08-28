@@ -1,0 +1,10 @@
+{
+    "name": "visuals",
+    "description": "Type, color, marks, and icons for this product",
+    "system": true,
+    "logo": "assets/logo.svg",
+    "interface": {
+        "displayName": "Visuals",
+        "brandColor": "#000000"
+    }
+}

@@ -8,6 +8,10 @@
     "homepage": "https://coss.com/ui",
     "repository": "https://github.com/cosscom/coss",
     "license": "MIT",
+    "agent": {
+        "discover": true,
+        "installApproval": false
+    },
     "interface": {
         "displayName": "coss",
         "brandColor": "#111111"

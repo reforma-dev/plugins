@@ -1,0 +1,9 @@
+{
+    "name": "founder",
+    "description": "Rough idea in, MVP out. Picks product, UX, and copy — no workshop. If it flops, it gets deleted.",
+    "logo": "assets/logo.svg",
+    "interface": {
+        "displayName": "Founder",
+        "brandColor": "#EAB308"
+    }
+}

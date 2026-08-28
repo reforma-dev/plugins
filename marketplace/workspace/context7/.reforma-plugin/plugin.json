@@ -7,5 +7,9 @@
         "brandColor": "#000000",
         "displayName": "Context7"
     },
-    "mcpServers": "./mcp.json"
+    "mcpServers": "./mcp.json",
+    "agent": {
+        "discover": true,
+        "installApproval": false
+    }
 }
