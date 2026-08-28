@@ -1,6 +1,6 @@
 {
-    "name": "game-creator",
-    "description": "Browser games — 2D with Phaser, 3D with Three.js",
+    "name": "games",
+    "description": "Create a browser games — 2D with Phaser or 3D with Three.js",
     "author": {
         "name": "OpusGameLabs",
         "url": "https://github.com/playableintelligence/game-creator"
