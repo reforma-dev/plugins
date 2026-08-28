@@ -57,5 +57,5 @@ jobs:
                   )
                   for tag in "${stale[@]}"; do
                     echo "Deleting $tag"
-                    gh release delete "$tag" --yes --cleanup-tag
+                    gh release delete "$tag" --yes --cleanup-tag || true
                   done
