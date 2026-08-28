@@ -53,24 +53,28 @@
             "name": "Playbooks",
             "plugins": [
                 {
-                    "name": "react-best-practices",
-                    "source": "./marketplace/playbooks/react-best-practices"
+                    "name": "frontend-design",
+                    "source": "./marketplace/playbooks/frontend-design"
                 },
                 {
                     "name": "web-design-guidelines",
                     "source": "./marketplace/playbooks/web-design-guidelines"
                 },
                 {
-                    "name": "frontend-design",
-                    "source": "./marketplace/playbooks/frontend-design"
+                    "name": "react-best-practices",
+                    "source": "./marketplace/playbooks/react-best-practices"
+                },
+                {
+                    "name": "i18n",
+                    "source": "./marketplace/playbooks/i18n"
                 },
                 {
                     "name": "booking",
                     "source": "./marketplace/playbooks/booking"
                 },
                 {
-                    "name": "i18n",
-                    "source": "./marketplace/playbooks/i18n"
+                    "name": "games",
+                    "source": "./marketplace/playbooks/games"
                 }
             ]
         },
@@ -126,12 +130,34 @@
             ]
         },
         {
-            "id": "games",
-            "name": "Games",
+            "id": "workspace",
+            "name": "Workspace",
             "plugins": [
                 {
-                    "name": "game-creator",
-                    "source": "./marketplace/games/game-creator"
+                    "name": "context7",
+                    "source": "./marketplace/workspace/context7"
+                },
+                {
+                    "name": "notion",
+                    "source": "https://github.com/makenotion/cursor-notion-plugin/tree/cf1324609edba6d617164f1dec138aeb43f26735",
+                    "displayName": "Notion",
+                    "description": "The team’s Notion — notes, pages, and databases in the project",
+                    "brandColor": "#FFFFFF"
+                },
+                {
+                    "name": "linear",
+                    "source": "https://github.com/linear/cursor-plugin/tree/c2c4cb2ab23206c9219b0dd31c9571e4c922faeb",
+                    "displayName": "Linear",
+                    "description": "The issue tracker — bugs, projects, and docs from Linear",
+                    "brandColor": "#000000"
+                },
+                {
+                    "name": "slack",
+                    "source": "./marketplace/workspace/slack"
+                },
+                {
+                    "name": "github",
+                    "source": "./marketplace/workspace/github-mcp"
                 }
             ]
         },
@@ -255,7 +281,7 @@
                     "source": "https://github.com/dropbox/dropbox-ai-plugins/tree/4900430d6afa76fc2504e00e006895de424f3637/codex",
                     "displayName": "Dropbox",
                     "description": "Files in Dropbox — save, share, and pull them into the project",
-                    "brandColor": "#000000"
+                    "brandColor": "#0061FF"
                 },
                 {
                     "name": "cloudinary",
@@ -367,38 +393,6 @@
                 {
                     "name": "sanity",
                     "source": "./marketplace/cms/sanity"
-                }
-            ]
-        },
-        {
-            "id": "workspace",
-            "name": "Workspace",
-            "plugins": [
-                {
-                    "name": "context7",
-                    "source": "./marketplace/workspace/context7"
-                },
-                {
-                    "name": "notion",
-                    "source": "https://github.com/makenotion/cursor-notion-plugin/tree/cf1324609edba6d617164f1dec138aeb43f26735",
-                    "displayName": "Notion",
-                    "description": "The team’s Notion — notes, pages, and databases in the project",
-                    "brandColor": "#FFFFFF"
-                },
-                {
-                    "name": "linear",
-                    "source": "https://github.com/linear/cursor-plugin/tree/c2c4cb2ab23206c9219b0dd31c9571e4c922faeb",
-                    "displayName": "Linear",
-                    "description": "The issue tracker — bugs, projects, and docs from Linear",
-                    "brandColor": "#000000"
-                },
-                {
-                    "name": "slack",
-                    "source": "./marketplace/workspace/slack"
-                },
-                {
-                    "name": "github",
-                    "source": "./marketplace/workspace/github-mcp"
                 }
             ]
         },
