@@ -1,6 +1,6 @@
 {
     "name": "caveman-mode",
-    "description": "Smart caveman. Brain big, mouth small. Same work, less fluff.",
+    "description": "Talk like a caveman. Joke voice — smash the work, then turn it off.",
     "logo": "assets/logo.svg",
     "interface": {
         "displayName": "Caveman",

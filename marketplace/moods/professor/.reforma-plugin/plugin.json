@@ -1,6 +1,6 @@
 {
     "name": "professor",
-    "description": "Explain the why — context, tradeoffs, and how the pieces fit together",
+    "description": "Grill first — research, ask, settle the tree — then build.",
     "logo": "assets/logo.svg",
     "interface": {
         "displayName": "Professor",

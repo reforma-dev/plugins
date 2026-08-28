@@ -49,6 +49,24 @@
             ]
         },
         {
+            "id": "playbooks",
+            "name": "Playbooks",
+            "plugins": [
+                {
+                    "name": "react-best-practices",
+                    "source": "./marketplace/playbooks/react-best-practices"
+                },
+                {
+                    "name": "web-design-guidelines",
+                    "source": "./marketplace/playbooks/web-design-guidelines"
+                },
+                {
+                    "name": "frontend-design",
+                    "source": "./marketplace/playbooks/frontend-design"
+                }
+            ]
+        },
+        {
             "id": "ui",
             "name": "UI",
             "plugins": [
@@ -97,18 +115,6 @@
                 {
                     "name": "i18n",
                     "source": "./marketplace/ui/i18n"
-                },
-                {
-                    "name": "react-best-practices",
-                    "source": "./marketplace/ui/react-best-practices"
-                },
-                {
-                    "name": "web-design-guidelines",
-                    "source": "./marketplace/ui/web-design-guidelines"
-                },
-                {
-                    "name": "frontend-design",
-                    "source": "./marketplace/ui/frontend-design"
                 },
                 {
                     "name": "svg",
@@ -398,10 +404,6 @@
                 {
                     "name": "make",
                     "source": "./marketplace/automation/make"
-                },
-                {
-                    "name": "n8n",
-                    "source": "./marketplace/automation/n8n"
                 }
             ]
         }

@@ -1,49 +1,46 @@
 {
-    "mcpServers": {
-        "context7": {
-            "url": "https://mcp.context7.com/mcp",
-            "headers": {
-                "CONTEXT7_API_KEY": "${API_KEY}"
+  "mcpServers": {
+    "context7": {
+      "url": "https://mcp.context7.com/mcp/oauth",
+      "description": "Up-to-date, version-specific documentation and code examples for external libraries and frameworks.",
+      "tools": {
+        "resolve-library-id": {
+          "title": "Resolve Context7 Library ID",
+          "description": "Resolve a library name to a Context7-compatible library ID. Call before query-docs unless the user already gave an id like /org/project.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "query": {
+                "type": "string",
+                "description": "The user's original question or task, used to rank library matches by relevance."
+              },
+              "libraryName": {
+                "type": "string",
+                "description": "Library or package name to search for (e.g. react, next.js)."
+              }
             },
-            "description": "Up-to-date, version-specific documentation and code examples for external libraries and frameworks.",
-            "tools": {
-                "resolve-library-id": {
-                    "title": "Resolve Context7 Library ID",
-                    "description": "Resolve a library name to a Context7-compatible library ID. Call before query-docs unless the user already gave an id like /org/project.",
-                    "inputSchema": {
-                        "type": "object",
-                        "properties": {
-                            "query": {
-                                "type": "string",
-                                "description": "The user's original question or task, used to rank library matches by relevance."
-                            },
-                            "libraryName": {
-                                "type": "string",
-                                "description": "Library or package name to search for (e.g. react, next.js)."
-                            }
-                        },
-                        "required": ["query", "libraryName"]
-                    }
-                },
-                "query-docs": {
-                    "title": "Query Documentation",
-                    "description": "Fetch up-to-date docs and code examples for a Context7 library id.",
-                    "inputSchema": {
-                        "type": "object",
-                        "properties": {
-                            "libraryId": {
-                                "type": "string",
-                                "description": "Context7-compatible library id from resolve-library-id (e.g. /vercel/ai)."
-                            },
-                            "query": {
-                                "type": "string",
-                                "description": "Specific documentation question or topic."
-                            }
-                        },
-                        "required": ["libraryId", "query"]
-                    }
-                }
-            }
+            "required": ["query", "libraryName"]
+          }
+        },
+        "query-docs": {
+          "title": "Query Documentation",
+          "description": "Fetch up-to-date docs and code examples for a Context7 library id.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "libraryId": {
+                "type": "string",
+                "description": "Context7-compatible library id from resolve-library-id (e.g. /vercel/ai)."
+              },
+              "query": {
+                "type": "string",
+                "description": "Specific documentation question or topic."
+              }
+            },
+            "required": ["libraryId", "query"]
+          }
         }
+      }
     }
+  }
 }
