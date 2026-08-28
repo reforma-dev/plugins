@@ -1,9 +1,15 @@
 {
     "name": "lottiefiles",
-    "description": "Search and manage Lottie animations in the LottieFiles workspace.",
+    "description": "Lightweight motion for the app — Lottie animations you can browse and drop in",
     "author": {
         "name": "LottieFiles",
         "url": "https://lottiefiles.com"
     },
-    "mcpServers": "./mcp.json"
+    "mcpServers": "./mcp.json",
+    "logo": "assets/logo.svg",
+    "interface": {
+        "displayName": "LottieFiles",
+        "brandColor": "#00DDB3",
+        "logo": "assets/logo.svg"
+    }
 }

@@ -1,6 +1,6 @@
 {
     "name": "aceternity",
-    "description": "Motion-rich blocks and effects on top of shadcn.",
+    "description": "Motion-heavy blocks and visual effects for landing pages",
     "logo": "assets/logo.png",
     "author": {
         "name": "Aceternity"
@@ -8,6 +8,7 @@
     "homepage": "https://ui.aceternity.com",
     "interface": {
         "displayName": "Aceternity",
-        "brandColor": "#000000"
+        "brandColor": "#000000",
+        "logo": "assets/logo.png"
     }
 }

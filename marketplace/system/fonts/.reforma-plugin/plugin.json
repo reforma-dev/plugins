@@ -1,0 +1,10 @@
+{
+    "name": "fonts",
+    "description": "Google Fonts and custom typefaces for the project",
+    "system": true,
+    "logo": "assets/logo.svg",
+    "interface": {
+        "displayName": "Fonts",
+        "brandColor": "#171717"
+    }
+}

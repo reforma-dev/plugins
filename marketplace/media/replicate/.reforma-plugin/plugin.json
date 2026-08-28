@@ -1,10 +1,15 @@
 {
     "name": "replicate",
-    "description": "Run image, video, and audio models on Replicate.",
+    "description": "Image, video, and audio models — pick one, get the file",
     "author": {
         "name": "Replicate",
         "url": "https://replicate.com"
     },
     "logo": "assets/logo.svg",
-    "mcpServers": "./mcp.json"
+    "mcpServers": "./mcp.json",
+    "interface": {
+        "displayName": "Replicate",
+        "brandColor": "#000000",
+        "logo": "assets/logo.svg"
+    }
 }

@@ -1,9 +1,15 @@
 {
     "name": "composio",
-    "description": "Run actions across the apps connected in Composio.",
+    "description": "A hub of app connections — Gmail, Notion, Slack, and the rest of the stack",
     "author": {
         "name": "Composio",
         "url": "https://composio.dev"
     },
-    "mcpServers": "./mcp.json"
+    "mcpServers": "./mcp.json",
+    "logo": "assets/logo.png",
+    "interface": {
+        "displayName": "Composio",
+        "brandColor": "#000000",
+        "logo": "assets/logo.png"
+    }
 }

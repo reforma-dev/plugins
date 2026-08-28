@@ -1,10 +1,15 @@
 {
     "name": "slack",
-    "description": "Search channels, read threads, and post to the Slack workspace.",
+    "description": "The team’s Slack — channels, threads, and posts from the project",
     "author": {
         "name": "Slack",
         "url": "https://slack.com"
     },
     "logo": "assets/logo.svg",
-    "mcpServers": "./mcp.json"
+    "mcpServers": "./mcp.json",
+    "interface": {
+        "displayName": "Slack",
+        "brandColor": "#4A154B",
+        "logo": "assets/logo.svg"
+    }
 }

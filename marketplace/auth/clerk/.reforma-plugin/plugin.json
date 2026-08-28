@@ -1,11 +1,15 @@
 {
     "name": "clerk",
-    "description": "Sign-in, organizations, and user management for the app.",
+    "description": "Drop-in auth — sign-in, organizations, and user accounts for the app",
     "author": {
         "name": "Clerk",
         "email": "ai@clerk.dev",
         "url": "https://clerk.com"
     },
     "logo": "assets/logo.svg",
-    "mcpServers": "./mcp.json"
+    "mcpServers": "./mcp.json",
+    "interface": {
+        "displayName": "Clerk",
+        "brandColor": "#131316"
+    }
 }

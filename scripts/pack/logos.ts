@@ -1,13 +1,20 @@
 import {
+  cpSync,
   existsSync,
   mkdirSync,
   readFileSync,
+  readdirSync,
   statSync,
   unlinkSync,
   writeFileSync,
 } from "node:fs";
-import { join } from "node:path";
-import { findManifestPath, isRecord } from "./shared.ts";
+import { extname, join } from "node:path";
+import {
+  findManifestPath,
+  isRecord,
+  ROOT,
+  type MarketplaceListing,
+} from "./shared.ts";
 
 export const LOGO_EXT = new Set(["svg", "png", "webp", "jpg", "jpeg"]);
 export const LOGO_MAX_BYTES = 512 * 1024;
@@ -178,6 +185,116 @@ export async function normalizePluginLogos(pluginDir: string): Promise<void> {
   }
 
   writeLogoFields(json, logo, logoDark ?? logo);
+  writeFileSync(manifestPath, `${JSON.stringify(json, null, 4)}\n`);
+}
+
+function listingBrandLogo(name: string): string | undefined {
+  const dir = join(ROOT, "marketplace/_brand", name);
+
+  if (!existsSync(dir)) {
+    return undefined;
+  }
+
+  for (const file of readdirSync(dir)) {
+    if (file.startsWith("logo.") && LOGO_EXT.has(extOf(file))) {
+      return join(dir, file);
+    }
+  }
+
+  return undefined;
+}
+
+function stampInterface(
+  json: Record<string, unknown>,
+  patch: { displayName?: string; brandColor?: string; logo?: string },
+): void {
+  const iface = isRecord(json.interface) ? json.interface : {};
+
+  if (patch.displayName) {
+    iface.displayName = patch.displayName;
+  }
+
+  if (patch.brandColor) {
+    iface.brandColor = patch.brandColor;
+  }
+
+  if (patch.logo) {
+    iface.logo = patch.logo;
+  }
+
+  json.interface = iface;
+}
+
+/** Overlay display name, description, and logo from marketplace.json / `_brand`. */
+export function applyCatalogOverlay(
+  pluginDir: string,
+  listing: MarketplaceListing,
+): void {
+  const manifestPath = findManifestPath(pluginDir);
+
+  if (!manifestPath) {
+    throw new Error(`no plugin.json in ${pluginDir}`);
+  }
+
+  const json = JSON.parse(readFileSync(manifestPath, "utf8")) as unknown;
+
+  if (!isRecord(json)) {
+    throw new Error(`invalid plugin.json ${manifestPath}`);
+  }
+
+  const httpLogo =
+    listing.logo && /^https?:\/\//i.test(listing.logo)
+      ? listing.logo
+      : undefined;
+  const fromListing =
+    listing.logo && !httpLogo ? join(ROOT, listing.logo) : undefined;
+  const file = fromListing ?? (httpLogo ? undefined : listingBrandLogo(listing.name));
+  let logo = httpLogo;
+
+  if (file) {
+    if (!existsSync(file)) {
+      throw new Error(`overlay logo missing ${file}`);
+    }
+
+    const ext = extOf(file);
+
+    if (!LOGO_EXT.has(ext)) {
+      throw new Error(`unsupported overlay logo ${file}`);
+    }
+
+    const rel = `assets/logo${extname(file).toLowerCase() === ".jpeg" ? ".jpg" : extname(file).toLowerCase()}`;
+
+    mkdirSync(join(pluginDir, "assets"), { recursive: true });
+    cpSync(file, join(pluginDir, rel));
+    logo = rel;
+  }
+
+  if (
+    !listing.displayName &&
+    !listing.description &&
+    !listing.brandColor &&
+    !logo
+  ) {
+    return;
+  }
+
+  if (listing.displayName) {
+    stampInterface(json, { displayName: listing.displayName });
+  }
+
+  if (listing.description) {
+    json.description = listing.description;
+  }
+
+  if (listing.brandColor) {
+    stampInterface(json, { brandColor: listing.brandColor });
+  }
+
+  if (logo) {
+    json.logo = logo;
+    stampInterface(json, { logo });
+  }
+
   writeFileSync(manifestPath, `${JSON.stringify(json, null, 4)}\n`);
 }
 

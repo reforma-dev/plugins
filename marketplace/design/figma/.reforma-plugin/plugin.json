@@ -1,9 +1,15 @@
 {
     "name": "figma",
-    "description": "Read designs and generate code from Figma files.",
+    "description": "Turn Figma frames into code for the project",
     "author": {
         "name": "Figma",
         "url": "https://www.figma.com"
     },
-    "mcpServers": "./mcp.json"
+    "mcpServers": "./mcp.json",
+    "logo": "assets/logo.png",
+    "interface": {
+        "displayName": "Figma",
+        "brandColor": "#000000",
+        "logo": "assets/logo.png"
+    }
 }

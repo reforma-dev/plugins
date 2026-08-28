@@ -1,6 +1,6 @@
 {
     "name": "coss",
-    "description": "Extra components and particles on top of shadcn.",
+    "description": "Extra components and particle effects beyond the default shadcn set",
     "logo": "assets/logo.svg",
     "author": {
         "name": "coss"

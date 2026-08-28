@@ -1,6 +1,24 @@
 {
     "categories": [
         {
+            "id": "system",
+            "name": "System",
+            "plugins": [
+                {
+                    "name": "shadcn-tailwind",
+                    "source": "./marketplace/system/shadcn-tailwind"
+                },
+                {
+                    "name": "fonts",
+                    "source": "./marketplace/system/fonts"
+                },
+                {
+                    "name": "nextjs",
+                    "source": "./marketplace/system/nextjs"
+                }
+            ]
+        },
+        {
             "id": "moods",
             "name": "Moods",
             "plugins": [
@@ -31,17 +49,27 @@
             ]
         },
         {
+            "id": "playbooks",
+            "name": "Playbooks",
+            "plugins": [
+                {
+                    "name": "react-best-practices",
+                    "source": "./marketplace/playbooks/react-best-practices"
+                },
+                {
+                    "name": "web-design-guidelines",
+                    "source": "./marketplace/playbooks/web-design-guidelines"
+                },
+                {
+                    "name": "frontend-design",
+                    "source": "./marketplace/playbooks/frontend-design"
+                }
+            ]
+        },
+        {
             "id": "ui",
             "name": "UI",
             "plugins": [
-                {
-                    "name": "shadcn-tailwind",
-                    "source": "./marketplace/ui/shadcn-tailwind"
-                },
-                {
-                    "name": "fonts",
-                    "source": "./marketplace/ui/fonts"
-                },
                 {
                     "name": "coss",
                     "source": "./marketplace/ui/coss"
@@ -68,31 +96,29 @@
                 },
                 {
                     "name": "gsap",
-                    "source": "https://github.com/greensock/gsap-skills/tree/aed9cfd3277740755f6bfc1155c7aa645403b760"
+                    "source": "https://github.com/greensock/gsap-skills/tree/aed9cfd3277740755f6bfc1155c7aa645403b760",
+                    "displayName": "GSAP",
+                    "description": "Timeline animation, scroll effects, and motion — the GSAP toolkit"
                 },
                 {
                     "name": "motion",
-                    "source": "https://github.com/motiondivision/cursor-plugin/tree/1140efe9ad5e03c689ea6bb19d9d3850a4dae5f7/plugins/motion"
+                    "source": "https://github.com/motiondivision/cursor-plugin/tree/1140efe9ad5e03c689ea6bb19d9d3850a4dae5f7/plugins/motion",
+                    "displayName": "Motion",
+                    "description": "Animation for the web — springs, gestures, and layout motion"
                 },
                 {
                     "name": "remotion",
-                    "source": "https://github.com/remotion-dev/cursor-plugin/tree/bbb02cde0afb17f54329030581532067fb45f622"
+                    "source": "https://github.com/remotion-dev/cursor-plugin/tree/bbb02cde0afb17f54329030581532067fb45f622",
+                    "displayName": "Remotion",
+                    "description": "Videos and motion graphics, written in React"
                 },
                 {
                     "name": "i18n",
                     "source": "./marketplace/ui/i18n"
                 },
                 {
-                    "name": "react-best-practices",
-                    "source": "./marketplace/ui/react-best-practices"
-                },
-                {
-                    "name": "web-design-guidelines",
-                    "source": "./marketplace/ui/web-design-guidelines"
-                },
-                {
-                    "name": "frontend-design",
-                    "source": "./marketplace/ui/frontend-design"
+                    "name": "svg",
+                    "source": "./marketplace/ui/svg"
                 }
             ]
         },
@@ -112,15 +138,21 @@
             "plugins": [
                 {
                     "name": "supabase",
-                    "source": "https://github.com/supabase-community/supabase-plugin/tree/8629243d1cd72309b533090a4c742f21747d02fa"
+                    "source": "https://github.com/supabase-community/supabase-plugin/tree/8629243d1cd72309b533090a4c742f21747d02fa",
+                    "displayName": "Supabase",
+                    "description": "Backend for the app — database, auth, and file storage"
                 },
                 {
                     "name": "firebase",
-                    "source": "https://github.com/firebase/agent-skills/tree/a0b4e143f40c1ebe05fe5f9a4787fecd4da8f478"
+                    "source": "https://github.com/firebase/agent-skills/tree/a0b4e143f40c1ebe05fe5f9a4787fecd4da8f478",
+                    "displayName": "Firebase",
+                    "description": "Google’s backend — auth, database, and hosting"
                 },
                 {
                     "name": "convex",
-                    "source": "https://github.com/get-convex/convex-agent-plugins/tree/aec064132a824ae306b3c5d70b8bab1f3f90a551"
+                    "source": "https://github.com/get-convex/convex-agent-plugins/tree/aec064132a824ae306b3c5d70b8bab1f3f90a551",
+                    "displayName": "Convex",
+                    "description": "A live backend — the database updates the UI as data changes"
                 },
                 {
                     "name": "neon",
@@ -128,11 +160,15 @@
                 },
                 {
                     "name": "appwrite",
-                    "source": "https://github.com/appwrite/cursor-plugin/tree/a9ef9a11cd7f68c4f27bbd57db46ff46499ec049"
+                    "source": "https://github.com/appwrite/cursor-plugin/tree/a9ef9a11cd7f68c4f27bbd57db46ff46499ec049",
+                    "displayName": "Appwrite",
+                    "description": "An open-source backend — auth, database, and storage"
                 },
                 {
                     "name": "prisma",
-                    "source": "https://github.com/prisma/cursor-plugin/tree/4584a0a9175ba74053d7ee946c6234d3369a5a33"
+                    "source": "https://github.com/prisma/cursor-plugin/tree/4584a0a9175ba74053d7ee946c6234d3369a5a33",
+                    "displayName": "Prisma",
+                    "description": "Talk to the database — schema, migrations, and queries in TypeScript"
                 }
             ]
         },
@@ -160,7 +196,9 @@
             "plugins": [
                 {
                     "name": "stripe",
-                    "source": "https://github.com/stripe/ai/tree/1dc126b93cc62e28aff7e00e51406dfeb8ac88d5/providers/cursor/plugin"
+                    "source": "https://github.com/stripe/ai/tree/1dc126b93cc62e28aff7e00e51406dfeb8ac88d5/providers/cursor/plugin",
+                    "displayName": "Stripe",
+                    "description": "Accept payments, manage customers, and handle subscriptions"
                 },
                 {
                     "name": "shopify",
@@ -174,7 +212,9 @@
             "plugins": [
                 {
                     "name": "resend",
-                    "source": "https://github.com/resend/resend-skills/tree/828340bd8a361c4e6e0c02bddf1575f131d5d77f"
+                    "source": "https://github.com/resend/resend-skills/tree/828340bd8a361c4e6e0c02bddf1575f131d5d77f",
+                    "displayName": "Resend",
+                    "description": "Send email from the app — transactional mail and templates"
                 }
             ]
         },
@@ -206,7 +246,9 @@
                 },
                 {
                     "name": "dropbox",
-                    "source": "https://github.com/dropbox/dropbox-ai-plugins/tree/4900430d6afa76fc2504e00e006895de424f3637/codex"
+                    "source": "https://github.com/dropbox/dropbox-ai-plugins/tree/4900430d6afa76fc2504e00e006895de424f3637/codex",
+                    "displayName": "Dropbox",
+                    "description": "Files in Dropbox — save, share, and pull them into the project"
                 },
                 {
                     "name": "cloudinary",
@@ -235,7 +277,9 @@
                 },
                 {
                     "name": "mapbox",
-                    "source": "https://github.com/mapbox/mapbox-agent-skills/tree/209e8c408fd65edfff45e491c941e8a00025a1a6"
+                    "source": "https://github.com/mapbox/mapbox-agent-skills/tree/209e8c408fd65edfff45e491c941e8a00025a1a6",
+                    "displayName": "Mapbox",
+                    "description": "Custom maps — your style, search, and location in the app"
                 }
             ]
         },
@@ -245,11 +289,15 @@
             "plugins": [
                 {
                     "name": "higgsfield",
-                    "source": "https://github.com/higgsfield-ai/cursor-plugin/tree/c9215059e409dc81c69ff0fe77ea2740c5fc6249"
+                    "source": "https://github.com/higgsfield-ai/cursor-plugin/tree/c9215059e409dc81c69ff0fe77ea2740c5fc6249",
+                    "displayName": "Higgsfield",
+                    "description": "AI images and video from one studio"
                 },
                 {
                     "name": "quiver",
-                    "source": "https://github.com/quiverai/cursor-plugin/tree/630b8ffea8698db194ef6ac32948656522b6e7f5"
+                    "source": "https://github.com/quiverai/cursor-plugin/tree/630b8ffea8698db194ef6ac32948656522b6e7f5",
+                    "displayName": "Quiver",
+                    "description": "Generate SVG and turn pictures into clean vectors"
                 },
                 {
                     "name": "svgator",
@@ -287,7 +335,9 @@
             "plugins": [
                 {
                     "name": "sentry",
-                    "source": "https://github.com/getsentry/plugin-cursor/tree/134bed9804c249664daf8be62938e4d754b1c249"
+                    "source": "https://github.com/getsentry/plugin-cursor/tree/134bed9804c249664daf8be62938e4d754b1c249",
+                    "displayName": "Sentry",
+                    "description": "See crashes and traces from the live app, then fix them"
                 },
                 {
                     "name": "posthog",
@@ -319,11 +369,15 @@
                 },
                 {
                     "name": "notion-workspace",
-                    "source": "https://github.com/makenotion/cursor-notion-plugin/tree/cf1324609edba6d617164f1dec138aeb43f26735"
+                    "source": "https://github.com/makenotion/cursor-notion-plugin/tree/cf1324609edba6d617164f1dec138aeb43f26735",
+                    "displayName": "Notion",
+                    "description": "The team’s Notion — notes, pages, and databases in the project"
                 },
                 {
                     "name": "linear",
-                    "source": "https://github.com/linear/cursor-plugin/tree/c2c4cb2ab23206c9219b0dd31c9571e4c922faeb"
+                    "source": "https://github.com/linear/cursor-plugin/tree/c2c4cb2ab23206c9219b0dd31c9571e4c922faeb",
+                    "displayName": "Linear",
+                    "description": "The issue tracker — bugs, projects, and docs from Linear"
                 },
                 {
                     "name": "slack",
@@ -350,20 +404,6 @@
                 {
                     "name": "make",
                     "source": "./marketplace/automation/make"
-                },
-                {
-                    "name": "n8n",
-                    "source": "./marketplace/automation/n8n"
-                }
-            ]
-        },
-        {
-            "id": "demo",
-            "name": "Demo",
-            "plugins": [
-                {
-                    "name": "demo-kit",
-                    "source": "./marketplace/demo/demo-kit"
                 }
             ]
         }

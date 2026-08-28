@@ -1,9 +1,15 @@
 {
     "name": "recraft",
-    "description": "Generate and edit images with Recraft.",
+    "description": "Generate and edit images with Recraft’s design models",
     "author": {
         "name": "Recraft",
         "url": "https://www.recraft.ai"
     },
-    "mcpServers": "./mcp.json"
+    "mcpServers": "./mcp.json",
+    "logo": "assets/logo.png",
+    "interface": {
+        "displayName": "Recraft",
+        "brandColor": "#000000",
+        "logo": "assets/logo.png"
+    }
 }

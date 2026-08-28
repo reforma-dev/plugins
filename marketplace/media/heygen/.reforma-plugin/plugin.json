@@ -1,9 +1,15 @@
 {
     "name": "heygen",
-    "description": "Generate avatar videos with HeyGen.",
+    "description": "Talking-head videos from a script and an avatar",
     "author": {
         "name": "HeyGen",
         "url": "https://www.heygen.com"
     },
-    "mcpServers": "./mcp.json"
+    "mcpServers": "./mcp.json",
+    "logo": "assets/logo.png",
+    "interface": {
+        "displayName": "HeyGen",
+        "brandColor": "#000000",
+        "logo": "assets/logo.png"
+    }
 }

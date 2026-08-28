@@ -4,86 +4,87 @@ Marketplace plugins for Reforma. Each plugin is a folder with `.reforma-plugin/p
 
 ## Plugins
 
-| name                  | Plugin                                                                   | Author        | Category   | description                                                            |
-| --------------------- | ------------------------------------------------------------------------ | ------------- | ---------- | ---------------------------------------------------------------------- |
-| demo-kit              | [Demo Kit](marketplace/demo/demo-kit)                                    | Reforma       | Demo       | Sample plugin to try the catalog — skills, tools, hooks, and a server. |
-| bro-mode              | [Bro Mode](marketplace/moods/bro-mode)                                   | Reforma       | Moods      | Brother energy — blunt, warm, pushes back.                             |
-| zen-mode              | [Zen Mode](marketplace/moods/zen-mode)                                   | Reforma       | Moods      | Calm, minimal, one clear step at a time.                               |
-| ship-it               | [Ship It](marketplace/moods/ship-it)                                     | Reforma       | Moods      | Smallest shippable change — merge beats polish.                        |
-| professor             | [Professor](marketplace/moods/professor)                                 | Reforma       | Moods      | Explain the why — context and tradeoffs.                               |
-| hype-man              | [Hype Man](marketplace/moods/hype-man)                                   | Reforma       | Moods      | Founder energy — vision, momentum, this thing wins.                    |
-| caveman-mode          | [Caveman](marketplace/moods/caveman-mode)                                | Reforma       | Moods      | Smart caveman. Brain big, mouth small. Same work, less fluff.          |
-| shadcn-tailwind       | [shadcn / Tailwind](marketplace/ui/shadcn-tailwind)                      | shadcn        | UI         | Official components and Tailwind utilities for the project.            |
-| fonts                 | [Fonts](marketplace/ui/fonts)                                            | Reforma       | UI         | Google Fonts and custom typefaces for the project.                     |
-| coss                  | [coss](marketplace/ui/coss)                                              | coss          | UI         | Extra components and particles on top of shadcn.                       |
-| flexnative            | [Flexnative](marketplace/ui/flexnative)                                  | Flexnative    | UI         | Ready-made blocks and patterns on top of shadcn.                       |
-| magic-ui              | [Magic UI](marketplace/ui/magic-ui)                                      | Magic UI      | UI         | Animated marketing components on top of shadcn.                        |
-| tailark               | [Tailark](marketplace/ui/tailark)                                        | Tailark       | UI         | Marketing blocks and pages on top of shadcn.                           |
-| aceternity            | [Aceternity](marketplace/ui/aceternity)                                  | Aceternity    | UI         | Motion-rich blocks and effects on top of shadcn.                       |
-| 21st                  | [21st](marketplace/ui/21st)                                              | 21st          | UI         | Search and install UI from the 21st catalog. Needs an API key.         |
-| i18n                  | [i18n](marketplace/ui/i18n)                                              | Reforma       | UI         | Locales, translated copy, and language switching for the app.          |
-| react-best-practices  | [React Best Practices](marketplace/ui/react-best-practices)              | Vercel        | UI         | React and Next.js performance patterns for the app.                    |
-| web-design-guidelines | [Web Design Guidelines](marketplace/ui/web-design-guidelines)            | Vercel        | UI         | Accessibility, forms, and focus checks for the app UI.                 |
-| frontend-design       | [Frontend Design](marketplace/ui/frontend-design)                        | Anthropic     | UI         | Distinctive visual identity — palette, type, and layout.               |
-| context7              | [Context7](marketplace/workspace/context7)                               | Reforma       | Workspace  | Up-to-date library docs and examples. Needs an API key.                |
-| google-drive          | [Google Drive](marketplace/files/google-drive)                           | Reforma       | Files      | Search, read, create, and share files across Drive.                    |
-| notion-workspace      | [Notion Workspace](https://github.com/makenotion/cursor-notion-plugin)   | Notion Labs   | Workspace  | Notion Skills + Notion MCP server packaged as a Cursor plugin.         |
-| linear                | [Linear](https://github.com/linear/cursor-plugin)                        | Linear        | Workspace  | Issues, projects, and docs from the Linear workspace.                  |
-| dropbox               | [Dropbox](https://github.com/dropbox/dropbox-ai-plugins/tree/main/codex) | Dropbox       | Files      | Access, save and share files with Dropbox.                             |
-| cloudinary            | [Cloudinary](marketplace/files/cloudinary)                               | Cloudinary    | Files      | Upload, transform, and deliver images and videos from Cloudinary.      |
-| slack                 | [Slack](marketplace/workspace/slack)                                     | Slack         | Workspace  | Search channels, read threads, and post to the workspace.              |
-| github-mcp            | [GitHub](marketplace/workspace/github-mcp)                               | GitHub        | Workspace  | Search issues, pull requests, and code in GitHub repositories.         |
-| clerk                 | [Clerk](marketplace/auth/clerk)                                          | Clerk         | Auth       | Sign-in, organizations, and user management for the app.               |
-| supabase              | [Supabase](https://github.com/supabase-community/supabase-plugin)        | Supabase      | Backend    | Database, auth, and storage for the Supabase project.                  |
-| stripe                | [Stripe](https://github.com/stripe/ai/tree/main/providers/cursor/plugin) | Stripe        | Payments   | Payments, customers, and webhooks from the Stripe account.             |
-| higgsfield            | [Higgsfield](https://github.com/higgsfield-ai/cursor-plugin)             | Higgsfield AI | Media      | Images and video from Higgsfield.                                      |
-| quiver                | [Quiver](https://github.com/quiverai/cursor-plugin)                      | QuiverAI      | Media      | Generate and vectorize SVG.                                            |
-| svgator               | [SVGator](marketplace/media/svgator)                                     | SVGator       | Media      | Create, edit, and export animated SVG.                                 |
-| lottiefiles           | [LottieFiles](marketplace/media/lottiefiles)                             | LottieFiles   | Media      | Search and manage Lottie animations.                                   |
-| recraft               | [Recraft](marketplace/media/recraft)                                     | Recraft       | Media      | Generate and edit images with Recraft.                                 |
-| replicate             | [Replicate](marketplace/media/replicate)                                 | Replicate     | Media      | Run image, video, and audio models on Replicate.                       |
-| heygen                | [HeyGen](marketplace/media/heygen)                                       | HeyGen        | Media      | Generate avatar videos with HeyGen.                                    |
-| fal                   | [fal](marketplace/media/fal)                                             | fal           | Media      | Generate images, video, and audio from fal models. Needs an API key.   |
-| elevenlabs            | [ElevenLabs](marketplace/media/elevenlabs)                               | ElevenLabs    | Media      | Generate speech and manage voices in ElevenLabs.                       |
-| sentry                | [Sentry](https://github.com/getsentry/plugin-cursor)                     | Sentry        | Analytics  | Errors and traces from the Sentry org.                                 |
-| gsap                  | [GSAP](https://github.com/greensock/gsap-skills)                         | GreenSock     | UI         | Animation timelines, ScrollTrigger, and GSAP plugins.                  |
-| motion                | [Motion](https://github.com/motiondivision/cursor-plugin)                | Motion        | UI         | Web animation, springs, and Motion docs.                               |
-| remotion              | [Remotion](https://github.com/remotion-dev/cursor-plugin)                | Remotion      | UI         | Videos and motion graphics with React.                                 |
-| game-creator          | [Game Creator](marketplace/games/game-creator)                           | OpusGameLabs  | Games      | Phaser 2D and Three.js 3D browser games — skills, templates, commands. |
-| firebase              | [Firebase](https://github.com/firebase/agent-skills)                     | Firebase      | Backend    | Auth, Firestore, and hosting for the Firebase project.                 |
-| convex                | [Convex](https://github.com/get-convex/convex-agent-plugins)             | Convex        | Backend    | Reactive backend and database for the Convex project.                  |
-| neon                  | [Neon](marketplace/backend/neon)                                         | Neon          | Backend    | Postgres databases, branches, and SQL on Neon.                         |
-| appwrite              | [Appwrite](https://github.com/appwrite/cursor-plugin)                    | Appwrite      | Backend    | Auth, database, and storage for the Appwrite project.                  |
-| prisma                | [Prisma](https://github.com/prisma/cursor-plugin)                        | Prisma        | Backend    | Schema, migrations, and queries with Prisma.                           |
-| auth0                 | [Auth0](marketplace/auth/auth0)                                          | Auth0         | Auth       | Sign-in and user management with Auth0.                                |
-| workos                | [WorkOS](marketplace/auth/workos)                                        | WorkOS        | Auth       | Sign-in, SSO, and user management with WorkOS.                         |
-| shopify               | [Shopify](marketplace/payments/shopify)                                  | Shopify       | Payments   | Products, orders, and store data from Shopify.                         |
-| resend                | [Resend](https://github.com/resend/resend-skills)                        | Resend        | Messaging  | Send email and manage templates with Resend.                           |
-| cal-com               | [Cal.com](marketplace/scheduling/cal-com)                                | Cal.com       | Scheduling | Bookings, event types, and a booker widget from Cal.com.               |
-| calendly              | [Calendly](marketplace/scheduling/calendly)                              | Calendly      | Scheduling | Scheduling links, availability, and a Calendly embed for the app.      |
-| booking               | [Booking](marketplace/scheduling/booking)                                | Reforma       | Scheduling | Book a call, pick slots, or show an event calendar in the app.         |
-| figma                 | [Figma](marketplace/design/figma)                                        | Figma         | Design     | Read designs and generate code from Figma files.                       |
-| google-maps           | [Google Maps](marketplace/maps/google-maps)                              | Google        | Maps       | Places, routes, and weather from Google Maps.                          |
-| mapbox                | [Mapbox](https://github.com/mapbox/mapbox-agent-skills)                  | Mapbox        | Maps       | Maps, search, and styles from Mapbox.                                  |
-| posthog               | [PostHog](marketplace/analytics/posthog)                                 | PostHog       | Analytics  | Events, funnels, and session replay from PostHog.                      |
-| amplitude             | [Amplitude](marketplace/analytics/amplitude)                             | Amplitude     | Analytics  | Events and charts from the Amplitude project.                          |
-| sanity                | [Sanity](marketplace/cms/sanity)                                         | Sanity        | CMS        | Read and edit content in the Sanity dataset.                           |
-| zapier                | [Zapier](marketplace/automation/zapier)                                  | Zapier        | Automation | Run actions and look up data from connected Zapier apps.               |
-| composio              | [Composio](marketplace/automation/composio)                              | Composio      | Automation | Run actions across the apps connected in Composio.                     |
-| make                  | [Make](marketplace/automation/make)                                      | Make          | Automation | Run scenarios and look up data from connected Make apps.               |
-| n8n                   | [n8n](marketplace/automation/n8n)                                        | n8n           | Automation | Run workflows and look up data from connected n8n apps.                |
+| name                  | Plugin                                                                   | Author        | Category   | description                                                                                               |
+| --------------------- | ------------------------------------------------------------------------ | ------------- | ---------- | --------------------------------------------------------------------------------------------------------- |
+| bro-mode              | [Bro Mode](marketplace/moods/bro-mode)                                   | Reforma       | Moods      | Talk like their brother and best friend — relaxed, blunt, and not afraid to push back                     |
+| zen-mode              | [Zen Mode](marketplace/moods/zen-mode)                                   | Reforma       | Moods      | Quiet. Do the work. No status talk — just the outcome.                                                    |
+| ship-it               | [Ship It](marketplace/moods/ship-it)                                     | Reforma       | Moods      | Bias to the smallest shippable change — stop polishing, start merging                                     |
+| professor             | [Professor](marketplace/moods/professor)                                 | Reforma       | Moods      | Grill first — research, ask, settle the tree — then build.                                                |
+| hype-man              | [Hype Man](marketplace/moods/hype-man)                                   | Reforma       | Moods      | Yes-and founder. Picks the call, ships it, doesn't interview. If it flops, delete it.                     |
+| caveman-mode          | [Caveman](marketplace/moods/caveman-mode)                                | Reforma       | Moods      | Talk like a caveman. Joke voice — smash the work, then turn it off.                                       |
+| react-best-practices  | [React Best Practices](marketplace/playbooks/react-best-practices)       | Vercel        | Playbooks  | Keep the app fast — React and Next.js performance patterns                                                |
+| web-design-guidelines | [Web Design Guidelines](marketplace/playbooks/web-design-guidelines)     | Vercel        | Playbooks  | Catch accessibility, form, and focus issues before they ship                                              |
+| frontend-design       | [Frontend Design](marketplace/playbooks/frontend-design)                 | Anthropic     | Playbooks  | A look that is not a template — palette, type, and layout with a point of view                            |
+| shadcn-tailwind       | [shadcn / Tailwind](marketplace/system/shadcn-tailwind)                  | shadcn        | System     | The UI kit the project is built on — components, forms, and Tailwind                                      |
+| fonts                 | [Fonts](marketplace/system/fonts)                                        | Reforma       | System     | Google Fonts and custom typefaces for the project                                                         |
+| nextjs                | [Next.js](marketplace/system/nextjs)                                     | Reforma       | System     | Next.js App Router — routing, layouts, and the conventions the project follows                            |
+| coss                  | [coss](marketplace/ui/coss)                                              | coss          | UI         | Extra components and particle effects beyond the default shadcn set                                       |
+| flexnative            | [Flexnative](marketplace/ui/flexnative)                                  | Flexnative    | UI         | Ready-made page blocks and patterns — drop in a section instead of assembling it                          |
+| magic-ui              | [Magic UI](marketplace/ui/magic-ui)                                      | Magic UI      | UI         | Animated marketing pieces — shine, marquee, shimmer, and that kind of polish                              |
+| tailark               | [Tailark](marketplace/ui/tailark)                                        | Tailark       | UI         | Marketing landing blocks and pages — heroes, pricing, footers                                             |
+| aceternity            | [Aceternity](marketplace/ui/aceternity)                                  | Aceternity    | UI         | Motion-heavy blocks and visual effects for landing pages                                                  |
+| 21st                  | [21st](marketplace/ui/21st)                                              | 21st          | UI         | A living library of React components, templates, and themes. Add them to the project, or generate new UI. |
+| i18n                  | [i18n](marketplace/ui/i18n)                                              | Reforma       | UI         | Multiple languages — translated copy and a language switcher for the app                                  |
+| svg                   | [SVG](marketplace/ui/svg)                                                | Reforma       | UI         | Logos, favicons, and inline SVG. Icons stay on Lucide or the project’s pack.                              |
+| context7              | [Context7](marketplace/workspace/context7)                               | Reforma       | Workspace  | Current docs and examples for the libraries in the project                                                |
+| google-drive          | [Google Drive](marketplace/files/google-drive)                           | Reforma       | Files      | Docs and files in Google Drive — find them, upload drafts, share from the project                         |
+| notion-workspace      | [Notion](https://github.com/makenotion/cursor-notion-plugin)             | Notion Labs   | Workspace  | The team’s Notion — notes, pages, and databases in the project                                            |
+| linear                | [Linear](https://github.com/linear/cursor-plugin)                        | Linear        | Workspace  | The issue tracker — bugs, projects, and docs from Linear                                                  |
+| dropbox               | [Dropbox](https://github.com/dropbox/dropbox-ai-plugins/tree/main/codex) | Dropbox       | Files      | Files in Dropbox — save, share, and pull them into the project                                            |
+| cloudinary            | [Cloudinary](marketplace/files/cloudinary)                               | Cloudinary    | Files      | Images and video in the cloud — upload, transform, and deliver them                                       |
+| slack                 | [Slack](marketplace/workspace/slack)                                     | Slack         | Workspace  | The team’s Slack — channels, threads, and posts from the project                                          |
+| github-mcp            | [GitHub](marketplace/workspace/github-mcp)                               | GitHub        | Workspace  | GitHub in the project — issues, pull requests, and the repo                                               |
+| clerk                 | [Clerk](marketplace/auth/clerk)                                          | Clerk         | Auth       | Drop-in auth — sign-in, organizations, and user accounts for the app                                      |
+| supabase              | [Supabase](https://github.com/supabase-community/supabase-plugin)        | Supabase      | Backend    | Backend for the app — database, auth, and file storage                                                    |
+| stripe                | [Stripe](https://github.com/stripe/ai/tree/main/providers/cursor/plugin) | Stripe        | Payments   | Accept payments, manage customers, and handle subscriptions                                               |
+| higgsfield            | [Higgsfield](https://github.com/higgsfield-ai/cursor-plugin)             | Higgsfield AI | Media      | AI images and video from one studio                                                                       |
+| quiver                | [Quiver](https://github.com/quiverai/cursor-plugin)                      | QuiverAI      | Media      | Generate SVG and turn pictures into clean vectors                                                         |
+| svgator               | [SVGator](marketplace/media/svgator)                                     | SVGator       | Media      | Animated SVG — design the motion and export it into the project                                           |
+| lottiefiles           | [LottieFiles](marketplace/media/lottiefiles)                             | LottieFiles   | Media      | Lightweight motion for the app — Lottie animations you can browse and drop in                             |
+| recraft               | [Recraft](marketplace/media/recraft)                                     | Recraft       | Media      | Generate and edit images with Recraft’s design models                                                     |
+| replicate             | [Replicate](marketplace/media/replicate)                                 | Replicate     | Media      | Image, video, and audio models — pick one, get the file                                                   |
+| heygen                | [HeyGen](marketplace/media/heygen)                                       | HeyGen        | Media      | Talking-head videos from a script and an avatar                                                           |
+| fal                   | [fal](marketplace/media/fal)                                             | fal           | Media      | Generate images, video, and audio from a wide set of models                                               |
+| elevenlabs            | [ElevenLabs](marketplace/media/elevenlabs)                               | ElevenLabs    | Media      | Voice for the app — generate speech and pick the voice                                                    |
+| sentry                | [Sentry](https://github.com/getsentry/plugin-cursor)                     | Sentry        | Analytics  | See crashes and traces from the live app, then fix them                                                   |
+| gsap                  | [GSAP](https://github.com/greensock/gsap-skills)                         | GreenSock     | UI         | Timeline animation, scroll effects, and motion — the GSAP toolkit                                         |
+| motion                | [Motion](https://github.com/motiondivision/cursor-plugin)                | Motion        | UI         | Animation for the web — springs, gestures, and layout motion                                              |
+| remotion              | [Remotion](https://github.com/remotion-dev/cursor-plugin)                | Remotion      | UI         | Videos and motion graphics, written in React                                                              |
+| game-creator          | [Game Creator](marketplace/games/game-creator)                           | OpusGameLabs  | Games      | Browser games — 2D with Phaser, 3D with Three.js                                                          |
+| firebase              | [Firebase](https://github.com/firebase/agent-skills)                     | Firebase      | Backend    | Google’s backend — auth, database, and hosting                                                            |
+| convex                | [Convex](https://github.com/get-convex/convex-agent-plugins)             | Convex        | Backend    | A live backend — the database updates the UI as data changes                                              |
+| neon                  | [Neon](marketplace/backend/neon)                                         | Neon          | Backend    | Serverless Postgres — databases, branches, and SQL without running a server                               |
+| appwrite              | [Appwrite](https://github.com/appwrite/cursor-plugin)                    | Appwrite      | Backend    | An open-source backend — auth, database, and storage                                                      |
+| prisma                | [Prisma](https://github.com/prisma/cursor-plugin)                        | Prisma        | Backend    | Talk to the database — schema, migrations, and queries in TypeScript                                      |
+| auth0                 | [Auth0](marketplace/auth/auth0)                                          | Auth0         | Auth       | Sign-in and user accounts, including social login and enterprise identity                                 |
+| workos                | [WorkOS](marketplace/auth/workos)                                        | WorkOS        | Auth       | SSO and user management for B2B apps — enterprise sign-in without building it                             |
+| shopify               | [Shopify](marketplace/payments/shopify)                                  | Shopify       | Payments   | The store in the app — products, orders, and shop data                                                    |
+| resend                | [Resend](https://github.com/resend/resend-skills)                        | Resend        | Messaging  | Send email from the app — transactional mail and templates                                                |
+| cal-com               | [Cal.com](marketplace/scheduling/cal-com)                                | Cal.com       | Scheduling | Let people book time — event types and a scheduler in the app                                             |
+| calendly              | [Calendly](marketplace/scheduling/calendly)                              | Calendly      | Scheduling | Scheduling links and a Calendly embed so people book themselves                                           |
+| booking               | [Booking](marketplace/scheduling/booking)                                | Reforma       | Scheduling | Book a call, pick a slot, or show an event calendar — no third-party account                              |
+| figma                 | [Figma](marketplace/design/figma)                                        | Figma         | Design     | Turn Figma frames into code for the project                                                               |
+| google-maps           | [Google Maps](marketplace/maps/google-maps)                              | Google        | Maps       | Maps in the app — places, routes, and what’s nearby                                                       |
+| mapbox                | [Mapbox](https://github.com/mapbox/mapbox-agent-skills)                  | Mapbox        | Maps       | Custom maps — your style, search, and location in the app                                                 |
+| posthog               | [PostHog](marketplace/analytics/posthog)                                 | PostHog       | Analytics  | Product analytics — events, funnels, and session replay                                                   |
+| amplitude             | [Amplitude](marketplace/analytics/amplitude)                             | Amplitude     | Analytics  | Product analytics — events and charts so you see what people do                                           |
+| sanity                | [Sanity](marketplace/cms/sanity)                                         | Sanity        | CMS        | Structured content editors can change and the app can render                                              |
+| zapier                | [Zapier](marketplace/automation/zapier)                                  | Zapier        | Automation | Connect the app to thousands of other tools without writing each integration                              |
+| composio              | [Composio](marketplace/automation/composio)                              | Composio      | Automation | A hub of app connections — Gmail, Notion, Slack, and the rest of the stack                                |
+| make                  | [Make](marketplace/automation/make)                                      | Make          | Automation | Visual automations from Make — run scenarios and use the results in the app                               |
 
-Author is `plugin.json` `author.name` when present, else Reforma. Shelf is the parent `categories[]` entry — `plugin.json` has no `category`.
+Author is `plugin.json` `author.name` when present, else Reforma. Shelf is the parent `categories[]` entry — `plugin.json` has no `category`. `description` is the marketplace pitch: what the product is for the person installing it. Not MCP verbs, not “needs an API key.”
 
 ## Repository structure
 
 Root `marketplace.json` lists plugins under `categories[].plugins`. `source` is a path in this repo or a GitHub `tree/…` URL. `"disabled": true` skips pack (folder stays) when the hosted MCP only accepts catalog clients (Figma waitlist). OAuth apps you register yourself (Drive, Dropbox, Slack, GitHub) stay enabled — credentials go in IN → OAuth clients, not here.
 
-Local plugins live under `marketplace/<category>/<name>/`. Origin (first-party vs vendored) is `plugin.json` `author`, not the folder tree. Remote pins stay as GitHub URLs. Array order is section order; empty shelves omit `plugins`.
+Local plugins live under `marketplace/<category>/<name>/`. Origin (first-party vs vendored) is `plugin.json` `author`, not the folder tree. Remote pins stay as GitHub URLs. Optional `displayName` / `description` on the listing, plus `marketplace/_brand/<name>/logo.*`, overlay the packed manifest — upstream Cursor plugins often ship repo-slug names and “plugin for Cursor” blurbs.
 
 ```
 plugins/
 ├── marketplace.json                 # categories + plugin index
+├── marketplace/_brand/<name>/       # overlay logos for GitHub pins
 ├── marketplace/<category>/<name>/
 └── scripts/pack/                    # snapshot for the API (entry: scripts/pack.ts)
 ```
@@ -96,8 +97,6 @@ marketplace/<category>/<name>/
 ├── assets/logo.svg
 └── …convention folders (skills/, rules/, hooks/, …)
 ```
-
-Other plugin layouts (skills, hooks, tools, MCP) follow the same convention folders as demos — see [demo-kit](marketplace/demo/demo-kit).
 
 ```sh
 bun install

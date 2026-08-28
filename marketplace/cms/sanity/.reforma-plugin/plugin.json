@@ -1,9 +1,15 @@
 {
     "name": "sanity",
-    "description": "Read and edit content in the Sanity dataset.",
+    "description": "Structured content editors can change and the app can render",
     "author": {
         "name": "Sanity",
         "url": "https://www.sanity.io"
     },
-    "mcpServers": "./mcp.json"
+    "mcpServers": "./mcp.json",
+    "logo": "assets/logo.svg",
+    "interface": {
+        "displayName": "Sanity",
+        "brandColor": "#0D0E12",
+        "logo": "assets/logo.svg"
+    }
 }

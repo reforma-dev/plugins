@@ -19,9 +19,9 @@ Done when `/<defaultLocale>` and `/<other>` both render, `<html lang>` matches t
 1. `bun add next-intl`. If `package.json` / lockfile changed → **InstallDependencies**.
 2. Add the four files below. Locales = what the user named (BCP 47, e.g. `en`, `es`, `pt-BR`). Default = first / the one they called default. At least two locales.
 3. Wrap the **existing** `next.config.ts` with `createNextIntlPlugin('./i18n/request.ts')`. Keep `turbopack`, `typescript`, and every other key.
-4. Add root `middleware.ts`.
+4. Add root `proxy.ts`.
 5. Move route files (`layout.tsx`, `page.tsx`, and other `app/**/page.tsx` trees) under `app/[locale]/`. Leave `app/fonts/` and `app/tokens/` where they are. After the move, `app/layout.tsx` and `app/page.tsx` must not remain at the root — `[locale]/layout.tsx` is the `<html>` owner.
-6. Locale layout owns `<html lang={locale}>` (and `dir="rtl"` for `ar` / `he` / `fa` / `ur`), fonts, `Providers`, and `NextIntlClientProvider`. Call `setRequestLocale(locale)` after `hasLocale`. Export `generateStaticParams` from `routing.locales`.
+6. Locale layout owns `<html lang={locale}>` (and `dir="rtl"` for `ar` / `he` / `fa` / `ur`), fonts, `Providers`, and `NextIntlClientProvider`. `params` is a Promise — `const { locale } = await params`. Call `setRequestLocale(locale)` after `hasLocale`. Export `generateStaticParams` from `routing.locales`.
 7. Seed `messages/<locale>.json` for every locale. Same keys everywhere.
 
 ### `i18n/routing.ts`
@@ -65,7 +65,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
 });
 ```
 
-### `middleware.ts`
+### `proxy.ts`
 
 ```ts
 import createMiddleware from "next-intl/middleware";

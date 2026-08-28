@@ -1,9 +1,15 @@
 {
     "name": "make",
-    "description": "Run scenarios and look up data from connected Make apps.",
+    "description": "Visual automations from Make — run scenarios and use the results in the app",
     "author": {
         "name": "Make",
         "url": "https://www.make.com"
     },
-    "mcpServers": "./mcp.json"
+    "mcpServers": "./mcp.json",
+    "logo": "assets/logo.svg",
+    "interface": {
+        "displayName": "Make",
+        "brandColor": "#6D00CC",
+        "logo": "assets/logo.svg"
+    }
 }

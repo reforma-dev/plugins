@@ -1,6 +1,6 @@
 {
     "name": "google-maps",
-    "description": "Places, routes, and weather from Google Maps.",
+    "description": "Maps in the app — places, routes, and what’s nearby",
     "logo": "assets/logo.svg",
     "author": {
         "name": "Google",
@@ -9,7 +9,8 @@
     "homepage": "https://developers.google.com/maps/ai/grounding-lite",
     "interface": {
         "displayName": "Google Maps",
-        "brandColor": "#4285F4"
+        "brandColor": "#4285F4",
+        "logo": "assets/logo.svg"
     },
     "mcpServers": "./mcp.json",
     "variables": {
@@ -22,6 +23,8 @@
                 "placeholder": "AIza…"
             }
         },
-        "required": ["API_KEY"]
+        "required": [
+            "API_KEY"
+        ]
     }
 }

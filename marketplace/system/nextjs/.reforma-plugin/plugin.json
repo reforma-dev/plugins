@@ -1,0 +1,12 @@
+{
+    "name": "nextjs",
+    "description": "Next.js App Router — routing, layouts, and the conventions the project follows",
+    "system": true,
+    "logo": "assets/logo.svg",
+    "homepage": "https://nextjs.org/docs/app",
+    "interface": {
+        "displayName": "Next.js",
+        "brandColor": "#000000",
+        "logo": "assets/logo.svg"
+    }
+}

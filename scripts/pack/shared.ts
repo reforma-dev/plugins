@@ -46,6 +46,10 @@ export type MarketplaceListing = {
   name: string;
   source: string;
   category: string;
+  displayName?: string;
+  description?: string;
+  logo?: string;
+  brandColor?: string;
 };
 
 /** Nested `categories[].plugins` → flat listings. Shelf is the parent category. */
@@ -126,7 +130,15 @@ export function parseMarketplace(raw: unknown): {
       }
 
       packed.push({ name: plugin.name, source: plugin.source });
-      plugins.push({ name: plugin.name, source: plugin.source, category: id });
+      plugins.push({
+        name: plugin.name,
+        source: plugin.source,
+        category: id,
+        ...optionalListingField(plugin, "displayName"),
+        ...optionalListingField(plugin, "description"),
+        ...optionalListingField(plugin, "logo"),
+        ...optionalListingField(plugin, "brandColor"),
+      });
     }
 
     categories.push(
@@ -135,6 +147,23 @@ export function parseMarketplace(raw: unknown): {
   }
 
   return { categories, plugins, skipped };
+}
+
+function optionalListingField(
+  plugin: Record<string, unknown>,
+  key: "displayName" | "description" | "logo" | "brandColor",
+): Partial<Pick<MarketplaceListing, typeof key>> {
+  const value = plugin[key];
+
+  if (value === undefined) {
+    return {};
+  }
+
+  if (typeof value !== "string" || !value.trim()) {
+    throw new Error(`marketplace.json plugin ${plugin.name} ${key} must be a string`);
+  }
+
+  return { [key]: value.trim() };
 }
 
 export function asPathList(raw: unknown, label: string): string[] | undefined {

@@ -1,9 +1,15 @@
 {
     "name": "neon",
-    "description": "Postgres databases, branches, and SQL on Neon.",
+    "description": "Serverless Postgres — databases, branches, and SQL without running a server",
     "author": {
         "name": "Neon",
         "url": "https://neon.tech"
     },
-    "mcpServers": "./mcp.json"
+    "mcpServers": "./mcp.json",
+    "logo": "assets/logo.svg",
+    "interface": {
+        "displayName": "Neon",
+        "brandColor": "#00E599",
+        "logo": "assets/logo.svg"
+    }
 }
