@@ -1,6 +1,6 @@
 {
     "name": "caveman-mode",
-    "description": "Talk like a caveman. Joke voice — smash the work, then turn it off.",
+    "description": "Chat like a caveman — savage mouth, real work.",
     "logo": "assets/logo.svg",
     "interface": {
         "displayName": "Caveman",

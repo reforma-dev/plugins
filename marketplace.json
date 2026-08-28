@@ -39,8 +39,8 @@
                     "source": "./marketplace/moods/professor"
                 },
                 {
-                    "name": "hype-man",
-                    "source": "./marketplace/moods/hype-man"
+                    "name": "founder",
+                    "source": "./marketplace/moods/founder"
                 },
                 {
                     "name": "caveman-mode",
