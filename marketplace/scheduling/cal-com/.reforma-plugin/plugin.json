@@ -1,6 +1,6 @@
 {
     "name": "cal-com",
-    "description": "Bookings, event types, and a booker widget from Cal.com.",
+    "description": "Let people book time — event types and a scheduler in the app",
     "logo": "assets/logo.svg",
     "author": {
         "name": "Cal.com",
@@ -9,7 +9,8 @@
     "homepage": "https://cal.com/docs/mcp-server",
     "interface": {
         "displayName": "Cal.com",
-        "brandColor": "#292929"
+        "brandColor": "#292929",
+        "logo": "assets/logo.svg"
     },
     "mcpServers": "./mcp.json"
 }

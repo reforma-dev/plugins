@@ -1,9 +1,15 @@
 {
     "name": "workos",
-    "description": "Sign-in, SSO, and user management with WorkOS.",
+    "description": "SSO and user management for B2B apps — enterprise sign-in without building it",
     "author": {
         "name": "WorkOS",
         "url": "https://workos.com"
     },
-    "mcpServers": "./mcp.json"
+    "mcpServers": "./mcp.json",
+    "logo": "assets/logo.png",
+    "interface": {
+        "displayName": "WorkOS",
+        "brandColor": "#6366F1",
+        "logo": "assets/logo.png"
+    }
 }

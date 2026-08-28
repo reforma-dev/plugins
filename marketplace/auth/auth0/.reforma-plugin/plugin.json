@@ -1,9 +1,15 @@
 {
     "name": "auth0",
-    "description": "Sign-in and user management with Auth0.",
+    "description": "Sign-in and user accounts, including social login and enterprise identity",
     "author": {
         "name": "Auth0",
         "url": "https://auth0.com"
     },
-    "mcpServers": "./mcp.json"
+    "mcpServers": "./mcp.json",
+    "logo": "assets/logo.svg",
+    "interface": {
+        "displayName": "Auth0",
+        "brandColor": "#EB5424",
+        "logo": "assets/logo.svg"
+    }
 }

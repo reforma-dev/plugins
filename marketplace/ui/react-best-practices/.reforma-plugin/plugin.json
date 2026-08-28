@@ -1,6 +1,6 @@
 {
     "name": "react-best-practices",
-    "description": "React and Next.js performance patterns for the app.",
+    "description": "Keep the app fast — React and Next.js performance patterns",
     "logo": "assets/logo.svg",
     "author": {
         "name": "Vercel",

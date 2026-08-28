@@ -1,6 +1,6 @@
 {
     "name": "fal",
-    "description": "Generate images, video, and audio from fal models.",
+    "description": "Generate images, video, and audio from a wide set of models",
     "author": {
         "name": "fal",
         "url": "https://fal.ai"
@@ -16,6 +16,14 @@
                 "placeholder": "key-…"
             }
         },
-        "required": ["API_KEY"]
+        "required": [
+            "API_KEY"
+        ]
+    },
+    "logo": "assets/logo.png",
+    "interface": {
+        "displayName": "fal",
+        "brandColor": "#F5C0D5",
+        "logo": "assets/logo.png"
     }
 }

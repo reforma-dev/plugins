@@ -1,6 +1,6 @@
 {
     "name": "tailark",
-    "description": "Marketing blocks and pages on top of shadcn.",
+    "description": "Marketing landing blocks and pages — heroes, pricing, footers",
     "logo": "assets/logo.svg",
     "author": {
         "name": "Tailark"
@@ -8,6 +8,7 @@
     "homepage": "https://tailark.com",
     "interface": {
         "displayName": "Tailark",
-        "brandColor": "#9FA87F"
+        "brandColor": "#9FA87F",
+        "logo": "assets/logo.svg"
     }
 }

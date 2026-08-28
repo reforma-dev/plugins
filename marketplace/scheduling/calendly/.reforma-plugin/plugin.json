@@ -1,6 +1,6 @@
 {
     "name": "calendly",
-    "description": "Scheduling links, availability, and a Calendly embed for the app.",
+    "description": "Scheduling links and a Calendly embed so people book themselves",
     "logo": "assets/logo.svg",
     "author": {
         "name": "Calendly",
@@ -9,7 +9,8 @@
     "homepage": "https://developer.calendly.com/calendly-mcp-server",
     "interface": {
         "displayName": "Calendly",
-        "brandColor": "#006BFF"
+        "brandColor": "#006BFF",
+        "logo": "assets/logo.svg"
     },
     "mcpServers": "./mcp.json"
 }

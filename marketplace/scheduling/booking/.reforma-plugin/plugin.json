@@ -1,6 +1,6 @@
 {
     "name": "booking",
-    "description": "Book a call, pick slots, or show an event calendar in the app.",
+    "description": "Book a call, pick a slot, or show an event calendar — no third-party account",
     "logo": "assets/logo.svg",
     "author": {
         "name": "Reforma"

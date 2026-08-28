@@ -1,10 +1,15 @@
 {
     "name": "github-mcp",
-    "description": "Search issues, pull requests, and code in GitHub repositories.",
+    "description": "GitHub in the project — issues, pull requests, and the repo",
     "author": {
         "name": "GitHub",
         "url": "https://github.com"
     },
     "logo": "assets/logo.svg",
-    "mcpServers": "./mcp.json"
+    "mcpServers": "./mcp.json",
+    "interface": {
+        "displayName": "GitHub",
+        "brandColor": "#181717",
+        "logo": "assets/logo.svg"
+    }
 }

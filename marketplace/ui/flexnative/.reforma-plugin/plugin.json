@@ -1,7 +1,7 @@
 {
     "name": "flexnative",
-    "description": "Ready-made blocks and patterns on top of shadcn.",
-    "logo": "assets/logo.svg",
+    "description": "Ready-made page blocks and patterns — drop in a section instead of assembling it",
+    "logo": "assets/logo.png",
     "author": {
         "name": "Flexnative"
     },
@@ -10,6 +10,7 @@
     "license": "AGPL-3.0",
     "interface": {
         "displayName": "Flexnative",
-        "brandColor": "#0A0A0A"
+        "brandColor": "#0A0A0A",
+        "logo": "assets/logo.png"
     }
 }

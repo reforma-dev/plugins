@@ -5,7 +5,7 @@
       "headers": {
         "x-api-key": "${API_KEY}"
       },
-      "description": "Search, install, and generate UI from the 21st.dev catalog."
+      "description": "Find components, templates, and themes, add them to the project, or generate new UI"
     }
   }
 }

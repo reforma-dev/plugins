@@ -1,10 +1,15 @@
 {
     "name": "elevenlabs",
-    "description": "Generate speech and manage voices in ElevenLabs.",
+    "description": "Voice for the app — generate speech and pick the voice",
     "author": {
         "name": "ElevenLabs",
         "url": "https://elevenlabs.io"
     },
     "logo": "assets/logo.svg",
-    "mcpServers": "./mcp.json"
+    "mcpServers": "./mcp.json",
+    "interface": {
+        "displayName": "ElevenLabs",
+        "brandColor": "#000000",
+        "logo": "assets/logo.svg"
+    }
 }

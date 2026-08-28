@@ -1,7 +1,13 @@
 {
     "name": "i18n",
-    "description": "Locales, translated copy, and language switching for the app.",
+    "description": "Multiple languages — translated copy and a language switcher for the app",
     "author": {
         "name": "Reforma"
+    },
+    "logo": "assets/logo.svg",
+    "interface": {
+        "displayName": "i18n",
+        "brandColor": "#1D4ED8",
+        "logo": "assets/logo.svg"
     }
 }

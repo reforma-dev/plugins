@@ -50,4 +50,45 @@ describe("parseMarketplace", () => {
       }),
     ).toThrow(/disabled must be true/);
   });
+
+  it("keeps displayName and description on the listing, not in packed categories", () => {
+    const parsed = parseMarketplace({
+      categories: [
+        {
+          id: "ui",
+          name: "UI",
+          plugins: [
+            {
+              name: "gsap",
+              source: "https://github.com/greensock/gsap-skills/tree/abc",
+              displayName: "GSAP",
+              description: "Animation timelines.",
+            },
+          ],
+        },
+      ],
+    });
+
+    expect(parsed.plugins).toEqual([
+      {
+        name: "gsap",
+        source: "https://github.com/greensock/gsap-skills/tree/abc",
+        category: "ui",
+        displayName: "GSAP",
+        description: "Animation timelines.",
+      },
+    ]);
+    expect(parsed.categories).toEqual([
+      {
+        id: "ui",
+        name: "UI",
+        plugins: [
+          {
+            name: "gsap",
+            source: "https://github.com/greensock/gsap-skills/tree/abc",
+          },
+        ],
+      },
+    ]);
+  });
 });

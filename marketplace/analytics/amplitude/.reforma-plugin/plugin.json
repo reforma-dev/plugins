@@ -1,9 +1,15 @@
 {
     "name": "amplitude",
-    "description": "Events and charts from the Amplitude project.",
+    "description": "Product analytics — events and charts so you see what people do",
     "author": {
         "name": "Amplitude",
         "url": "https://amplitude.com"
     },
-    "mcpServers": "./mcp.json"
+    "mcpServers": "./mcp.json",
+    "logo": "assets/logo.png",
+    "interface": {
+        "displayName": "Amplitude",
+        "brandColor": "#1E61ED",
+        "logo": "assets/logo.png"
+    }
 }

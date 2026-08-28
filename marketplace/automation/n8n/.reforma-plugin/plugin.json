@@ -1,9 +1,15 @@
 {
     "name": "n8n",
-    "description": "Run workflows and look up data from connected n8n apps.",
+    "description": "Workflows you host yourself — run them and use the results in the app",
     "author": {
         "name": "n8n",
         "url": "https://n8n.io"
     },
-    "mcpServers": "./mcp.json"
+    "mcpServers": "./mcp.json",
+    "logo": "assets/logo.svg",
+    "interface": {
+        "displayName": "n8n",
+        "brandColor": "#EA4B71",
+        "logo": "assets/logo.svg"
+    }
 }

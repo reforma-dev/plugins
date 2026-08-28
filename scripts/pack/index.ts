@@ -18,36 +18,33 @@ import {
 import { fetchGithubTree } from "./github.ts";
 import { normalizePluginHooks } from "./hooks.ts";
 import { normalizePluginLayout } from "./layout.ts";
-import { normalizePluginLogos } from "./logos.ts";
+import { normalizePluginLogos, applyCatalogOverlay } from "./logos.ts";
 import { discoverMcpTools } from "./mcp-tools.ts";
-import { OUT, ROOT, TAR, parseMarketplace } from "./shared.ts";
+import { OUT, ROOT, TAR, parseMarketplace, type MarketplaceListing } from "./shared.ts";
 import { logCatalogSummary } from "./summary.ts";
 import { normalizePluginTools } from "./tools.ts";
 
-async function packPlugin(
-  name: string,
-  source: string,
-  category: string,
-): Promise<void> {
-  const dest = join(OUT, name);
+async function packPlugin(listing: MarketplaceListing): Promise<void> {
+  const dest = join(OUT, listing.name);
 
-  if (/^https?:\/\//i.test(source)) {
-    await fetchGithubTree(source, dest);
+  if (/^https?:\/\//i.test(listing.source)) {
+    await fetchGithubTree(listing.source, dest);
     normalizePluginLayout(dest);
     normalizePluginContentPaths(dest);
     normalizePluginHooks(dest);
     await normalizePluginTools(dest);
+    applyCatalogOverlay(dest, listing);
     await normalizePluginLogos(dest);
     await discoverMcpTools(dest);
-    stampPluginCategory(dest, category);
+    stampPluginCategory(dest, listing.category);
 
     return;
   }
 
-  const from = resolve(ROOT, source);
+  const from = resolve(ROOT, listing.source);
 
   if (!existsSync(from)) {
-    throw new Error(`Plugin source missing: ${source}`);
+    throw new Error(`Plugin source missing: ${listing.source}`);
   }
 
   mkdirSync(dest, { recursive: true });
@@ -56,9 +53,10 @@ async function packPlugin(
   normalizePluginContentPaths(dest);
   normalizePluginHooks(dest);
   await normalizePluginTools(dest);
+  applyCatalogOverlay(dest, listing);
   await normalizePluginLogos(dest);
   await discoverMcpTools(dest);
-  stampPluginCategory(dest, category);
+  stampPluginCategory(dest, listing.category);
 }
 
 const raw = JSON.parse(
@@ -75,7 +73,7 @@ for (const name of marketplace.skipped) {
 
 for (const plugin of marketplace.plugins) {
   console.log(`pack ${plugin.name} ← ${plugin.source}`);
-  await packPlugin(plugin.name, plugin.source, plugin.category);
+  await packPlugin(plugin);
 }
 
 writeFileSync(

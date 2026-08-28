@@ -1,9 +1,10 @@
 {
     "name": "context7",
-    "description": "Up-to-date library docs and examples. Needs an API key.",
+    "description": "Current docs and examples for the libraries in the project",
     "logo": "assets/logo.svg",
     "interface": {
-        "brandColor": "#000000"
+        "brandColor": "#000000",
+        "displayName": "Context7"
     },
     "mcpServers": "./mcp.json",
     "variables": {
@@ -16,6 +17,8 @@
                 "placeholder": "ctx7sk-…"
             }
         },
-        "required": ["API_KEY"]
+        "required": [
+            "API_KEY"
+        ]
     }
 }

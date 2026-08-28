@@ -1,6 +1,6 @@
 {
     "name": "web-design-guidelines",
-    "description": "Accessibility, forms, and focus checks for the app UI.",
+    "description": "Catch accessibility, form, and focus issues before they ship",
     "logo": "assets/logo.svg",
     "author": {
         "name": "Vercel",

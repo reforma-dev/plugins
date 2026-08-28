@@ -1,7 +1,7 @@
 {
     "name": "21st",
-    "description": "Search and install UI from the 21st catalog. Needs an API key.",
-    "logo": "assets/logo.svg",
+    "description": "A living library of React components, templates, and themes. Add them to the project, or generate new UI.",
+    "logo": "assets/logo.png",
     "author": {
         "name": "21st",
         "url": "https://21st.dev"
@@ -9,7 +9,8 @@
     "homepage": "https://21st.dev/mcp",
     "interface": {
         "displayName": "21st",
-        "brandColor": "#0A0A0A"
+        "brandColor": "#2B59FF",
+        "logo": "assets/logo.png"
     },
     "mcpServers": "./mcp.json",
     "variables": {
@@ -22,6 +23,8 @@
                 "placeholder": "21st_sk_…"
             }
         },
-        "required": ["API_KEY"]
+        "required": [
+            "API_KEY"
+        ]
     }
 }

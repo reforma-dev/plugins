@@ -1,10 +1,14 @@
 {
     "name": "cloudinary",
-    "description": "Upload, transform, and deliver images and videos from Cloudinary.",
+    "description": "Images and video in the cloud — upload, transform, and deliver them",
     "logo": "assets/logo.svg",
     "author": {
         "name": "Cloudinary",
         "url": "https://cloudinary.com"
     },
-    "mcpServers": "./mcp.json"
+    "mcpServers": "./mcp.json",
+    "interface": {
+        "displayName": "Cloudinary",
+        "brandColor": "#3448C5"
+    }
 }
