@@ -9,6 +9,9 @@
     "homepage": "https://github.com/anthropics/skills/tree/main/skills/frontend-design",
     "repository": "https://github.com/anthropics/skills",
     "license": "Apache-2.0",
+    "agent": {
+        "discover": true
+    },
     "interface": {
         "displayName": "Frontend Design",
         "brandColor": "#000000"

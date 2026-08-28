@@ -6,6 +6,10 @@
         "name": "Aceternity"
     },
     "homepage": "https://ui.aceternity.com",
+    "agent": {
+        "discover": true,
+        "installApproval": false
+    },
     "interface": {
         "displayName": "Aceternity",
         "brandColor": "#000000",

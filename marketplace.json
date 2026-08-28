@@ -63,6 +63,14 @@
                 {
                     "name": "frontend-design",
                     "source": "./marketplace/playbooks/frontend-design"
+                },
+                {
+                    "name": "booking",
+                    "source": "./marketplace/playbooks/booking"
+                },
+                {
+                    "name": "i18n",
+                    "source": "./marketplace/playbooks/i18n"
                 }
             ]
         },
@@ -114,10 +122,6 @@
                     "displayName": "Remotion",
                     "description": "Videos and motion graphics, written in React",
                     "brandColor": "#000000"
-                },
-                {
-                    "name": "i18n",
-                    "source": "./marketplace/ui/i18n"
                 }
             ]
         },
@@ -235,10 +239,6 @@
                 {
                     "name": "calendly",
                     "source": "./marketplace/scheduling/calendly"
-                },
-                {
-                    "name": "booking",
-                    "source": "./marketplace/scheduling/booking"
                 }
             ]
         },
@@ -379,7 +379,7 @@
                     "source": "./marketplace/workspace/context7"
                 },
                 {
-                    "name": "notion-workspace",
+                    "name": "notion",
                     "source": "https://github.com/makenotion/cursor-notion-plugin/tree/cf1324609edba6d617164f1dec138aeb43f26735",
                     "displayName": "Notion",
                     "description": "The team’s Notion — notes, pages, and databases in the project",
@@ -397,7 +397,7 @@
                     "source": "./marketplace/workspace/slack"
                 },
                 {
-                    "name": "github-mcp",
+                    "name": "github",
                     "source": "./marketplace/workspace/github-mcp"
                 }
             ]

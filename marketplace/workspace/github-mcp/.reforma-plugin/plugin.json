@@ -1,5 +1,5 @@
 {
-    "name": "github-mcp",
+    "name": "github",
     "description": "GitHub in the project — issues, pull requests, and the repo",
     "author": {
         "name": "GitHub",
@@ -7,9 +7,12 @@
     },
     "logo": "assets/logo.svg",
     "mcpServers": "./mcp.json",
+    "agent": {
+        "discover": true
+    },
     "interface": {
         "displayName": "GitHub",
-        "brandColor": "#FFFFFF"
+        "brandColor": "#FFFFFF",
         "logo": "assets/logo.svg"
     }
 }
