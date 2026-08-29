@@ -1,24 +1,6 @@
 {
     "categories": [
         {
-            "id": "system",
-            "name": "System",
-            "plugins": [
-                {
-                    "name": "shadcn-tailwind",
-                    "source": "./marketplace/system/shadcn-tailwind"
-                },
-                {
-                    "name": "visuals",
-                    "source": "./marketplace/system/visuals"
-                },
-                {
-                    "name": "nextjs",
-                    "source": "./marketplace/system/nextjs"
-                }
-            ]
-        },
-        {
             "id": "moods",
             "name": "Moods",
             "plugins": [
