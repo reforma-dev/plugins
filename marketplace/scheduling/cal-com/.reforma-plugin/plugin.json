@@ -10,7 +10,9 @@
     "interface": {
         "displayName": "Cal.com",
         "brandColor": "#000000",
-        "logo": "assets/logo.svg"
+        "logo": "assets/logo.svg",
+        "logoSmall": "assets/logo-small.svg"
     },
-    "mcpServers": "./mcp.json"
+    "mcpServers": "./mcp.json",
+    "logoSmall": "assets/logo-small.svg"
 }

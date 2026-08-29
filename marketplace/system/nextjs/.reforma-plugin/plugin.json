@@ -7,6 +7,8 @@
     "interface": {
         "displayName": "Next.js",
         "brandColor": "#000000",
-        "logo": "assets/logo.svg"
-    }
+        "logo": "assets/logo.svg",
+        "logoSmall": "assets/logo-small.svg"
+    },
+    "logoSmall": "assets/logo-small.svg"
 }

@@ -10,6 +10,8 @@
     "mcpServers": "./mcp.json",
     "interface": {
         "displayName": "Clerk",
-        "brandColor": "#131316"
-    }
+        "brandColor": "#131316",
+        "logoSmall": "assets/logo-small.svg"
+    },
+    "logoSmall": "assets/logo-small.svg"
 }

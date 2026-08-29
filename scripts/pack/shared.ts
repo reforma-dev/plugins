@@ -49,6 +49,7 @@ export type MarketplaceListing = {
   displayName?: string;
   description?: string;
   logo?: string;
+  logoSmall?: string;
   brandColor?: string;
 };
 
@@ -137,6 +138,7 @@ export function parseMarketplace(raw: unknown): {
         ...optionalListingField(plugin, "displayName"),
         ...optionalListingField(plugin, "description"),
         ...optionalListingField(plugin, "logo"),
+        ...optionalListingField(plugin, "logoSmall"),
         ...optionalListingField(plugin, "brandColor"),
       });
     }
@@ -151,7 +153,7 @@ export function parseMarketplace(raw: unknown): {
 
 function optionalListingField(
   plugin: Record<string, unknown>,
-  key: "displayName" | "description" | "logo" | "brandColor",
+  key: "displayName" | "description" | "logo" | "logoSmall" | "brandColor",
 ): Partial<Pick<MarketplaceListing, typeof key>> {
   const value = plugin[key];
 

@@ -5,11 +5,13 @@
     "homepage": "https://context7.com/docs/howto/oauth",
     "interface": {
         "brandColor": "#000000",
-        "displayName": "Context7"
+        "displayName": "Context7",
+        "logoSmall": "assets/logo-small.svg"
     },
     "mcpServers": "./mcp.json",
     "agent": {
         "discover": true,
         "installApproval": false
-    }
+    },
+    "logoSmall": "assets/logo-small.svg"
 }

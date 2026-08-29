@@ -14,6 +14,8 @@
     },
     "interface": {
         "displayName": "coss",
-        "brandColor": "#111111"
-    }
+        "brandColor": "#111111",
+        "logoSmall": "assets/logo-small.svg"
+    },
+    "logoSmall": "assets/logo-small.svg"
 }

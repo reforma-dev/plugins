@@ -14,6 +14,8 @@
     },
     "interface": {
         "displayName": "Frontend Design",
-        "brandColor": "#000000"
-    }
+        "brandColor": "#000000",
+        "logoSmall": "assets/logo-small.svg"
+    },
+    "logoSmall": "assets/logo-small.svg"
 }

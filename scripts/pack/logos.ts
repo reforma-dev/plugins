@@ -112,7 +112,7 @@ export async function materializeLogo(
 
 export function readLogoFields(json: Record<string, unknown>): {
   logo?: string;
-  logoDark?: string;
+  logoSmall?: string;
 } {
   const iface = isRecord(json.interface) ? json.interface : undefined;
 
@@ -123,11 +123,11 @@ export function readLogoFields(json: Record<string, unknown>): {
         : typeof iface?.logo === "string"
           ? iface.logo
           : undefined,
-    logoDark:
-      typeof json.logoDark === "string"
-        ? json.logoDark
-        : typeof iface?.logoDark === "string"
-          ? iface.logoDark
+    logoSmall:
+      typeof json.logoSmall === "string"
+        ? json.logoSmall
+        : typeof iface?.logoSmall === "string"
+          ? iface.logoSmall
           : undefined,
   };
 }
@@ -135,14 +135,28 @@ export function readLogoFields(json: Record<string, unknown>): {
 export function writeLogoFields(
   json: Record<string, unknown>,
   logo: string,
-  logoDark: string,
+  logoSmall?: string,
 ): void {
   json.logo = logo;
-  json.logoDark = logoDark;
 
   if (isRecord(json.interface)) {
     json.interface.logo = logo;
-    json.interface.logoDark = logoDark;
+  }
+
+  if (logoSmall && logoSmall !== logo) {
+    json.logoSmall = logoSmall;
+
+    if (isRecord(json.interface)) {
+      json.interface.logoSmall = logoSmall;
+    }
+
+    return;
+  }
+
+  delete json.logoSmall;
+
+  if (isRecord(json.interface)) {
+    delete json.interface.logoSmall;
   }
 }
 
@@ -166,37 +180,39 @@ export async function normalizePluginLogos(pluginDir: string): Promise<void> {
   }
 
   const logo = await materializeLogo(pluginDir, fields.logo, "logo");
-  const logoDark =
-    fields.logoDark && fields.logoDark !== fields.logo
-      ? await materializeLogo(pluginDir, fields.logoDark, "logo-dark")
-      : logo;
+  const logoSmall =
+    fields.logoSmall && fields.logoSmall !== fields.logo
+      ? await materializeLogo(pluginDir, fields.logoSmall, "logo-small")
+      : undefined;
 
   if (!logo) {
     delete json.logo;
-    delete json.logoDark;
+    delete json.logoSmall;
 
     if (isRecord(json.interface)) {
       delete json.interface.logo;
-      delete json.interface.logoDark;
+      delete json.interface.logoSmall;
     }
 
     writeFileSync(manifestPath, `${JSON.stringify(json, null, 4)}\n`);
     return;
   }
 
-  writeLogoFields(json, logo, logoDark ?? logo);
+  writeLogoFields(json, logo, logoSmall);
   writeFileSync(manifestPath, `${JSON.stringify(json, null, 4)}\n`);
 }
 
-function listingBrandLogo(name: string): string | undefined {
+function listingBrandFile(name: string, stem: string): string | undefined {
   const dir = join(ROOT, "marketplace/_brand", name);
 
   if (!existsSync(dir)) {
     return undefined;
   }
 
+  const prefix = `${stem}.`;
+
   for (const file of readdirSync(dir)) {
-    if (file.startsWith("logo.") && LOGO_EXT.has(extOf(file))) {
+    if (file.startsWith(prefix) && LOGO_EXT.has(extOf(file))) {
       return join(dir, file);
     }
   }
@@ -204,9 +220,50 @@ function listingBrandLogo(name: string): string | undefined {
   return undefined;
 }
 
+function overlayLogo(
+  pluginDir: string,
+  listingValue: string | undefined,
+  name: string,
+  stem: string,
+): string | undefined {
+  const http =
+    listingValue && /^https?:\/\//i.test(listingValue)
+      ? listingValue
+      : undefined;
+  const fromListing =
+    listingValue && !http ? join(ROOT, listingValue) : undefined;
+  const file = fromListing ?? (http ? undefined : listingBrandFile(name, stem));
+
+  if (http) {
+    return http;
+  }
+
+  if (!file) {
+    return undefined;
+  }
+
+  if (!existsSync(file)) {
+    throw new Error(`overlay ${stem} missing ${file}`);
+  }
+
+  const ext = extOf(file);
+
+  if (!LOGO_EXT.has(ext)) {
+    throw new Error(`unsupported overlay ${stem} ${file}`);
+  }
+
+  const suffix = extname(file).toLowerCase() === ".jpeg" ? ".jpg" : extname(file).toLowerCase();
+  const rel = `assets/${stem}${suffix}`;
+
+  mkdirSync(join(pluginDir, "assets"), { recursive: true });
+  cpSync(file, join(pluginDir, rel));
+
+  return rel;
+}
+
 function stampInterface(
   json: Record<string, unknown>,
-  patch: { displayName?: string; brandColor?: string; logo?: string },
+  patch: { displayName?: string; brandColor?: string; logo?: string; logoSmall?: string },
 ): void {
   const iface = isRecord(json.interface) ? json.interface : {};
 
@@ -222,10 +279,14 @@ function stampInterface(
     iface.logo = patch.logo;
   }
 
+  if (patch.logoSmall) {
+    iface.logoSmall = patch.logoSmall;
+  }
+
   json.interface = iface;
 }
 
-/** Overlay display name, description, and logo from marketplace.json / `_brand`. */
+/** Overlay display name, description, and logos from marketplace.json / `_brand`. */
 export function applyCatalogOverlay(
   pluginDir: string,
   listing: MarketplaceListing,
@@ -242,38 +303,20 @@ export function applyCatalogOverlay(
     throw new Error(`invalid plugin.json ${manifestPath}`);
   }
 
-  const httpLogo =
-    listing.logo && /^https?:\/\//i.test(listing.logo)
-      ? listing.logo
-      : undefined;
-  const fromListing =
-    listing.logo && !httpLogo ? join(ROOT, listing.logo) : undefined;
-  const file = fromListing ?? (httpLogo ? undefined : listingBrandLogo(listing.name));
-  let logo = httpLogo;
-
-  if (file) {
-    if (!existsSync(file)) {
-      throw new Error(`overlay logo missing ${file}`);
-    }
-
-    const ext = extOf(file);
-
-    if (!LOGO_EXT.has(ext)) {
-      throw new Error(`unsupported overlay logo ${file}`);
-    }
-
-    const rel = `assets/logo${extname(file).toLowerCase() === ".jpeg" ? ".jpg" : extname(file).toLowerCase()}`;
-
-    mkdirSync(join(pluginDir, "assets"), { recursive: true });
-    cpSync(file, join(pluginDir, rel));
-    logo = rel;
-  }
+  const logo = overlayLogo(pluginDir, listing.logo, listing.name, "logo");
+  const logoSmall = overlayLogo(
+    pluginDir,
+    listing.logoSmall,
+    listing.name,
+    "logo-small",
+  );
 
   if (
     !listing.displayName &&
     !listing.description &&
     !listing.brandColor &&
-    !logo
+    !logo &&
+    !logoSmall
   ) {
     return;
   }
@@ -293,6 +336,11 @@ export function applyCatalogOverlay(
   if (logo) {
     json.logo = logo;
     stampInterface(json, { logo });
+  }
+
+  if (logoSmall) {
+    json.logoSmall = logoSmall;
+    stampInterface(json, { logoSmall });
   }
 
   writeFileSync(manifestPath, `${JSON.stringify(json, null, 4)}\n`);

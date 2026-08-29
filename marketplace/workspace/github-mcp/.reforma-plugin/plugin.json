@@ -13,6 +13,8 @@
     "interface": {
         "displayName": "GitHub",
         "brandColor": "#FFFFFF",
-        "logo": "assets/logo.svg"
-    }
+        "logo": "assets/logo.svg",
+        "logoSmall": "assets/logo-small.svg"
+    },
+    "logoSmall": "assets/logo-small.svg"
 }
