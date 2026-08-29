@@ -16,7 +16,7 @@ Some items on the site are paid. Install only names the registry actually return
 
 ## Register
 
-The **Install** hook writes `@aceternity` into `components.json`. If that key is missing, add `@aceternity` → `https://ui.aceternity.com/registry/{name}.json`, then continue.
+The **Install** hook runs `bunx shadcn registry add`. If `@aceternity` is missing, run `bunx shadcn registry add '@aceternity=https://ui.aceternity.com/registry/{name}.json'`, then continue.
 
 ## Find
 

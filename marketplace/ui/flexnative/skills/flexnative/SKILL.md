@@ -14,7 +14,7 @@ Registry: `@flx` → `https://ui.flexnative.com/r/{name}.json`. Browse: `https:/
 
 ## Register
 
-The **Install** hook writes `@flx` into `components.json`. If that key is missing, add `@flx` → `https://ui.flexnative.com/r/{name}.json`, then continue.
+The **Install** hook runs `bunx shadcn registry add`. If `@flx` is missing, run `bunx shadcn registry add '@flx=https://ui.flexnative.com/r/{name}.json'`, then continue.
 
 ## Find
 

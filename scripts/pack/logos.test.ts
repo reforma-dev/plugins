@@ -83,4 +83,32 @@ describe("applyCatalogOverlay", () => {
       interface: { logo: "https://stripe.com/favicon.ico" },
     });
   });
+
+  it("stamps logoSmall from the listing", () => {
+    const dir = mkdtempSync(join(tmpdir(), "overlay-"));
+    const pluginDir = join(dir, "gsap");
+
+    dirs.push(dir);
+    mkdirSync(join(pluginDir, ".reforma-plugin"), { recursive: true });
+    writeFileSync(
+      join(pluginDir, ".reforma-plugin/plugin.json"),
+      `${JSON.stringify({ name: "gsap-skills" }, null, 4)}\n`,
+    );
+
+    applyCatalogOverlay(pluginDir, {
+      name: "gsap",
+      source: "https://github.com/greensock/gsap-skills/tree/abc",
+      category: "ui",
+      logoSmall: "https://example.com/gsap-small.svg",
+    });
+
+    expect(
+      JSON.parse(
+        readFileSync(join(pluginDir, ".reforma-plugin/plugin.json"), "utf8"),
+      ),
+    ).toMatchObject({
+      logoSmall: "https://example.com/gsap-small.svg",
+      interface: { logoSmall: "https://example.com/gsap-small.svg" },
+    });
+  });
 });

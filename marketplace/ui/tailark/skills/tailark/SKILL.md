@@ -21,7 +21,7 @@ Paid Quartz content is a separate namespace (`@tailark` → `https://tailark.com
 
 ## Register
 
-The **Install** hook writes `@tailark-oss` into `components.json`. If that key is missing, add `@tailark-oss` → `https://oss.tailark.com/r/{name}.json`, then continue.
+The **Install** hook runs `bunx shadcn registry add`. If `@tailark-oss` is missing, run `bunx shadcn registry add '@tailark-oss=https://oss.tailark.com/r/{name}.json'`, then continue.
 
 ## Find
 

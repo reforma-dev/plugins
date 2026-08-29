@@ -78,7 +78,7 @@ Author is `plugin.json` `author.name` when present, else Reforma. Shelf is the p
 
 Root `marketplace.json` lists plugins under `categories[].plugins`. `source` is a path in this repo or a GitHub `tree/…` URL. `"disabled": true` skips pack (folder stays) when the hosted MCP only accepts catalog clients (Figma waitlist). OAuth apps you register yourself (Drive, Dropbox, Slack, GitHub) stay enabled — credentials go in IN → OAuth clients, not here.
 
-Local plugins live under `marketplace/<category>/<name>/`. Origin (first-party vs vendored) is `plugin.json` `author`, not the folder tree. Remote pins stay as GitHub URLs. Optional `displayName` / `description` on the listing, plus `marketplace/_brand/<name>/logo.*`, overlay the packed manifest — upstream Cursor plugins often ship repo-slug names and “plugin for Cursor” blurbs.
+Local plugins live under `marketplace/<category>/<name>/`. Origin (first-party vs vendored) is `plugin.json` `author`, not the folder tree. Remote pins stay as GitHub URLs. Optional `displayName` / `description` on the listing, plus `marketplace/_brand/<name>/logo.*` (and `logo-small.*`), overlay the packed manifest — upstream Cursor plugins often ship repo-slug names and “plugin for Cursor” blurbs.
 
 ```
 plugins/
@@ -94,10 +94,11 @@ A plugin folder:
 marketplace/<category>/<name>/
 ├── .reforma-plugin/plugin.json
 ├── assets/logo.svg
+├── assets/logo-small.svg   # optional 12–14px glyph
 └── …convention folders (skills/, rules/, hooks/, …)
 ```
 
-`interface.brandColor` is the hex plate behind the logo. Optional `interface.brandColorDark` is the same plate in dark theme.
+`interface.brandColor` is the hex plate behind the market `logo`. Optional `interface.brandColorDark` is the same plate in dark theme. Optional `logoSmall` is the chip / chat-chrome mark — not the plated card art.
 
 ```sh
 bun install

@@ -10,6 +10,8 @@
     "interface": {
         "displayName": "Figma",
         "brandColor": "#000000",
-        "logo": "assets/logo.png"
-    }
+        "logo": "assets/logo.png",
+        "logoSmall": "assets/logo-small.png"
+    },
+    "logoSmall": "assets/logo-small.png"
 }

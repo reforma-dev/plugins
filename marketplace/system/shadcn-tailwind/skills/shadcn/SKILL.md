@@ -11,7 +11,7 @@ description: >-
 
 Starter already has `components.json`, Tailwind 4, shadcn v4 (Base UI), and Reforma tokens. Do not re-init. Do not add a second UI framework.
 
-Official registry is the default. Other `@ns` kit registries only when that kit's card is installed — the kit **Install** hook writes `registries` in `components.json`. MCP reads every registry in that file.
+Official registry is the default. Other `@ns` kit registries only when that kit's card is installed — the kit **Install** hook runs `shadcn registry add`. CLI writes the namespace into `components.json` if that file exists, otherwise into `package.json`.
 
 Layout classes, `gap-*`, `size-*`: **Skill** `tailwind`. Colors: **Skill** `tokens`.
 

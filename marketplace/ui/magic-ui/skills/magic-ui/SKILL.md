@@ -14,7 +14,7 @@ Registry: `@magicui` → `https://magicui.design/r/{name}.json`. Browse: `https:
 
 ## Register
 
-The **Install** hook writes `@magicui` into `components.json`. If that key is missing, add `@magicui` → `https://magicui.design/r/{name}.json`, then continue.
+The **Install** hook runs `bunx shadcn registry add`. If `@magicui` is missing, run `bunx shadcn registry add '@magicui=https://magicui.design/r/{name}.json'`, then continue.
 
 ## Find
 

@@ -10,6 +10,8 @@
     "interface": {
         "displayName": "Sanity",
         "brandColor": "#0D0E12",
-        "logo": "assets/logo.svg"
-    }
+        "logo": "assets/logo.svg",
+        "logoSmall": "assets/logo-small.svg"
+    },
+    "logoSmall": "assets/logo-small.svg"
 }
