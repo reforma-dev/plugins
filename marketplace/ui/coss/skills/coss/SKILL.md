@@ -16,7 +16,7 @@ Do not add `@coss/ui` or `@coss/style` wholesale (fights the starter theme). One
 
 ## Register
 
-The **Install** hook writes `@coss` into `components.json`. If that key is missing, add `@coss` → `https://coss.com/ui/r/{name}.json`, then continue.
+The **Install** hook runs `bunx shadcn registry add`. If `@coss` is missing, run `bunx shadcn registry add '@coss=https://coss.com/ui/r/{name}.json'`, then continue.
 
 ## Find
 
