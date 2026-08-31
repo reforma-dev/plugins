@@ -42,6 +42,11 @@ export function sameRelPath(left: string, right: string): boolean {
   return normalize(left) === normalize(right);
 }
 
+export type MarketplaceListingAgent = {
+  mentions?: string[] | false;
+  installApproval?: boolean;
+};
+
 export type MarketplaceListing = {
   name: string;
   source: string;
@@ -51,6 +56,7 @@ export type MarketplaceListing = {
   logo?: string;
   logoSmall?: string;
   brandColor?: string;
+  agent?: MarketplaceListingAgent;
 };
 
 /** Nested `categories[].plugins` → flat listings. Shelf is the parent category. */
@@ -140,6 +146,7 @@ export function parseMarketplace(raw: unknown): {
         ...optionalListingField(plugin, "logo"),
         ...optionalListingField(plugin, "logoSmall"),
         ...optionalListingField(plugin, "brandColor"),
+        ...optionalListingAgent(plugin),
       });
     }
 
@@ -166,6 +173,59 @@ function optionalListingField(
   }
 
   return { [key]: value.trim() };
+}
+
+function optionalListingAgent(
+  plugin: Record<string, unknown>,
+): { agent?: MarketplaceListing["agent"] } {
+  if (plugin.agent === undefined) {
+    return {};
+  }
+
+  if (!isRecord(plugin.agent)) {
+    throw new Error(`marketplace.json plugin ${plugin.name} agent must be an object`);
+  }
+
+  const unknownKeys = Object.keys(plugin.agent).filter(
+    (key) => key !== "mentions" && key !== "installApproval",
+  );
+
+  if (unknownKeys.length > 0) {
+    throw new Error(
+      `marketplace.json plugin ${plugin.name} agent has unknown keys: ${unknownKeys.join(", ")}`,
+    );
+  }
+
+  const agent: NonNullable<MarketplaceListing["agent"]> = {};
+
+  if (plugin.agent.mentions !== undefined) {
+    if (plugin.agent.mentions === false) {
+      agent.mentions = false;
+    }
+    else if (
+      Array.isArray(plugin.agent.mentions)
+      && plugin.agent.mentions.every((item) => typeof item === "string")
+    ) {
+      agent.mentions = plugin.agent.mentions;
+    }
+    else {
+      throw new Error(
+        `marketplace.json plugin ${plugin.name} agent.mentions must be a string[] or false`,
+      );
+    }
+  }
+
+  if (plugin.agent.installApproval !== undefined) {
+    if (typeof plugin.agent.installApproval !== "boolean") {
+      throw new Error(
+        `marketplace.json plugin ${plugin.name} agent.installApproval must be a boolean`,
+      );
+    }
+
+    agent.installApproval = plugin.agent.installApproval;
+  }
+
+  return { agent };
 }
 
 export function asPathList(raw: unknown, label: string): string[] | undefined {

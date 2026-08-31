@@ -7,9 +7,6 @@
     },
     "logo": "assets/logo.svg",
     "mcpServers": "./mcp.json",
-    "agent": {
-        "discover": true
-    },
     "interface": {
         "displayName": "GitHub",
         "brandColor": "#FFFFFF",

@@ -91,4 +91,36 @@ describe("parseMarketplace", () => {
       },
     ]);
   });
+
+  it("keeps listing agent overlay off packed categories", () => {
+    const parsed = parseMarketplace({
+      categories: [
+        {
+          id: "workspace",
+          name: "Workspace",
+          plugins: [
+            {
+              name: "linear",
+              source: "https://github.com/linear/cursor-plugin/tree/abc",
+              agent: { mentions: ["linear.app"] },
+            },
+          ],
+        },
+      ],
+    });
+
+    expect(parsed.plugins[0]?.agent).toEqual({ mentions: ["linear.app"] });
+    expect(parsed.categories).toEqual([
+      {
+        id: "workspace",
+        name: "Workspace",
+        plugins: [
+          {
+            name: "linear",
+            source: "https://github.com/linear/cursor-plugin/tree/abc",
+          },
+        ],
+      },
+    ]);
+  });
 });

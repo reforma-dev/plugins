@@ -20,6 +20,7 @@ import { normalizePluginHooks } from "./hooks.ts";
 import { normalizePluginLayout } from "./layout.ts";
 import { normalizePluginLogos, applyCatalogOverlay } from "./logos.ts";
 import { discoverMcpTools } from "./mcp-tools.ts";
+import { stampPackedAgent } from "./agent.ts";
 import { OUT, ROOT, TAR, parseMarketplace, type MarketplaceListing } from "./shared.ts";
 import { logCatalogSummary } from "./summary.ts";
 import { normalizePluginTools } from "./tools.ts";
@@ -37,6 +38,7 @@ async function packPlugin(listing: MarketplaceListing): Promise<void> {
     await normalizePluginLogos(dest);
     await discoverMcpTools(dest);
     stampPluginCategory(dest, listing.category);
+    stampPackedAgent(dest, listing);
 
     return;
   }
@@ -57,6 +59,7 @@ async function packPlugin(listing: MarketplaceListing): Promise<void> {
   await normalizePluginLogos(dest);
   await discoverMcpTools(dest);
   stampPluginCategory(dest, listing.category);
+  stampPackedAgent(dest, listing);
 }
 
 const raw = JSON.parse(

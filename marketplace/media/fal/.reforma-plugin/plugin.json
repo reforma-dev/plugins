@@ -6,6 +6,9 @@
         "url": "https://fal.ai"
     },
     "mcpServers": "./mcp.json",
+    "agent": {
+        "mentions": ["fal.ai"]
+    },
     "variables": {
         "type": "object",
         "properties": {
