@@ -51,10 +51,6 @@
                     "source": "./marketplace/playbooks/i18n"
                 },
                 {
-                    "name": "booking",
-                    "source": "./marketplace/playbooks/booking"
-                },
-                {
                     "name": "games",
                     "source": "./marketplace/playbooks/games"
                 }
