@@ -7,6 +7,9 @@
     },
     "mcpServers": "./mcp.json",
     "logo": "assets/logo.svg",
+    "agent": {
+        "mentions": ["make.com"]
+    },
     "interface": {
         "displayName": "Make",
         "brandColor": "#6D00CC",

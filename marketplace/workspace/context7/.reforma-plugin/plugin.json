@@ -10,7 +10,6 @@
     },
     "mcpServers": "./mcp.json",
     "agent": {
-        "discover": true,
         "installApproval": false
     },
     "logoSmall": "assets/logo-small.svg"

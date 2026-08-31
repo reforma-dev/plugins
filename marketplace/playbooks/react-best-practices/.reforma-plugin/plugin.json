@@ -10,7 +10,6 @@
     "repository": "https://github.com/vercel-labs/agent-skills",
     "license": "MIT",
     "agent": {
-        "discover": true,
         "installApproval": false
     },
     "interface": {

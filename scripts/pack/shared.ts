@@ -42,6 +42,11 @@ export function sameRelPath(left: string, right: string): boolean {
   return normalize(left) === normalize(right);
 }
 
+export type MarketplaceListingAgent = {
+  mentions?: string[] | false;
+  installApproval?: boolean;
+};
+
 export type MarketplaceListing = {
   name: string;
   source: string;
@@ -51,6 +56,7 @@ export type MarketplaceListing = {
   logo?: string;
   logoSmall?: string;
   brandColor?: string;
+  agent?: MarketplaceListingAgent;
 };
 
 /** Nested `categories[].plugins` → flat listings. Shelf is the parent category. */
@@ -140,6 +146,7 @@ export function parseMarketplace(raw: unknown): {
         ...optionalListingField(plugin, "logo"),
         ...optionalListingField(plugin, "logoSmall"),
         ...optionalListingField(plugin, "brandColor"),
+        ...optionalListingAgent(plugin),
       });
     }
 
@@ -166,6 +173,22 @@ function optionalListingField(
   }
 
   return { [key]: value.trim() };
+}
+
+function optionalListingAgent(
+  plugin: Record<string, unknown>,
+): { agent?: MarketplaceListing["agent"] } {
+  const value = plugin.agent;
+
+  if (value === undefined) {
+    return {};
+  }
+
+  if (!isRecord(value)) {
+    throw new Error(`marketplace.json plugin ${plugin.name} agent must be an object`);
+  }
+
+  return { agent: value };
 }
 
 export function asPathList(raw: unknown, label: string): string[] | undefined {

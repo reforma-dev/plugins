@@ -1,24 +1,6 @@
 {
     "categories": [
         {
-            "id": "system",
-            "name": "System",
-            "plugins": [
-                {
-                    "name": "shadcn-tailwind",
-                    "source": "./marketplace/system/shadcn-tailwind"
-                },
-                {
-                    "name": "visuals",
-                    "source": "./marketplace/system/visuals"
-                },
-                {
-                    "name": "nextjs",
-                    "source": "./marketplace/system/nextjs"
-                }
-            ]
-        },
-        {
             "id": "moods",
             "name": "Moods",
             "plugins": [
@@ -118,7 +100,10 @@
                     "source": "https://github.com/motiondivision/cursor-plugin/tree/1140efe9ad5e03c689ea6bb19d9d3850a4dae5f7/plugins/motion",
                     "displayName": "Motion",
                     "description": "Animation for the web — springs, gestures, and layout motion",
-                    "brandColor": "#000000"
+                    "brandColor": "#000000",
+                    "agent": {
+                        "mentions": []
+                    }
                 },
                 {
                     "name": "remotion",
@@ -149,7 +134,10 @@
                     "source": "https://github.com/linear/cursor-plugin/tree/c2c4cb2ab23206c9219b0dd31c9571e4c922faeb",
                     "displayName": "Linear",
                     "description": "The issue tracker — bugs, projects, and docs from Linear",
-                    "brandColor": "#000000"
+                    "brandColor": "#000000",
+                    "agent": {
+                        "mentions": ["linear.app"]
+                    }
                 },
                 {
                     "name": "slack",
@@ -157,7 +145,7 @@
                 },
                 {
                     "name": "github",
-                    "source": "./marketplace/workspace/github-mcp"
+                    "source": "./marketplace/workspace/github"
                 }
             ]
         },

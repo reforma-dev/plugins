@@ -7,6 +7,9 @@
     },
     "mcpServers": "./mcp.json",
     "logo": "assets/logo.svg",
+    "agent": {
+        "mentions": ["neon.tech"]
+    },
     "interface": {
         "displayName": "Neon",
         "brandColor": "#00E599",
