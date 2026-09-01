@@ -51,6 +51,10 @@
                     "source": "./marketplace/playbooks/i18n"
                 },
                 {
+                    "name": "motion-design",
+                    "source": "./marketplace/playbooks/motion-design"
+                },
+                {
                     "name": "games",
                     "source": "./marketplace/playbooks/games"
                 }
