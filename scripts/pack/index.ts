@@ -22,6 +22,7 @@ import { normalizePluginLogos, applyCatalogOverlay } from "./logos.ts";
 import { discoverMcpTools } from "./mcp-tools.ts";
 import { stampPackedAgent } from "./agent.ts";
 import { OUT, ROOT, TAR, parseMarketplace, type MarketplaceListing } from "./shared.ts";
+import { publishCatalogLogosFromEnv } from "./publish-logos.ts";
 import { logCatalogSummary } from "./summary.ts";
 import { normalizePluginTools } from "./tools.ts";
 
@@ -83,6 +84,8 @@ writeFileSync(
   join(OUT, "marketplace.json"),
   `${JSON.stringify({ categories: marketplace.categories }, null, 4)}\n`,
 );
+
+await publishCatalogLogosFromEnv(OUT);
 
 mkdirSync(dirname(TAR), { recursive: true });
 const tar = spawnSync(

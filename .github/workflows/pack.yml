@@ -28,6 +28,9 @@ jobs:
               run: bun install --frozen-lockfile
 
             - name: Pack
+              env:
+                  S3_URL: ${{ secrets.S3_URL }}
+                  S3_PUBLIC_URL: ${{ secrets.S3_PUBLIC_URL }}
               run: bun run pack
             - name: Publish catalog-${{ github.sha }}
               env:
