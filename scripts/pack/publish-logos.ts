@@ -4,7 +4,7 @@
  */
 import { S3Client } from "bun";
 import { createHash } from "node:crypto";
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import {
   extOf,
@@ -15,20 +15,15 @@ import {
   findManifestPath,
   isRecord,
   parseMarketplace,
+  stripPath,
 } from "./shared.ts";
 
-export const CATALOG_LOGO_BUCKET = "reforma-public";
+const BUCKET = "reforma-public";
 
 export type LogoObjectStore = {
   exists: (key: string) => Promise<boolean>;
   put: (key: string, body: Buffer, contentType: string) => Promise<void>;
 };
-
-export function catalogLogoKey(buffer: Buffer, ext: string): string {
-  const keyExt = ext === "jpeg" ? "jpg" : ext;
-
-  return `plugins/${createHash("sha256").update(buffer).digest("hex")}.${keyExt}`;
-}
 
 function logoMime(ext: string): string | undefined {
   if (ext === "svg") {
@@ -50,32 +45,41 @@ function logoMime(ext: string): string | undefined {
   return undefined;
 }
 
+function catalogLogoKey(buffer: Buffer, ext: string): string {
+  const keyExt = ext === "jpeg" ? "jpg" : ext;
+
+  return `plugins/${createHash("sha256").update(buffer).digest("hex")}.${keyExt}`;
+}
+
 async function publishLogoFile(
   pluginDir: string,
   rel: string,
   store: LogoObjectStore,
   publicEndpoint: string,
-): Promise<string> {
+): Promise<{ url: string; status: "public" | "uploaded" | "cached" }> {
   if (/^https:\/\//i.test(rel)) {
-    return rel;
+    return { url: rel, status: "public" };
   }
 
-  const abs = join(pluginDir, rel.replace(/^\.\//, ""));
-  const buffer = readFileSync(abs);
-  const ext = extOf(rel);
+  const path = stripPath(rel);
+  const ext = extOf(path);
   const mime = logoMime(ext);
 
   if (!mime) {
     throw new Error(`unsupported catalog logo ${rel}`);
   }
 
+  const buffer = readFileSync(join(pluginDir, path));
   const key = catalogLogoKey(buffer, ext);
+  const url = `${publicEndpoint}/${key}`;
 
-  if (!(await store.exists(key))) {
-    await store.put(key, buffer, mime);
+  if (await store.exists(key)) {
+    return { url, status: "cached" };
   }
 
-  return `${publicEndpoint}/${key}`;
+  await store.put(key, buffer, mime);
+
+  return { url, status: "uploaded" };
 }
 
 export async function publishCatalogLogos(
@@ -83,26 +87,11 @@ export async function publishCatalogLogos(
   options: { store: LogoObjectStore; publicEndpoint: string },
 ): Promise<{ uploaded: number; cached: number }> {
   const publicEndpoint = options.publicEndpoint.replace(/\/$/, "");
-  const marketplacePath = join(catalogDir, "marketplace.json");
   const marketplace = parseMarketplace(
-    JSON.parse(readFileSync(marketplacePath, "utf8")) as unknown,
+    JSON.parse(readFileSync(join(catalogDir, "marketplace.json"), "utf8")) as unknown,
   );
   let uploaded = 0;
   let cached = 0;
-  const store: LogoObjectStore = {
-    exists: async (key) => {
-      const hit = await options.store.exists(key);
-
-      if (hit) {
-        cached += 1;
-      } else {
-        uploaded += 1;
-      }
-
-      return hit;
-    },
-    put: options.store.put,
-  };
 
   await Promise.all(
     marketplace.plugins.map(async (plugin) => {
@@ -128,7 +117,7 @@ export async function publishCatalogLogos(
       const logo = await publishLogoFile(
         pluginDir,
         fields.logo,
-        store,
+        options.store,
         publicEndpoint,
       );
       const logoSmall =
@@ -136,12 +125,24 @@ export async function publishCatalogLogos(
           ? await publishLogoFile(
               pluginDir,
               fields.logoSmall,
-              store,
+              options.store,
               publicEndpoint,
             )
           : undefined;
 
-      writeLogoFields(json, logo, logoSmall);
+      if (logo.status === "uploaded") {
+        uploaded += 1;
+      } else if (logo.status === "cached") {
+        cached += 1;
+      }
+
+      if (logoSmall?.status === "uploaded") {
+        uploaded += 1;
+      } else if (logoSmall?.status === "cached") {
+        cached += 1;
+      }
+
+      writeLogoFields(json, logo.url, logoSmall?.url);
       writeFileSync(manifestPath, `${JSON.stringify(json, null, 4)}\n`);
     }),
   );
@@ -149,31 +150,18 @@ export async function publishCatalogLogos(
   return { uploaded, cached };
 }
 
-function parseS3Url(raw: string): {
-  endpoint: string;
-  accessKeyId: string;
-  secretAccessKey: string;
-} {
-  const url = new URL(raw);
+function bunStore(s3Url: string): LogoObjectStore {
+  const url = new URL(s3Url);
 
   if (!url.username || !url.password) {
     throw new Error("S3_URL must include access key and secret");
   }
 
-  return {
-    endpoint: url.origin,
+  const client = new S3Client({
     accessKeyId: decodeURIComponent(url.username),
     secretAccessKey: decodeURIComponent(url.password),
-  };
-}
-
-function bunStore(s3Url: string): LogoObjectStore {
-  const parsed = parseS3Url(s3Url);
-  const client = new S3Client({
-    accessKeyId: parsed.accessKeyId,
-    secretAccessKey: parsed.secretAccessKey,
-    bucket: CATALOG_LOGO_BUCKET,
-    endpoint: parsed.endpoint,
+    bucket: BUCKET,
+    endpoint: url.origin,
     region: "auto",
   });
 
@@ -188,25 +176,20 @@ function bunStore(s3Url: string): LogoObjectStore {
 /** Upload + stamp when S3_URL is set. CI must set it; local pack may skip. */
 export async function publishCatalogLogosFromEnv(
   catalogDir: string,
-): Promise<boolean> {
+): Promise<void> {
   const s3Url = process.env.S3_URL?.trim();
   const publicEndpoint = process.env.S3_PUBLIC_URL?.trim();
-  const inCi = process.env.GITHUB_ACTIONS === "true";
 
   if (!s3Url || !publicEndpoint) {
-    if (inCi) {
+    if (process.env.GITHUB_ACTIONS === "true") {
       throw new Error(
         "S3_URL and S3_PUBLIC_URL are required in CI to publish catalog logos",
       );
     }
 
-    if (!existsSync(join(catalogDir, "marketplace.json"))) {
-      return false;
-    }
-
     console.warn("catalog logos: skip publish (no S3_URL / S3_PUBLIC_URL)");
 
-    return false;
+    return;
   }
 
   const { uploaded, cached } = await publishCatalogLogos(catalogDir, {
@@ -215,6 +198,4 @@ export async function publishCatalogLogosFromEnv(
   });
 
   console.warn(`catalog logos  uploaded×${uploaded}  cached×${cached}`);
-
-  return true;
 }

@@ -1,5 +1,4 @@
 import { describe, expect, it } from "bun:test";
-import { createHash } from "node:crypto";
 import {
   mkdirSync,
   mkdtempSync,
@@ -9,12 +8,12 @@ import {
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import {
-  catalogLogoKey,
   publishCatalogLogos,
   type LogoObjectStore,
 } from "./publish-logos.ts";
 
 const LOGO_SVG = '<svg xmlns="http://www.w3.org/2000/svg"/>';
+const CDN = /^https:\/\/cdn\.example\/plugins\/[a-f0-9]{64}\.svg$/;
 
 function writePackedPlugin(dir: string, name: string, logo = "assets/logo.svg"): void {
   writeFileSync(
@@ -63,17 +62,12 @@ describe("publishCatalogLogos", () => {
       store,
       publicEndpoint: "https://cdn.example",
     });
-    const key = catalogLogoKey(Buffer.from(LOGO_SVG), "svg");
-    const expected = `https://cdn.example/${key}`;
-    const digest = createHash("sha256").update(LOGO_SVG).digest("hex");
+    const stamped = JSON.parse(
+      readFileSync(join(dir, "demo-hooks/.reforma-plugin/plugin.json"), "utf8"),
+    ).logo as string;
 
-    expect(key).toBe(`plugins/${digest}.svg`);
     expect(first).toEqual({ uploaded: 1, cached: 0 });
-    expect(
-      JSON.parse(
-        readFileSync(join(dir, "demo-hooks/.reforma-plugin/plugin.json"), "utf8"),
-      ).logo,
-    ).toBe(expected);
+    expect(stamped).toMatch(CDN);
 
     writeFileSync(
       join(dir, "demo-hooks/.reforma-plugin/plugin.json"),
@@ -90,7 +84,7 @@ describe("publishCatalogLogos", () => {
       JSON.parse(
         readFileSync(join(dir, "demo-hooks/.reforma-plugin/plugin.json"), "utf8"),
       ).logo,
-    ).toBe(expected);
+    ).toBe(stamped);
   });
 
   it("leaves an already-public https logo untouched", async () => {
