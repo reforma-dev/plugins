@@ -15,7 +15,7 @@
             "API_KEY": {
                 "type": "string",
                 "title": "API key",
-                "description": "From fal.ai dashboard. Sent as Authorization Bearer. Stored in the vault, never returned on GET.",
+                "description": "From your fal.ai dashboard",
                 "placeholder": "key-…"
             }
         },

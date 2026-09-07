@@ -19,7 +19,7 @@
             "API_KEY": {
                 "type": "string",
                 "title": "API key",
-                "description": "From Google Cloud, Maps Grounding Lite enabled. Sent as X-Goog-Api-Key. Stored in the vault, never returned on GET.",
+                "description": "Google Cloud API key with Maps Grounding Lite turned on",
                 "placeholder": "AIza…"
             }
         },
