@@ -11,5 +11,10 @@
         "displayName": "Auth0",
         "brandColor": "#EB5424",
         "logo": "assets/logo.svg"
+    },
+    "agent": {
+        "mentions": [
+            "auth0.com"
+        ]
     }
 }

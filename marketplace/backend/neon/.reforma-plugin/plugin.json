@@ -8,7 +8,9 @@
     "mcpServers": "./mcp.json",
     "logo": "assets/logo.svg",
     "agent": {
-        "mentions": ["neon.tech"]
+        "mentions": [
+            "neon.tech"
+        ]
     },
     "interface": {
         "displayName": "Neon",

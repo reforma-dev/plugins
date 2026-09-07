@@ -11,5 +11,10 @@
         "displayName": "Slack",
         "brandColor": "#4A154B",
         "logo": "assets/logo.svg"
+    },
+    "agent": {
+        "mentions": [
+            "slack.com"
+        ]
     }
 }

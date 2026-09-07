@@ -14,5 +14,10 @@
         "logoSmall": "assets/logo-small.svg"
     },
     "mcpServers": "./mcp.json",
-    "logoSmall": "assets/logo-small.svg"
+    "logoSmall": "assets/logo-small.svg",
+    "agent": {
+        "mentions": [
+            "cal.com"
+        ]
+    }
 }

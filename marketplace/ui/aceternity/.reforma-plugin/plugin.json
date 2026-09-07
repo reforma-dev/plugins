@@ -7,7 +7,10 @@
     },
     "homepage": "https://ui.aceternity.com",
     "agent": {
-        "installApproval": false
+        "installApproval": false,
+        "mentions": [
+            "aceternity.com"
+        ]
     },
     "interface": {
         "displayName": "Aceternity",

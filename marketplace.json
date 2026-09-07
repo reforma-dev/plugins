@@ -93,7 +93,10 @@
                     "source": "https://github.com/greensock/gsap-skills/tree/aed9cfd3277740755f6bfc1155c7aa645403b760",
                     "displayName": "GSAP",
                     "description": "Timeline animation, scroll effects, and motion — the GSAP toolkit",
-                    "brandColor": "#000000"
+                    "brandColor": "#000000",
+                    "agent": {
+                        "mentions": ["gsap.com"]
+                    }
                 },
                 {
                     "name": "motion",
@@ -110,7 +113,10 @@
                     "source": "https://github.com/remotion-dev/cursor-plugin/tree/bbb02cde0afb17f54329030581532067fb45f622",
                     "displayName": "Remotion",
                     "description": "Videos and motion graphics, written in React",
-                    "brandColor": "#000000"
+                    "brandColor": "#000000",
+                    "agent": {
+                        "mentions": ["remotion.dev"]
+                    }
                 }
             ]
         },
@@ -123,7 +129,10 @@
                     "source": "https://github.com/makenotion/cursor-notion-plugin/tree/cf1324609edba6d617164f1dec138aeb43f26735",
                     "displayName": "Notion",
                     "description": "The team’s Notion — notes, pages, and databases in the project",
-                    "brandColor": "#FFFFFF"
+                    "brandColor": "#FFFFFF",
+                    "agent": {
+                        "mentions": ["notion.so", "notion.com"]
+                    }
                 },
                 {
                     "name": "linear",
@@ -154,21 +163,30 @@
                     "source": "https://github.com/supabase-community/supabase-plugin/tree/8629243d1cd72309b533090a4c742f21747d02fa",
                     "displayName": "Supabase",
                     "description": "Backend for the app — database, auth, and file storage",
-                    "brandColor": "#3ECF8E"
+                    "brandColor": "#3ECF8E",
+                    "agent": {
+                        "mentions": ["supabase.com"]
+                    }
                 },
                 {
                     "name": "firebase",
                     "source": "https://github.com/firebase/agent-skills/tree/a0b4e143f40c1ebe05fe5f9a4787fecd4da8f478",
                     "displayName": "Firebase",
                     "description": "Google’s backend — auth, database, and hosting",
-                    "brandColor": "#FFFFFF"
+                    "brandColor": "#FFFFFF",
+                    "agent": {
+                        "mentions": ["firebase.google.com"]
+                    }
                 },
                 {
                     "name": "convex",
                     "source": "https://github.com/get-convex/convex-agent-plugins/tree/aec064132a824ae306b3c5d70b8bab1f3f90a551",
                     "displayName": "Convex",
                     "description": "A live backend — the database updates the UI as data changes",
-                    "brandColor": "#000000"
+                    "brandColor": "#000000",
+                    "agent": {
+                        "mentions": ["convex.dev"]
+                    }
                 },
                 {
                     "name": "neon",
@@ -179,14 +197,20 @@
                     "source": "https://github.com/appwrite/cursor-plugin/tree/a9ef9a11cd7f68c4f27bbd57db46ff46499ec049",
                     "displayName": "Appwrite",
                     "description": "An open-source backend — auth, database, and storage",
-                    "brandColor": "#FD366E"
+                    "brandColor": "#FD366E",
+                    "agent": {
+                        "mentions": ["appwrite.io"]
+                    }
                 },
                 {
                     "name": "prisma",
                     "source": "https://github.com/prisma/cursor-plugin/tree/4584a0a9175ba74053d7ee946c6234d3369a5a33",
                     "displayName": "Prisma",
                     "description": "Talk to the database — schema, migrations, and queries in TypeScript",
-                    "brandColor": "#000000"
+                    "brandColor": "#000000",
+                    "agent": {
+                        "mentions": ["prisma.io"]
+                    }
                 }
             ]
         },
@@ -217,7 +241,10 @@
                     "source": "https://github.com/stripe/ai/tree/1dc126b93cc62e28aff7e00e51406dfeb8ac88d5/providers/cursor/plugin",
                     "displayName": "Stripe",
                     "description": "Accept payments, manage customers, and handle subscriptions",
-                    "brandColor": "#635BFF"
+                    "brandColor": "#635BFF",
+                    "agent": {
+                        "mentions": ["stripe.com"]
+                    }
                 },
                 {
                     "name": "shopify",
@@ -234,7 +261,10 @@
                     "source": "https://github.com/resend/resend-skills/tree/828340bd8a361c4e6e0c02bddf1575f131d5d77f",
                     "displayName": "Resend",
                     "description": "Send email from the app — transactional mail and templates",
-                    "brandColor": "#000000"
+                    "brandColor": "#000000",
+                    "agent": {
+                        "mentions": ["resend.com"]
+                    }
                 }
             ]
         },
@@ -265,7 +295,10 @@
                     "source": "https://github.com/dropbox/dropbox-ai-plugins/tree/4900430d6afa76fc2504e00e006895de424f3637/codex",
                     "displayName": "Dropbox",
                     "description": "Files in Dropbox — save, share, and pull them into the project",
-                    "brandColor": "#0061FF"
+                    "brandColor": "#0061FF",
+                    "agent": {
+                        "mentions": ["dropbox.com"]
+                    }
                 },
                 {
                     "name": "cloudinary",
@@ -293,14 +326,20 @@
                     "source": "https://github.com/higgsfield-ai/cursor-plugin/tree/c9215059e409dc81c69ff0fe77ea2740c5fc6249",
                     "displayName": "Higgsfield",
                     "description": "AI images and video from one studio",
-                    "brandColor": "#D1FD17"
+                    "brandColor": "#D1FD17",
+                    "agent": {
+                        "mentions": ["higgsfield.ai"]
+                    }
                 },
                 {
                     "name": "quiver",
                     "source": "https://github.com/quiverai/cursor-plugin/tree/630b8ffea8698db194ef6ac32948656522b6e7f5",
                     "displayName": "Quiver",
                     "description": "Generate SVG and turn pictures into clean vectors",
-                    "brandColor": "#FFFFFF"
+                    "brandColor": "#FFFFFF",
+                    "agent": {
+                        "mentions": ["quiver.ai"]
+                    }
                 },
                 {
                     "name": "svgator",
@@ -341,7 +380,10 @@
                     "source": "https://github.com/getsentry/plugin-cursor/tree/134bed9804c249664daf8be62938e4d754b1c249",
                     "displayName": "Sentry",
                     "description": "See crashes and traces from the live app, then fix them",
-                    "brandColor": "#362D59"
+                    "brandColor": "#362D59",
+                    "agent": {
+                        "mentions": ["sentry.io"]
+                    }
                 },
                 {
                     "name": "posthog",
