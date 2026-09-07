@@ -16,7 +16,7 @@ The widget `url` is their public scheduling link (`https://calendly.com/…`). P
 
 Done when the named route renders the inline widget and a time is selectable.
 
-1. `bun add react-calendly`. If `package.json` / lockfile changed → **InstallDependencies**.
+1. `bun add react-calendly`. If `package.json` / lockfile changed → **InstallDeps**.
 2. If they have no event type yet and MCP is connected: create it, then use the scheduling link MCP returns.
 3. Client Component. `InlineWidget` from `react-calendly`.
 
@@ -26,9 +26,7 @@ Done when the named route renders the inline widget and a time is selectable.
 import { InlineWidget } from "react-calendly";
 
 export function Booker({ url }: { url: string }) {
-  return (
-    <InlineWidget url={url} styles={{ height: "700px" }} />
-  );
+  return <InlineWidget url={url} styles={{ height: "700px" }} />;
 }
 ```
 

@@ -8,7 +8,7 @@ This file contains the detailed subagent instructions for each pipeline step. Th
 
 1. Read `templates/phaser-2d/` or `templates/threejs-3d/` as pattern sketches. Do not copy the folder.
 2. Implement under `app/<game-name>/` (or `app/play/`).
-3. `bun add phaser` or `bun add three`. If `package.json` / lockfile changed → **InstallDependencies**.
+3. `bun add phaser` or `bun add three`. If `package.json` / lockfile changed → **InstallDeps**.
 4. Preview this project.
 
 ### Subagent — Game Implementation

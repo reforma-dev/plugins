@@ -119,10 +119,6 @@
             "name": "Workspace",
             "plugins": [
                 {
-                    "name": "context7",
-                    "source": "./marketplace/workspace/context7"
-                },
-                {
                     "name": "notion",
                     "source": "https://github.com/makenotion/cursor-notion-plugin/tree/cf1324609edba6d617164f1dec138aeb43f26735",
                     "displayName": "Notion",
@@ -285,23 +281,6 @@
                     "name": "figma",
                     "source": "./marketplace/design/figma",
                     "disabled": true
-                }
-            ]
-        },
-        {
-            "id": "maps",
-            "name": "Maps",
-            "plugins": [
-                {
-                    "name": "google-maps",
-                    "source": "./marketplace/maps/google-maps"
-                },
-                {
-                    "name": "mapbox",
-                    "source": "https://github.com/mapbox/mapbox-agent-skills/tree/209e8c408fd65edfff45e491c941e8a00025a1a6",
-                    "displayName": "Mapbox",
-                    "description": "Custom maps — your style, search, and location in the app",
-                    "brandColor": "#000000"
                 }
             ]
         },

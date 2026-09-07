@@ -39,7 +39,7 @@ The agent expects:
 **What stays in the main thread:**
 
 - Step 0: Parse input, create todo list
-- Step 1 (infrastructure only): `bun add`, InstallDependencies if lockfile changed, mount under `app/`
+- Step 1 (infrastructure only): `bun add`, InstallDeps if lockfile changed, mount under `app/`
 - Verification protocol orchestration (launch QA subagent, read text result, launch autofix if needed)
 
 **What goes to subagents** (via `Task` tool):
@@ -104,7 +104,7 @@ Mark task 1 as `in_progress`.
 
 1. Read `templates/phaser-2d` or `templates/threejs-3d` as pattern sketches. Do not copy the folder into a second root.
 2. Write under `app/<route>/` with `createGame(mountNode)`.
-3. `bun add phaser` or `bun add three`. If `package.json` / lockfile changed → **InstallDependencies**.
+3. `bun add phaser` or `bun add three`. If `package.json` / lockfile changed → **InstallDeps**.
 4. Preview this project.
 
 **Subagent — game implementation:**
@@ -232,7 +232,7 @@ If the pipeline is interrupted (crash, user cancel, timeout), `progress.md` enab
 ## Error Handling
 
 - **Visual fails**: Screenshot, fix game code, screenshot again. Cap 2 rounds, then skip and continue.
-- **Missing dependencies**: `bun add` then **InstallDependencies**.
+- **Missing dependencies**: `bun add` then **InstallDeps**.
 
 ## Output
 

@@ -16,7 +16,7 @@ Starter is `app/` (no `src/`), bun. Embed docs: `https://www.npmjs.com/package/@
 
 Done when `/book` (or the route they named) renders the Cal.com widget and a slot is selectable.
 
-1. `bun add @calcom/embed-react`. If `package.json` / lockfile changed → **InstallDependencies**.
+1. `bun add @calcom/embed-react`. If `package.json` / lockfile changed → **InstallDeps**.
 2. If they have no event type yet and MCP is connected: create a 30-minute type, then use its `username/slug`.
 3. Add a Client Component. `Cal` from `@calcom/embed-react`. `namespace` unique per embed on the page.
 

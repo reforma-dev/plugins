@@ -36,7 +36,7 @@ If `templates/phaser-2d/` or `templates/threejs-3d/` matches the engine in `docs
 
 **3. If no sketch matches, add the engine as a library — do not start a second app**
 
-This project is already a Next.js App Router starter (`app/`, bun). For Phaser / Three.js: `bun add phaser` or `bun add three`, then **InstallDependencies**. Skip `npx degit`, `npm create vite`, `npm create @phaserjs/game`, and a second `package.json`.
+This project is already a Next.js App Router starter (`app/`, bun). For Phaser / Three.js: `bun add phaser` or `bun add three`, then **InstallDeps**. Skip `npx degit`, `npm create vite`, `npm create @phaserjs/game`, and a second `package.json`.
 
 For a non-browser engine (Unity, Unreal, Godot) that cannot live in this app, stop and ask the user how they want to proceed.
 
