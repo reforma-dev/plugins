@@ -27,5 +27,5 @@ MCP `search_items_in_registries` — `query` plus `registries: ["@aceternity"]`.
 ## Install
 
 1. **Bash:** `bunx shadcn add @aceternity/<name> -y` (optional: `--dry-run` / `--view` first).
-2. If `package.json` / lockfile changed → **InstallDependencies**.
+2. If `package.json` / lockfile changed → **InstallDeps**.
 3. Match the new file to neighboring primitives and Reforma tokens (`app/tokens/`). No raw hex.

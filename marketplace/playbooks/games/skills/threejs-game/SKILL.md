@@ -44,7 +44,7 @@ For performance optimization patterns with measured before/after evidence, see t
 bun add three
 ```
 
-Then **InstallDependencies**. Mount `createGame(el)` from a `'use client'` island under `app/<route>/` with `dynamic(..., { ssr: false })`. Read `templates/threejs-3d/` — do not copy the folder, do not add Vite.
+Then **InstallDeps**. Mount `createGame(el)` from a `'use client'` island under `app/<route>/` with `dynamic(..., { ssr: false })`. Read `templates/threejs-3d/` — do not copy the folder, do not add Vite.
 
 ```tsx
 "use client";

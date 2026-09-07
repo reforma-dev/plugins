@@ -19,7 +19,7 @@
             "API_KEY": {
                 "type": "string",
                 "title": "API key",
-                "description": "From 21st.dev/settings/api-keys. Sent as x-api-key. Stored in the vault, never returned on GET.",
+                "description": "From 21st.dev → Settings → API keys",
                 "placeholder": "21st_sk_…"
             }
         },

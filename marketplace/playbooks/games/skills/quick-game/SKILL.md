@@ -57,7 +57,7 @@ Parse `$ARGUMENTS` to determine the game concept:
 **Infrastructure (main thread):**
 
 1. Read `templates/phaser-2d/` or `templates/threejs-3d/` as pattern sketches (EventBus, GameState, scenes). Do not copy the folder.
-2. `bun add phaser` or `bun add three`. If `package.json` / lockfile changed → **InstallDependencies**.
+2. `bun add phaser` or `bun add three`. If `package.json` / lockfile changed → **InstallDeps**.
 3. Implement under `app/<game-name>/` (or `app/play/` if unnamed): `'use client'` canvas, `dynamic(..., { ssr: false })`, `createGame(mountNode)`.
 4. Preview this project — do not start a second Vite/`npm run dev` server.
 
@@ -102,7 +102,7 @@ Launch a `Task` subagent with:
 After the subagent returns:
 
 1. Confirm the island mounts (client component + `ssr: false`) and the engine import resolves
-2. If imports fail, run **InstallDependencies** after `bun add`
+2. If imports fail, run **InstallDeps** after `bun add`
 3. **PageScreenshot** the route
 
 ## Example Usage
@@ -128,7 +128,7 @@ Result: Fetches tweet → abstracts game concept → scaffolds and implements a 
 ### Game scaffolds but won't start
 
 **Cause:** Canvas ran on the server, or Phaser/Three was not installed.
-**Fix:** `'use client'` + `dynamic(..., { ssr: false })`. `bun add phaser` or `bun add three`, then **InstallDependencies**.
+**Fix:** `'use client'` + `dynamic(..., { ssr: false })`. `bun add phaser` or `bun add three`, then **InstallDeps**.
 
 ### Missing core files
 

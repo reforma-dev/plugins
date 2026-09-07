@@ -16,7 +16,7 @@ User-facing copy goes through next-intl. In-app links go through `@/i18n/navigat
 
 Done when `/<defaultLocale>` and `/<other>` both render, `<html lang>` matches the URL locale, and one visible string is read from `messages/*.json`.
 
-1. `bun add next-intl`. If `package.json` / lockfile changed → **InstallDependencies**.
+1. `bun add next-intl`. If `package.json` / lockfile changed → **InstallDeps**.
 2. Add the four files below. Locales = what the user named (BCP 47, e.g. `en`, `es`, `pt-BR`). Default = first / the one they called default. At least two locales.
 3. Wrap the **existing** `next.config.ts` with `createNextIntlPlugin('./i18n/request.ts')`. Keep `turbopack`, `typescript`, and every other key.
 4. Add root `proxy.ts`.

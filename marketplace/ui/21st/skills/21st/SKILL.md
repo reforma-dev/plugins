@@ -20,7 +20,7 @@ After code lands:
 - Tokens: `app/tokens/`. Semantic colors, no raw hex from the dump.
 - Existing shadcn primitives first. Do not add a second UI kit.
 - Skip iframe / `srcDoc` widgets unless they asked for that embed.
-- If `package.json` / lockfile changed → **InstallDependencies**.
+- If `package.json` / lockfile changed → **InstallDeps**.
 - **PageScreenshot** the page once. On timeout, stop.
 
 Do not `shadcn init`. Do not publish or edit their 21st profile / catalog listings unless they asked.

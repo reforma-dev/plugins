@@ -67,7 +67,7 @@ If a user starts with `/viral-game` but the project clearly outgrows a one-shot 
 **What stays in the main thread:**
 
 - Step 0: Parse arguments, create todo list
-- Step 1 (infrastructure only): `bun add`, InstallDependencies if lockfile changed, mount under `app/`
+- Step 1 (infrastructure only): `bun add`, InstallDeps if lockfile changed, mount under `app/`
 - Verification protocol orchestration (launch QA subagent, read text result, launch autofix if needed)
 - Step 5.5 (review): Read-only analysis, no code changes
 
@@ -196,8 +196,7 @@ Load the `review-game` skill and run the full analysis against the project direc
 > - Architecture: X/5
 > - Performance: X/5
 > - Code Quality: X/5
-> **Recommendations** (if any):
->
+>   **Recommendations** (if any):
 > - [list any issues found]
 >
 > These are suggestions for future improvement — your game is playable on preview.

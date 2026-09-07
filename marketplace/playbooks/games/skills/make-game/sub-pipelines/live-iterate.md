@@ -19,7 +19,7 @@ Read `GameState` / `Constants` in source. **PageScreenshot** the route.
 
 ## Steps
 
-1. **Preview this project.** If `package.json` / lockfile changed → **InstallDependencies** first.
+1. **Preview this project.** If `package.json` / lockfile changed → **InstallDeps** first.
 
 2. **PageScreenshot** `/play` (or the named route). Look for boot, input, score, fail, restart. Any crash or blank canvas → stop and fix. Do not paper over with try/catch.
 

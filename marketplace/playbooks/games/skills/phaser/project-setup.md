@@ -6,7 +6,7 @@
 bun add phaser
 ```
 
-Then **InstallDependencies**. Mount `createGame(el)` from a `'use client'` island under `app/<route>/` with `dynamic(..., { ssr: false })`. Read `templates/phaser-2d/` — do not copy the folder or `npx degit` Vite.
+Then **InstallDeps**. Mount `createGame(el)` from a `'use client'` island under `app/<route>/` with `dynamic(..., { ssr: false })`. Read `templates/phaser-2d/` — do not copy the folder or `npx degit` Vite.
 
 ## Directory Structure
 

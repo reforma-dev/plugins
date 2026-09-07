@@ -31,14 +31,14 @@ You are an expert Phaser game developer building games with the game-creator plu
 
 Every player action and game event must emit at least one spectacle event. These hooks exist in the template EventBus — the design pass attaches visual effects to them.
 
-| Event | Constant | When to Emit |
-|-------|----------|--------------|
-| `spectacle:entrance` | `SPECTACLE_ENTRANCE` | In `create()` when the player/entities first appear on screen |
-| `spectacle:action` | `SPECTACLE_ACTION` | On every player input (tap, jump, shoot, swipe) |
-| `spectacle:hit` | `SPECTACLE_HIT` | When player hits/destroys an enemy, collects an item, or scores |
-| `spectacle:combo` | `SPECTACLE_COMBO` | When consecutive hits/scores happen without a miss. Pass `{ combo: n }` |
-| `spectacle:streak` | `SPECTACLE_STREAK` | When combo reaches milestones (5, 10, 25, 50). Pass `{ streak: n }` |
-| `spectacle:near_miss` | `SPECTACLE_NEAR_MISS` | When player narrowly avoids danger (within ~20% of collision radius) |
+| Event                 | Constant              | When to Emit                                                            |
+| --------------------- | --------------------- | ----------------------------------------------------------------------- |
+| `spectacle:entrance`  | `SPECTACLE_ENTRANCE`  | In `create()` when the player/entities first appear on screen           |
+| `spectacle:action`    | `SPECTACLE_ACTION`    | On every player input (tap, jump, shoot, swipe)                         |
+| `spectacle:hit`       | `SPECTACLE_HIT`       | When player hits/destroys an enemy, collects an item, or scores         |
+| `spectacle:combo`     | `SPECTACLE_COMBO`     | When consecutive hits/scores happen without a miss. Pass `{ combo: n }` |
+| `spectacle:streak`    | `SPECTACLE_STREAK`    | When combo reaches milestones (5, 10, 25, 50). Pass `{ streak: n }`     |
+| `spectacle:near_miss` | `SPECTACLE_NEAR_MISS` | When player narrowly avoids danger (within ~20% of collision radius)    |
 
 **Rule**: If a gameplay moment has no spectacle event, add one. The design pass cannot polish what it cannot hook into.
 
@@ -62,7 +62,7 @@ This app already exists. Add Phaser and mount a canvas:
 bun add phaser
 ```
 
-Then **InstallDependencies**. Write TypeScript under `app/<route>/`. Read `templates/phaser-2d/` for EventBus / scenes — do not copy the folder, do not `npx degit` a Vite app.
+Then **InstallDeps**. Write TypeScript under `app/<route>/`. Read `templates/phaser-2d/` for EventBus / scenes — do not copy the folder, do not `npx degit` a Vite app.
 
 See [project-setup.md](project-setup.md) for module layout and canvas config.
 
@@ -128,13 +128,13 @@ See [patterns.md](patterns.md) for implementations.
 
 All games MUST work on desktop AND mobile unless explicitly specified otherwise. Focus 60% mobile / 40% desktop for tradeoffs. Pick the best mobile input for each game concept:
 
-| Game Type | Primary Mobile Input | Desktop Input |
-|-----------|---------------------|---------------|
-| Platformer | Tap left/right half + tap-to-jump | Arrow keys / WASD |
-| Runner/endless | Tap / swipe up to jump | Space / Up arrow |
-| Puzzle/match | Tap targets (44px min) | Click |
-| Shooter | Virtual joystick + tap-to-fire | Mouse + WASD |
-| Top-down | Virtual joystick | Arrow keys / WASD |
+| Game Type      | Primary Mobile Input              | Desktop Input     |
+| -------------- | --------------------------------- | ----------------- |
+| Platformer     | Tap left/right half + tap-to-jump | Arrow keys / WASD |
+| Runner/endless | Tap / swipe up to jump            | Space / Up arrow  |
+| Puzzle/match   | Tap targets (44px min)            | Click             |
+| Shooter        | Virtual joystick + tap-to-fire    | Mouse + WASD      |
+| Top-down       | Virtual joystick                  | Arrow keys / WASD |
 
 ### Implementation Pattern
 
@@ -142,10 +142,14 @@ Abstract input into an `inputState` object so game logic is source-agnostic:
 
 ```typescript
 // In Scene update():
-const isMobile = this.sys.game.device.os.android ||
-  this.sys.game.device.os.iOS || this.sys.game.device.os.iPad;
+const isMobile =
+  this.sys.game.device.os.android ||
+  this.sys.game.device.os.iOS ||
+  this.sys.game.device.os.iPad;
 
-let left = false, right = false, jump = false;
+let left = false,
+  right = false,
+  jump = false;
 
 // Keyboard
 left = this.cursors.left.isDown || this.wasd.left.isDown;
@@ -155,7 +159,7 @@ jump = Phaser.Input.Keyboard.JustDown(this.spaceKey);
 // Touch (merge with keyboard)
 if (isMobile) {
   // Left half tap = left, right half = right, or use tap zones
-  this.input.on('pointerdown', (p) => {
+  this.input.on("pointerdown", (p) => {
     if (p.x < this.scale.width / 2) left = true;
     else right = true;
   });
@@ -174,7 +178,7 @@ Always show visual touch indicators on touch-capable devices — never rely on i
 
 ```js
 // Good — detects touch laptops, tablets, 2-in-1s
-const hasTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+const hasTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
 
 // Bad — misses touch-screen laptops, iPadOS (reports as desktop)
 const isMobile = device.os.android || device.os.iOS;
@@ -245,13 +249,13 @@ Before considering a game complete, verify:
 
 ## Reference Files
 
-| File | Topic |
-|------|-------|
-| [conventions.md](conventions.md) | Mandatory game-creator architecture conventions |
-| [project-setup.md](project-setup.md) | Scaffolding, Vite, TypeScript config, responsive canvas, entity sizing, portrait mode |
-| [scenes-and-lifecycle.md](scenes-and-lifecycle.md) | Scene system deep dive |
-| [game-objects.md](game-objects.md) | Custom objects, groups, containers, button pattern |
-| [physics-and-movement.md](physics-and-movement.md) | Physics engines, movement patterns |
-| [assets-and-performance.md](assets-and-performance.md) | Assets, optimization, mobile |
-| [patterns.md](patterns.md) | ECS, state machines, singletons |
-| [no-asset-design.md](no-asset-design.md) | Procedural visuals: gradients, parallax, particles, juice |
+| File                                                   | Topic                                                                                 |
+| ------------------------------------------------------ | ------------------------------------------------------------------------------------- |
+| [conventions.md](conventions.md)                       | Mandatory game-creator architecture conventions                                       |
+| [project-setup.md](project-setup.md)                   | Scaffolding, Vite, TypeScript config, responsive canvas, entity sizing, portrait mode |
+| [scenes-and-lifecycle.md](scenes-and-lifecycle.md)     | Scene system deep dive                                                                |
+| [game-objects.md](game-objects.md)                     | Custom objects, groups, containers, button pattern                                    |
+| [physics-and-movement.md](physics-and-movement.md)     | Physics engines, movement patterns                                                    |
+| [assets-and-performance.md](assets-and-performance.md) | Assets, optimization, mobile                                                          |
+| [patterns.md](patterns.md)                             | ECS, state machines, singletons                                                       |
+| [no-asset-design.md](no-asset-design.md)               | Procedural visuals: gradients, parallax, particles, juice                             |

@@ -743,7 +743,7 @@ Three.js cleanup is more involved than Phaser — always dispose geometries and 
 }
 ```
 
-Run `bun add partysocket`. If `package.json` / lockfile changed → **InstallDependencies**.
+Run `bun add partysocket`. If `package.json` / lockfile changed → **InstallDeps**.
 
 ## `.env` and `.env.example`
 

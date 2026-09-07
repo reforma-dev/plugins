@@ -85,7 +85,7 @@ Create:
 - `multiplayer-server/src/server.ts` — paste the appropriate template from `partykit-server.md` (`realtime` or `turn-based`).
 - `multiplayer-server/.gitignore` — `node_modules`, `.partykit`.
 
-Run `cd multiplayer-server && bun install` to install `partykit`. Add `partysocket` to the Next app with `bun add partysocket`. If `package.json` / lockfile changed → **InstallDependencies**.
+Run `cd multiplayer-server && bun install` to install `partykit`. Add `partysocket` to the Next app with `bun add partysocket`. If `package.json` / lockfile changed → **InstallDeps**.
 
 ### Step 3: Scaffold the client
 
@@ -99,7 +99,7 @@ Create three new files. See `client-integration.md` for the full source.
 bun add partysocket
 ```
 
-If `package.json` / lockfile changed → **InstallDependencies**.
+If `package.json` / lockfile changed → **InstallDeps**.
 
 ### Step 4: Append to existing core files
 
