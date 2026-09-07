@@ -7,7 +7,10 @@
     },
     "homepage": "https://tailark.com",
     "agent": {
-        "installApproval": false
+        "installApproval": false,
+        "mentions": [
+            "tailark.com"
+        ]
     },
     "interface": {
         "displayName": "Tailark",

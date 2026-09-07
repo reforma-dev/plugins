@@ -13,5 +13,10 @@
         "logo": "assets/logo.png",
         "logoSmall": "assets/logo-small.png"
     },
-    "logoSmall": "assets/logo-small.png"
+    "logoSmall": "assets/logo-small.png",
+    "agent": {
+        "mentions": [
+            "svgator.com"
+        ]
+    }
 }

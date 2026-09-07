@@ -9,7 +9,10 @@
     "repository": "https://github.com/felipemenezes098/ui-flx",
     "license": "AGPL-3.0",
     "agent": {
-        "installApproval": false
+        "installApproval": false,
+        "mentions": [
+            "flexnative.com"
+        ]
     },
     "interface": {
         "displayName": "Flexnative",

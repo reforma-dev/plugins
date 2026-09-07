@@ -10,5 +10,10 @@
     "interface": {
         "displayName": "Cloudinary",
         "brandColor": "#3448C5"
+    },
+    "agent": {
+        "mentions": [
+            "cloudinary.com"
+        ]
     }
 }

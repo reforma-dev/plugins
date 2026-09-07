@@ -1,6 +1,7 @@
 /**
- * Resolve `plugin.json` `agent` at pack time: mentions defaults + fold,
- * strip `discover`. Runtime only matches the packed array.
+ * Resolve `plugin.json` `agent` at pack time: id + displayName, plus extra
+ * `mentions` (product hosts for URL paste). `[]` / `false` turns matching off.
+ * Strip `discover`. Runtime only matches the packed array.
  */
 import { readFileSync, writeFileSync } from "node:fs";
 import { findManifestPath, isRecord, type MarketplaceListing } from "./shared.ts";
@@ -87,10 +88,13 @@ export function resolvePackedAgent(
     merged.mentions,
     `${listing.name} agent.mentions`,
   );
+  const defaults = [listing.name, displayNameForDefaults(json, listing)];
   const mentions =
-    mentionsRaw === false || Array.isArray(mentionsRaw)
-      ? uniqueFolded(mentionsRaw === false ? [] : mentionsRaw)
-      : uniqueFolded([listing.name, displayNameForDefaults(json, listing)]);
+    mentionsRaw === false || (Array.isArray(mentionsRaw) && mentionsRaw.length === 0)
+      ? []
+      : uniqueFolded(
+          Array.isArray(mentionsRaw) ? [...defaults, ...mentionsRaw] : defaults,
+        );
 
   const installApproval = merged.installApproval;
   const agent: Record<string, unknown> = {

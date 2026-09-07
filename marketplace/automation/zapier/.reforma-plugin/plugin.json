@@ -11,5 +11,10 @@
         "displayName": "Zapier",
         "brandColor": "#FF4F00",
         "logo": "assets/logo.svg"
+    },
+    "agent": {
+        "mentions": [
+            "zapier.com"
+        ]
     }
 }

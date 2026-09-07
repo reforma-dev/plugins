@@ -7,7 +7,9 @@
     },
     "mcpServers": "./mcp.json",
     "agent": {
-        "mentions": ["fal.ai"]
+        "mentions": [
+            "fal.ai"
+        ]
     },
     "variables": {
         "type": "object",

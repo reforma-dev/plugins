@@ -38,13 +38,13 @@ describe("resolvePackedAgent", () => {
     ).toEqual({ mentions: ["github"] });
   });
 
-  it("replaces defaults with an explicit mentions array", () => {
+  it("adds explicit hosts on top of id and displayName", () => {
     expect(
       resolvePackedAgent(
         { agent: { mentions: ["linear.app"] } },
         listing({ name: "linear", displayName: "Linear" }),
       ),
-    ).toEqual({ mentions: ["linear.app"] });
+    ).toEqual({ mentions: ["linear", "linear.app"] });
   });
 
   it("turns false or [] into no mentions", () => {
@@ -65,7 +65,7 @@ describe("resolvePackedAgent", () => {
           agent: { mentions: ["linear.app"] },
         }),
       ),
-    ).toEqual({ mentions: ["linear.app"], installApproval: false });
+    ).toEqual({ mentions: ["linear", "linear.app"], installApproval: false });
   });
 
   it("keeps installApproval false and drops discover", () => {
@@ -104,7 +104,7 @@ describe("stampPackedAgent", () => {
       JSON.parse(readFileSync(join(pluginDir, ".reforma-plugin/plugin.json"), "utf8")),
     ).toEqual({
       name: "neon",
-      agent: { mentions: ["neon.tech"] },
+      agent: { mentions: ["neon", "neon.tech"] },
     });
   });
 });

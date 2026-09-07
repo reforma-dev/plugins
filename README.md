@@ -66,7 +66,7 @@ Marketplace plugins for Reforma. Each plugin is a folder with `.reforma-plugin/p
 | composio              | [Composio](marketplace/automation/composio)                              | Composio      | Automation | A hub of app connections — Gmail, Notion, Slack, and the rest of the stack                                              |
 | make                  | [Make](marketplace/automation/make)                                      | Make          | Automation | Visual automations from Make — run scenarios and use the results in the app                                             |
 
-Author is `plugin.json` `author.name` when present, else Reforma. Shelf is the parent `categories[]` entry — `plugin.json` has no `category`. `description` is the marketplace pitch: what the product is for the person installing it. Not MCP verbs, not “needs an API key.”
+Author is `plugin.json` `author.name` when present, else Reforma. Shelf is the parent `categories[]` entry — `plugin.json` has no `category`. `description` is the marketplace pitch: what the product is for the person installing it. Not MCP verbs, not “needs an API key.” `agent.mentions` lists the product hosts (`supabase.com`, `higgsfield.ai`) so a pasted service URL lights up `InstallPlugin`. Pack always unions those with the plugin id and display name. `mentions: []` or `false` turns matching off.
 
 ## Repository structure
 

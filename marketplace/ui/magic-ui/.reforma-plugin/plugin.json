@@ -9,7 +9,10 @@
     "repository": "https://github.com/magicuidesign/magicui",
     "license": "MIT",
     "agent": {
-        "installApproval": false
+        "installApproval": false,
+        "mentions": [
+            "magicui.design"
+        ]
     },
     "interface": {
         "displayName": "Magic UI",

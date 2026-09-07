@@ -11,5 +11,10 @@
         "displayName": "LottieFiles",
         "brandColor": "#00DDB3",
         "logo": "assets/logo.svg"
+    },
+    "agent": {
+        "mentions": [
+            "lottiefiles.com"
+        ]
     }
 }

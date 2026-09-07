@@ -11,5 +11,10 @@
         "displayName": "WorkOS",
         "brandColor": "#6366F1",
         "logo": "assets/logo.png"
+    },
+    "agent": {
+        "mentions": [
+            "workos.com"
+        ]
     }
 }

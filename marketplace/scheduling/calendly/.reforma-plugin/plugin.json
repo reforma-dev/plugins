@@ -12,5 +12,10 @@
         "brandColor": "#006BFF",
         "logo": "assets/logo.svg"
     },
-    "mcpServers": "./mcp.json"
+    "mcpServers": "./mcp.json",
+    "agent": {
+        "mentions": [
+            "calendly.com"
+        ]
+    }
 }

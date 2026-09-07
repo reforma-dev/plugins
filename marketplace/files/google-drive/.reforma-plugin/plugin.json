@@ -6,5 +6,10 @@
     "interface": {
         "displayName": "Google Drive",
         "brandColor": "#FFFFFF"
+    },
+    "agent": {
+        "mentions": [
+            "drive.google.com"
+        ]
     }
 }

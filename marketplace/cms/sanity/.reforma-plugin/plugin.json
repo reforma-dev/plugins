@@ -13,5 +13,10 @@
         "logo": "assets/logo.svg",
         "logoSmall": "assets/logo-small.svg"
     },
-    "logoSmall": "assets/logo-small.svg"
+    "logoSmall": "assets/logo-small.svg",
+    "agent": {
+        "mentions": [
+            "sanity.io"
+        ]
+    }
 }

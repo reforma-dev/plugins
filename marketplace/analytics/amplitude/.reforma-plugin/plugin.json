@@ -11,5 +11,10 @@
         "displayName": "Amplitude",
         "brandColor": "#1E61ED",
         "logo": "assets/logo.png"
+    },
+    "agent": {
+        "mentions": [
+            "amplitude.com"
+        ]
     }
 }
