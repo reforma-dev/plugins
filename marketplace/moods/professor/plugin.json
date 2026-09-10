@@ -1,0 +1,14 @@
+{
+    "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+    "name": "professor",
+    "description": "Grills the problem first — researches, challenges assumptions, settles every major fork with you — then builds.",
+    "extensions": {
+        "reforma": {
+            "logo": "assets/logo.svg",
+            "interface": {
+                "displayName": "Professor",
+                "brandColor": "#3B82F6"
+            }
+        }
+    }
+}

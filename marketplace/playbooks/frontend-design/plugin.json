@@ -1,0 +1,23 @@
+{
+    "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+    "name": "frontend-design",
+    "description": "Give the UI a visual identity — palette, type, and layout for this product",
+    "author": {
+        "name": "Anthropic",
+        "url": "https://www.anthropic.com"
+    },
+    "homepage": "https://github.com/anthropics/skills/tree/main/skills/frontend-design",
+    "repository": "https://github.com/anthropics/skills",
+    "license": "Apache-2.0",
+    "extensions": {
+        "reforma": {
+            "logo": "assets/logo.svg",
+            "interface": {
+                "displayName": "Frontend Design",
+                "brandColor": "#000000",
+                "logoSmall": "assets/logo-small.svg"
+            },
+            "logoSmall": "assets/logo-small.svg"
+        }
+    }
+}

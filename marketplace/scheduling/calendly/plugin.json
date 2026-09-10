@@ -1,0 +1,26 @@
+{
+    "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+    "name": "calendly",
+    "description": "Scheduling links and a Calendly embed so people book themselves",
+    "author": {
+        "name": "Calendly",
+        "url": "https://calendly.com"
+    },
+    "homepage": "https://developer.calendly.com/calendly-mcp-server",
+    "extensions": {
+        "reforma": {
+            "logo": "assets/logo.svg",
+            "interface": {
+                "displayName": "Calendly",
+                "brandColor": "#006BFF",
+                "logo": "assets/logo.svg"
+            },
+            "mcpServers": "./mcp.json",
+            "agent": {
+                "mentions": [
+                    "calendly.com"
+                ]
+            }
+        }
+    }
+}

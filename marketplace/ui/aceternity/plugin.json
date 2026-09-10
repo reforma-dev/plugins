@@ -1,0 +1,27 @@
+{
+    "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+    "name": "aceternity",
+    "description": "Motion-heavy blocks and visual effects for landing pages",
+    "author": {
+        "name": "Aceternity"
+    },
+    "homepage": "https://ui.aceternity.com",
+    "extensions": {
+        "reforma": {
+            "logo": "assets/logo.png",
+            "agent": {
+                "installApproval": false,
+                "mentions": [
+                    "aceternity.com"
+                ]
+            },
+            "interface": {
+                "displayName": "Aceternity",
+                "brandColor": "#000000",
+                "logo": "assets/logo.png",
+                "logoSmall": "assets/logo-small.png"
+            },
+            "logoSmall": "assets/logo-small.png"
+        }
+    }
+}

@@ -21,6 +21,11 @@ import { normalizePluginLayout } from "./layout.ts";
 import { normalizePluginLogos, applyCatalogOverlay } from "./logos.ts";
 import { discoverMcpTools } from "./mcp-tools.ts";
 import { stampPackedAgent } from "./agent.ts";
+import {
+  foldReformaExtension,
+  rewritePluginManifest,
+  unfoldReformaExtension,
+} from "./extensions.ts";
 import { OUT, ROOT, TAR, parseMarketplace, type MarketplaceListing } from "./shared.ts";
 import { publishCatalogLogosFromEnv } from "./publish-logos.ts";
 import { logCatalogSummary } from "./summary.ts";
@@ -31,28 +36,19 @@ async function packPlugin(listing: MarketplaceListing): Promise<void> {
 
   if (/^https?:\/\//i.test(listing.source)) {
     await fetchGithubTree(listing.source, dest);
-    normalizePluginLayout(dest);
-    normalizePluginContentPaths(dest);
-    normalizePluginHooks(dest);
-    await normalizePluginTools(dest);
-    applyCatalogOverlay(dest, listing);
-    await normalizePluginLogos(dest);
-    await discoverMcpTools(dest);
-    stampPluginCategory(dest, listing.category);
-    stampPackedAgent(dest, listing);
+  } else {
+    const from = resolve(ROOT, listing.source);
 
-    return;
+    if (!existsSync(from)) {
+      throw new Error(`Plugin source missing: ${listing.source}`);
+    }
+
+    mkdirSync(dest, { recursive: true });
+    cpSync(from, dest, { recursive: true });
   }
 
-  const from = resolve(ROOT, listing.source);
-
-  if (!existsSync(from)) {
-    throw new Error(`Plugin source missing: ${listing.source}`);
-  }
-
-  mkdirSync(dest, { recursive: true });
-  cpSync(from, dest, { recursive: true });
   normalizePluginLayout(dest);
+  rewritePluginManifest(dest, unfoldReformaExtension);
   normalizePluginContentPaths(dest);
   normalizePluginHooks(dest);
   await normalizePluginTools(dest);
@@ -86,6 +82,10 @@ writeFileSync(
 );
 
 await publishCatalogLogosFromEnv(OUT);
+
+for (const plugin of marketplace.plugins) {
+  rewritePluginManifest(join(OUT, plugin.name), foldReformaExtension);
+}
 
 mkdirSync(dirname(TAR), { recursive: true });
 const tar = spawnSync(

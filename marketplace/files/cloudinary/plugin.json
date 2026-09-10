@@ -1,0 +1,24 @@
+{
+    "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+    "name": "cloudinary",
+    "description": "Images and video in the cloud — upload, transform, and deliver them",
+    "author": {
+        "name": "Cloudinary",
+        "url": "https://cloudinary.com"
+    },
+    "extensions": {
+        "reforma": {
+            "logo": "assets/logo.svg",
+            "mcpServers": "./mcp.json",
+            "interface": {
+                "displayName": "Cloudinary",
+                "brandColor": "#3448C5"
+            },
+            "agent": {
+                "mentions": [
+                    "cloudinary.com"
+                ]
+            }
+        }
+    }
+}

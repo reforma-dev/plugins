@@ -1,0 +1,27 @@
+{
+    "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+    "name": "posthog",
+    "description": "Product analytics — events, funnels, and session replay",
+    "author": {
+        "name": "PostHog",
+        "url": "https://posthog.com"
+    },
+    "extensions": {
+        "reforma": {
+            "mcpServers": "./mcp.json",
+            "logo": "assets/logo.svg",
+            "interface": {
+                "displayName": "PostHog",
+                "brandColor": "#000000",
+                "logo": "assets/logo.svg",
+                "logoSmall": "assets/logo-small.svg"
+            },
+            "logoSmall": "assets/logo-small.svg",
+            "agent": {
+                "mentions": [
+                    "posthog.com"
+                ]
+            }
+        }
+    }
+}

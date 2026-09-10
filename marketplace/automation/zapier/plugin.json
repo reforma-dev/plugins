@@ -1,0 +1,25 @@
+{
+    "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+    "name": "zapier",
+    "description": "Connect the app to thousands of other tools without writing each integration",
+    "author": {
+        "name": "Zapier",
+        "url": "https://zapier.com"
+    },
+    "extensions": {
+        "reforma": {
+            "mcpServers": "./mcp.json",
+            "logo": "assets/logo.svg",
+            "interface": {
+                "displayName": "Zapier",
+                "brandColor": "#FF4F00",
+                "logo": "assets/logo.svg"
+            },
+            "agent": {
+                "mentions": [
+                    "zapier.com"
+                ]
+            }
+        }
+    }
+}

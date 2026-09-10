@@ -1,0 +1,25 @@
+{
+    "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+    "name": "make",
+    "description": "Visual automations from Make — run scenarios and use the results in the app",
+    "author": {
+        "name": "Make",
+        "url": "https://www.make.com"
+    },
+    "extensions": {
+        "reforma": {
+            "mcpServers": "./mcp.json",
+            "logo": "assets/logo.svg",
+            "agent": {
+                "mentions": [
+                    "make.com"
+                ]
+            },
+            "interface": {
+                "displayName": "Make",
+                "brandColor": "#6D00CC",
+                "logo": "assets/logo.svg"
+            }
+        }
+    }
+}

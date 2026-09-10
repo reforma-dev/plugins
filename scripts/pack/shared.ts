@@ -10,14 +10,12 @@ export const ROOT = resolve(fileURLToPath(new URL("../..", import.meta.url)));
 export const OUT = join(ROOT, "dist", "catalog");
 export const TAR = join(ROOT, "dist", "catalog.tar.gz");
 
-export const REFORMA_PLUGIN_DIR = ".reforma-plugin";
-
 export function isRecord(value: unknown): value is Record<string, unknown> {
   return value !== null && typeof value === "object" && !Array.isArray(value);
 }
 
 export function pluginManifestPath(pluginDir: string): string {
-  return join(pluginDir, REFORMA_PLUGIN_DIR, "plugin.json");
+  return join(pluginDir, "plugin.json");
 }
 
 export function findManifestPath(pluginDir: string): string | undefined {

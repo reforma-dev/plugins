@@ -1,0 +1,14 @@
+{
+    "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+    "name": "caveman-mode",
+    "description": "Chat like a caveman — savage mouth, real work.",
+    "extensions": {
+        "reforma": {
+            "logo": "assets/logo.svg",
+            "interface": {
+                "displayName": "Caveman",
+                "brandColor": "#78716F"
+            }
+        }
+    }
+}

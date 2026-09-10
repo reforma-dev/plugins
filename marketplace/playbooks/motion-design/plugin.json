@@ -1,0 +1,41 @@
+{
+    "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+    "name": "motion-design",
+    "description": "Timing, easing, and choreography so motion in the app feels intentional",
+    "author": {
+        "name": "LottieFiles",
+        "url": "https://lottiefiles.com"
+    },
+    "homepage": "https://github.com/LottieFiles/motion-design-skill/tree/main/skills/motion-design",
+    "repository": "https://github.com/LottieFiles/motion-design-skill",
+    "license": "MIT",
+    "extensions": {
+        "reforma": {
+            "logo": "assets/logo.svg",
+            "agent": {
+                "installApproval": false,
+                "mentions": [
+                    "motion-design",
+                    "animate",
+                    "animated",
+                    "animating",
+                    "animation",
+                    "animations",
+                    "easing",
+                    "keyframes",
+                    "choreography",
+                    "анимация",
+                    "анимации",
+                    "анимировать",
+                    "анимируй"
+                ]
+            },
+            "interface": {
+                "displayName": "Motion Design",
+                "brandColor": "#000000",
+                "logoSmall": "assets/logo-small.svg"
+            },
+            "logoSmall": "assets/logo-small.svg"
+        }
+    }
+}

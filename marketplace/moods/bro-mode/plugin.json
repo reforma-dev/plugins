@@ -1,0 +1,14 @@
+{
+    "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+    "name": "bro-mode",
+    "description": "Turns the agent into a brutally honest bestie who knows the craft, calls out bad ideas, and ships better ones with you.",
+    "extensions": {
+        "reforma": {
+            "logo": "assets/logo.svg",
+            "interface": {
+                "displayName": "Bro Mode",
+                "brandColor": "#F59E0B"
+            }
+        }
+    }
+}

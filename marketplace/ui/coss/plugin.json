@@ -1,0 +1,28 @@
+{
+    "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+    "name": "coss",
+    "description": "Extra components and particle effects beyond the default shadcn set",
+    "author": {
+        "name": "coss"
+    },
+    "homepage": "https://coss.com/ui",
+    "repository": "https://github.com/cosscom/coss",
+    "license": "MIT",
+    "extensions": {
+        "reforma": {
+            "logo": "assets/logo.svg",
+            "agent": {
+                "installApproval": false,
+                "mentions": [
+                    "coss.com"
+                ]
+            },
+            "interface": {
+                "displayName": "coss",
+                "brandColor": "#111111",
+                "logoSmall": "assets/logo-small.svg"
+            },
+            "logoSmall": "assets/logo-small.svg"
+        }
+    }
+}

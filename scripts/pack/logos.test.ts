@@ -24,9 +24,9 @@ describe("applyCatalogOverlay", () => {
     const pluginDir = join(dir, "gsap");
 
     dirs.push(dir);
-    mkdirSync(join(pluginDir, ".reforma-plugin"), { recursive: true });
+    mkdirSync(pluginDir, { recursive: true });
     writeFileSync(
-      join(pluginDir, ".reforma-plugin/plugin.json"),
+      join(pluginDir, "plugin.json"),
       `${JSON.stringify(
         {
           name: "gsap-skills",
@@ -47,7 +47,7 @@ describe("applyCatalogOverlay", () => {
 
     expect(
       JSON.parse(
-        readFileSync(join(pluginDir, ".reforma-plugin/plugin.json"), "utf8"),
+        readFileSync(join(pluginDir, "plugin.json"), "utf8"),
       ),
     ).toMatchObject({
       name: "gsap-skills",
@@ -61,9 +61,9 @@ describe("applyCatalogOverlay", () => {
     const pluginDir = join(dir, "stripe");
 
     dirs.push(dir);
-    mkdirSync(join(pluginDir, ".reforma-plugin"), { recursive: true });
+    mkdirSync(pluginDir, { recursive: true });
     writeFileSync(
-      join(pluginDir, ".reforma-plugin/plugin.json"),
+      join(pluginDir, "plugin.json"),
       `${JSON.stringify({ name: "stripe" }, null, 4)}\n`,
     );
 
@@ -76,7 +76,7 @@ describe("applyCatalogOverlay", () => {
 
     expect(
       JSON.parse(
-        readFileSync(join(pluginDir, ".reforma-plugin/plugin.json"), "utf8"),
+        readFileSync(join(pluginDir, "plugin.json"), "utf8"),
       ),
     ).toMatchObject({
       logo: "https://stripe.com/favicon.ico",
@@ -89,9 +89,9 @@ describe("applyCatalogOverlay", () => {
     const pluginDir = join(dir, "gsap");
 
     dirs.push(dir);
-    mkdirSync(join(pluginDir, ".reforma-plugin"), { recursive: true });
+    mkdirSync(pluginDir, { recursive: true });
     writeFileSync(
-      join(pluginDir, ".reforma-plugin/plugin.json"),
+      join(pluginDir, "plugin.json"),
       `${JSON.stringify({ name: "gsap-skills" }, null, 4)}\n`,
     );
 
@@ -104,7 +104,7 @@ describe("applyCatalogOverlay", () => {
 
     expect(
       JSON.parse(
-        readFileSync(join(pluginDir, ".reforma-plugin/plugin.json"), "utf8"),
+        readFileSync(join(pluginDir, "plugin.json"), "utf8"),
       ),
     ).toMatchObject({
       logoSmall: "https://example.com/gsap-small.svg",

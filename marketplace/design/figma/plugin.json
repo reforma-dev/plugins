@@ -1,0 +1,27 @@
+{
+    "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+    "name": "figma",
+    "description": "Turn Figma frames into code for the project",
+    "author": {
+        "name": "Figma",
+        "url": "https://www.figma.com"
+    },
+    "extensions": {
+        "reforma": {
+            "mcpServers": "./mcp.json",
+            "logo": "assets/logo.png",
+            "interface": {
+                "displayName": "Figma",
+                "brandColor": "#000000",
+                "logo": "assets/logo.png",
+                "logoSmall": "assets/logo-small.png"
+            },
+            "logoSmall": "assets/logo-small.png",
+            "agent": {
+                "mentions": [
+                    "figma.com"
+                ]
+            }
+        }
+    }
+}

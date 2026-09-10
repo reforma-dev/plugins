@@ -1,0 +1,25 @@
+{
+    "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+    "name": "neon",
+    "description": "Serverless Postgres — databases, branches, and SQL without running a server",
+    "author": {
+        "name": "Neon",
+        "url": "https://neon.tech"
+    },
+    "extensions": {
+        "reforma": {
+            "mcpServers": "./mcp.json",
+            "logo": "assets/logo.svg",
+            "agent": {
+                "mentions": [
+                    "neon.tech"
+                ]
+            },
+            "interface": {
+                "displayName": "Neon",
+                "brandColor": "#00E599",
+                "logo": "assets/logo.svg"
+            }
+        }
+    }
+}

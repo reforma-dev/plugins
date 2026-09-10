@@ -1,9 +1,0 @@
-{
-    "name": "professor",
-    "description": "Grills the problem first — researches, challenges assumptions, settles every major fork with you — then builds.",
-    "logo": "assets/logo.svg",
-    "interface": {
-        "displayName": "Professor",
-        "brandColor": "#3B82F6"
-    }
-}

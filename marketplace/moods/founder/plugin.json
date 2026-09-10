@@ -1,0 +1,14 @@
+{
+    "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+    "name": "founder",
+    "description": "Rough idea in, MVP out. Picks product, UX, and copy — no workshop. If it flops, it gets deleted.",
+    "extensions": {
+        "reforma": {
+            "logo": "assets/logo.svg",
+            "interface": {
+                "displayName": "Founder",
+                "brandColor": "#EAB308"
+            }
+        }
+    }
+}

@@ -1,0 +1,39 @@
+{
+    "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+    "name": "fal",
+    "description": "Generate images, video, and audio from a wide set of models",
+    "author": {
+        "name": "fal",
+        "url": "https://fal.ai"
+    },
+    "extensions": {
+        "reforma": {
+            "mcpServers": "./mcp.json",
+            "agent": {
+                "mentions": [
+                    "fal.ai"
+                ]
+            },
+            "variables": {
+                "type": "object",
+                "properties": {
+                    "API_KEY": {
+                        "type": "string",
+                        "title": "API key",
+                        "description": "From your fal.ai dashboard",
+                        "placeholder": "key-…"
+                    }
+                },
+                "required": [
+                    "API_KEY"
+                ]
+            },
+            "logo": "assets/logo.png",
+            "interface": {
+                "displayName": "fal",
+                "brandColor": "#F5C0D5",
+                "logo": "assets/logo.png"
+            }
+        }
+    }
+}

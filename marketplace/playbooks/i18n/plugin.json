@@ -1,0 +1,18 @@
+{
+    "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+    "name": "i18n",
+    "description": "Multiple languages — translated copy and a language switcher for the app",
+    "author": {
+        "name": "Reforma"
+    },
+    "extensions": {
+        "reforma": {
+            "logo": "assets/logo.svg",
+            "interface": {
+                "displayName": "i18n",
+                "brandColor": "#1D4ED8",
+                "logo": "assets/logo.svg"
+            }
+        }
+    }
+}

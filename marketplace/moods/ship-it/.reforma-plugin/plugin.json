@@ -1,9 +1,0 @@
-{
-    "name": "ship-it",
-    "description": "Cuts scope, kills gold-plating, and gets the smallest working change merged.",
-    "logo": "assets/logo.svg",
-    "interface": {
-        "displayName": "Ship It",
-        "brandColor": "#22C55E"
-    }
-}

@@ -1,0 +1,27 @@
+{
+    "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+    "name": "heygen",
+    "description": "Talking-head videos from a script and an avatar",
+    "author": {
+        "name": "HeyGen",
+        "url": "https://www.heygen.com"
+    },
+    "extensions": {
+        "reforma": {
+            "mcpServers": "./mcp.json",
+            "logo": "assets/logo.png",
+            "interface": {
+                "displayName": "HeyGen",
+                "brandColor": "#000000",
+                "logo": "assets/logo.png",
+                "logoSmall": "assets/logo-small.png"
+            },
+            "logoSmall": "assets/logo-small.png",
+            "agent": {
+                "mentions": [
+                    "heygen.com"
+                ]
+            }
+        }
+    }
+}

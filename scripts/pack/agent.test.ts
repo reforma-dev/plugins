@@ -92,16 +92,16 @@ describe("stampPackedAgent", () => {
     const pluginDir = join(dir, "neon");
 
     dirs.push(dir);
-    mkdirSync(join(pluginDir, ".reforma-plugin"), { recursive: true });
+    mkdirSync(pluginDir, { recursive: true });
     writeFileSync(
-      join(pluginDir, ".reforma-plugin/plugin.json"),
+      join(pluginDir, "plugin.json"),
       `${JSON.stringify({ name: "neon", agent: { mentions: ["neon.tech"] } }, null, 4)}\n`,
     );
 
     stampPackedAgent(pluginDir, listing({ name: "neon" }));
 
     expect(
-      JSON.parse(readFileSync(join(pluginDir, ".reforma-plugin/plugin.json"), "utf8")),
+      JSON.parse(readFileSync(join(pluginDir, "plugin.json"), "utf8")),
     ).toEqual({
       name: "neon",
       agent: { mentions: ["neon", "neon.tech"] },

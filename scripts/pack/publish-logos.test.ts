@@ -31,10 +31,9 @@ function writePackedPlugin(dir: string, name: string, logo = "assets/logo.svg"):
 
   const pluginDir = join(dir, name);
 
-  mkdirSync(join(pluginDir, ".reforma-plugin"), { recursive: true });
   mkdirSync(join(pluginDir, "assets"), { recursive: true });
   writeFileSync(
-    join(pluginDir, ".reforma-plugin/plugin.json"),
+    join(pluginDir, "plugin.json"),
     `${JSON.stringify({ name, logo }, null, 4)}\n`,
   );
   writeFileSync(join(pluginDir, "assets/logo.svg"), LOGO_SVG);
@@ -63,14 +62,14 @@ describe("publishCatalogLogos", () => {
       publicEndpoint: "https://cdn.example",
     });
     const stamped = JSON.parse(
-      readFileSync(join(dir, "demo-hooks/.reforma-plugin/plugin.json"), "utf8"),
+      readFileSync(join(dir, "demo-hooks/plugin.json"), "utf8"),
     ).logo as string;
 
     expect(first).toEqual({ uploaded: 1, cached: 0 });
     expect(stamped).toMatch(CDN);
 
     writeFileSync(
-      join(dir, "demo-hooks/.reforma-plugin/plugin.json"),
+      join(dir, "demo-hooks/plugin.json"),
       `${JSON.stringify({ name: "demo-hooks", logo: "assets/logo.svg" }, null, 4)}\n`,
     );
 
@@ -82,7 +81,7 @@ describe("publishCatalogLogos", () => {
     expect(second).toEqual({ uploaded: 0, cached: 1 });
     expect(
       JSON.parse(
-        readFileSync(join(dir, "demo-hooks/.reforma-plugin/plugin.json"), "utf8"),
+        readFileSync(join(dir, "demo-hooks/plugin.json"), "utf8"),
       ).logo,
     ).toBe(stamped);
   });
@@ -102,7 +101,7 @@ describe("publishCatalogLogos", () => {
     expect(result).toEqual({ uploaded: 0, cached: 0 });
     expect(
       JSON.parse(
-        readFileSync(join(dir, "stripe/.reforma-plugin/plugin.json"), "utf8"),
+        readFileSync(join(dir, "stripe/plugin.json"), "utf8"),
       ).logo,
     ).toBe(cdn);
   });

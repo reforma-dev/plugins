@@ -1,9 +1,0 @@
-{
-    "name": "caveman-mode",
-    "description": "Chat like a caveman — savage mouth, real work.",
-    "logo": "assets/logo.svg",
-    "interface": {
-        "displayName": "Caveman",
-        "brandColor": "#78716F"
-    }
-}

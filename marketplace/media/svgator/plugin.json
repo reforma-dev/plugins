@@ -1,0 +1,27 @@
+{
+    "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+    "name": "svgator",
+    "description": "Animated SVG — design the motion and export it into the project",
+    "author": {
+        "name": "SVGator",
+        "url": "https://www.svgator.com"
+    },
+    "extensions": {
+        "reforma": {
+            "mcpServers": "./mcp.json",
+            "logo": "assets/logo.png",
+            "interface": {
+                "displayName": "SVGator",
+                "brandColor": "#000000",
+                "logo": "assets/logo.png",
+                "logoSmall": "assets/logo-small.png"
+            },
+            "logoSmall": "assets/logo-small.png",
+            "agent": {
+                "mentions": [
+                    "svgator.com"
+                ]
+            }
+        }
+    }
+}

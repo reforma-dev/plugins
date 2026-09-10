@@ -1,9 +1,0 @@
-{
-    "name": "zen-mode",
-    "description": "Quiet. Do the work. No status talk — just the outcome.",
-    "logo": "assets/logo.svg",
-    "interface": {
-        "displayName": "Zen Mode",
-        "brandColor": "#14B8A6"
-    }
-}
