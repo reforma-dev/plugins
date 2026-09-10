@@ -1,6 +1,6 @@
 # Reforma plugins
 
-Marketplace plugins for Reforma. Each plugin is a folder with `.reforma-plugin/plugin.json`. Pack renames `.cursor-plugin`, `.codex-plugin`, or `.claude-plugin` to `.reforma-plugin` when that folder is missing.
+Marketplace plugins for Reforma. Each plugin is a folder with root `plugin.json` ([Agent Plugins](https://agent-plugins.org/plugin-authors/build-an-agent-plugin) layout). Pack hoists `.cursor-plugin`, `.codex-plugin`, `.claude-plugin`, or legacy `.reforma-plugin` to that root when the file is missing. Packed output keeps portable identity at the top level and folds Reforma / vendor extras into `extensions.reforma`.
 
 ## Plugins
 
@@ -86,7 +86,7 @@ A plugin folder:
 
 ```
 marketplace/<category>/<name>/
-├── .reforma-plugin/plugin.json
+├── plugin.json
 ├── assets/logo.svg
 ├── assets/logo-small.svg   # optional 12–14px glyph
 └── …convention folders (skills/, rules/, hooks/, …)
@@ -101,7 +101,7 @@ bun run pack              # writes dist/catalog/ and dist/catalog.tar.gz
 
 CI pack (`main` / `dev`) uploads logo files to the public CDN and stamps `https://cdn-public.reforma.ai/plugins/<sha256>.<ext>` into packed `plugin.json`. Local pack without `S3_URL` / `S3_PUBLIC_URL` skips that and is not a source for the API — pull the GitHub `catalog-<sha>` snapshot instead.
 
-Pack discovers convention folders (`skills/`, `agents/`, `rules/`, `hooks/`, `tools/`, `mcp.json` or `.mcp.json`) — no path fields needed in source `plugin.json`. Custom paths are remapped into that layout. If you import a Cursor/vendor plugin, pack also normalizes `rules/*.mdc`, `.cursor/rules/`, and `instructions/` to plain `rules/*.md`, renames `.mcp.json` → `mcp.json`, and renames a lone MCP server key to the marketplace plugin name (`chatgpt_app_mcp` → `dropbox`). HTTP MCP with no `tools` / `resources` / `resourceTemplates` in `mcp.json`: pack calls `initialize`, then `tools/list`, `resources/list`, and `resources/templates/list` for whichever are missing. Bodies are not packed. Stdio MCP is not probed. Packed `plugin.json` keeps `hooks: "./hooks/hooks.json"` (+ `hookOffers`) and `tools: "./tools.mjs"` (+ `toolOffers`) when those ship. Skills/agents/rules/mcp paths are stripped — catalog and sandbox discover the folders.
+Pack discovers convention folders (`skills/`, `agents/`, `rules/`, `hooks/`, `tools/`, `mcp.json` or `.mcp.json`) — no path fields needed in source `plugin.json`. Custom paths are remapped into that layout. If you import a Cursor/vendor plugin, pack also normalizes `rules/*.mdc`, `.cursor/rules/`, and `instructions/` to plain `rules/*.md`, renames `.mcp.json` → `mcp.json`, and renames a lone MCP server key to the marketplace plugin name (`chatgpt_app_mcp` → `dropbox`). HTTP MCP with no `tools` / `resources` / `resourceTemplates` in `mcp.json`: pack calls `initialize`, then `tools/list`, `resources/list`, and `resources/templates/list` for whichever are missing. Bodies are not packed. Stdio MCP is not probed. Packed `plugin.json` keeps Reforma extras under `extensions.reforma` (`hooks`, `hookOffers`, `tools`, `toolOffers`). Skills/agents/rules/mcp paths are stripped — catalog and sandbox discover the folders.
 
 Pack **bundles** `tools/*.ts` into one `tools.mjs` (`@reforma/plugin-sdk` / `ai` / `zod` stay external). Export `defineTool` as the file default; name = filename (`Grep.ts` → `Grep`); `override: true` = bare name, shadows.
 

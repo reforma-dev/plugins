@@ -28,9 +28,9 @@ function pluginDir(mcp: unknown): string {
   const dir = join(root, "plug");
 
   dirs.push(root);
-  mkdirSync(join(dir, ".reforma-plugin"), { recursive: true });
+  mkdirSync(dir, { recursive: true });
   writeFileSync(
-    join(dir, ".reforma-plugin/plugin.json"),
+    join(dir, "plugin.json"),
     `${JSON.stringify({ name: "plug" }, null, 4)}\n`,
   );
   writeFileSync(join(dir, "mcp.json"), `${JSON.stringify(mcp, null, 4)}\n`);
@@ -337,7 +337,7 @@ describe("discoverMcpTools", () => {
     );
 
     expect(
-      JSON.parse(readFileSync(join(dir, ".reforma-plugin/plugin.json"), "utf8"))
+      JSON.parse(readFileSync(join(dir, "plugin.json"), "utf8"))
         .auth,
     ).toBeUndefined();
     expect(readServer(dir, "drive").tools).toBeUndefined();

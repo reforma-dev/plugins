@@ -165,12 +165,11 @@ describe("normalizePluginContentPaths", () => {
     const pluginDir = join(dir, "dropbox");
 
     dirs.push(dir);
-    mkdirSync(join(pluginDir, ".reforma-plugin"), { recursive: true });
     mkdirSync(join(pluginDir, "skills", "find-dropbox-content"), {
       recursive: true,
     });
     writeFileSync(
-      join(pluginDir, ".reforma-plugin/plugin.json"),
+      join(pluginDir, "plugin.json"),
       `${JSON.stringify(
         {
           name: "dropbox",
@@ -207,7 +206,7 @@ describe("normalizePluginContentPaths", () => {
     });
     expect(
       JSON.parse(
-        readFileSync(join(pluginDir, ".reforma-plugin/plugin.json"), "utf8"),
+        readFileSync(join(pluginDir, "plugin.json"), "utf8"),
       ),
     ).toEqual({ name: "dropbox" });
   });
@@ -227,9 +226,9 @@ describe("stampPluginCategory", () => {
     const pluginDir = join(dir, "dropbox");
 
     dirs.push(dir);
-    mkdirSync(join(pluginDir, ".reforma-plugin"), { recursive: true });
+    mkdirSync(pluginDir, { recursive: true });
     writeFileSync(
-      join(pluginDir, ".reforma-plugin/plugin.json"),
+      join(pluginDir, "plugin.json"),
       `${JSON.stringify({ name: "dropbox" }, null, 4)}\n`,
     );
 
@@ -237,7 +236,7 @@ describe("stampPluginCategory", () => {
 
     expect(
       JSON.parse(
-        readFileSync(join(pluginDir, ".reforma-plugin/plugin.json"), "utf8"),
+        readFileSync(join(pluginDir, "plugin.json"), "utf8"),
       ),
     ).toMatchObject({ name: "dropbox", category: "files" });
   });

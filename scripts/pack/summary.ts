@@ -3,6 +3,7 @@
  */
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
+import { reformaExtension } from "./extensions.ts";
 import { findManifestPath, isRecord, OUT, parseMarketplace } from "./shared.ts";
 
 const DESC_MAX = 88;
@@ -41,19 +42,20 @@ function featureList(
   pluginDir: string,
   manifest: Record<string, unknown>,
 ): string[] {
+  const reforma = reformaExtension(manifest);
   const features: string[] = [];
   const tools =
-    offerCount(manifest.toolOffers) ||
+    offerCount(reforma.toolOffers) ||
     (existsSync(join(pluginDir, "tools.mjs")) ? 1 : 0);
   const hooks =
-    offerCount(manifest.hookOffers) || countEntries(join(pluginDir, "hooks"));
+    offerCount(reforma.hookOffers) || countEntries(join(pluginDir, "hooks"));
   const skills = countEntries(join(pluginDir, "skills"));
   const agents = countEntries(join(pluginDir, "agents"));
   const rules = countEntries(join(pluginDir, "rules"));
 
   if (tools > 0) {
     features.push(
-      tools === 1 && !manifest.toolOffers ? "tools" : `tools×${tools}`,
+      tools === 1 && !reforma.toolOffers ? "tools" : `tools×${tools}`,
     );
   }
 
@@ -101,9 +103,10 @@ function loadPluginRow(
     }
   }
 
+  const reforma = reformaExtension(manifest);
   const category =
-    typeof manifest.category === "string" && manifest.category.trim()
-      ? manifest.category.trim()
+    typeof reforma.category === "string" && reforma.category.trim()
+      ? reforma.category.trim()
       : undefined;
   const description =
     typeof manifest.description === "string" && manifest.description.trim()
