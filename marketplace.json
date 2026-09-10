@@ -243,7 +243,7 @@
                     "description": "Accept payments, manage customers, and handle subscriptions",
                     "brandColor": "#635BFF",
                     "agent": {
-                        "mentions": ["stripe.com"]
+                        "mentions": ["stripe.com", "link.com"]
                     }
                 },
                 {
