@@ -1,20 +1,25 @@
 {
+    "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
     "name": "slack",
     "description": "The team’s Slack — channels, threads, and posts from the project",
     "author": {
         "name": "Slack",
         "url": "https://slack.com"
     },
-    "logo": "assets/logo.svg",
-    "mcpServers": "./mcp.json",
-    "interface": {
-        "displayName": "Slack",
-        "brandColor": "#4A154B",
-        "logo": "assets/logo.svg"
-    },
-    "agent": {
-        "mentions": [
-            "slack.com"
-        ]
+    "extensions": {
+        "reforma": {
+            "logo": "assets/logo.svg",
+            "mcpServers": "./mcp.json",
+            "interface": {
+                "displayName": "Slack",
+                "brandColor": "#4A154B",
+                "logo": "assets/logo.svg"
+            },
+            "agent": {
+                "mentions": [
+                    "slack.com"
+                ]
+            }
+        }
     }
 }

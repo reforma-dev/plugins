@@ -1,20 +1,25 @@
 {
+    "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
     "name": "workos",
     "description": "SSO and user management for B2B apps — enterprise sign-in without building it",
     "author": {
         "name": "WorkOS",
         "url": "https://workos.com"
     },
-    "mcpServers": "./mcp.json",
-    "logo": "assets/logo.png",
-    "interface": {
-        "displayName": "WorkOS",
-        "brandColor": "#6366F1",
-        "logo": "assets/logo.png"
-    },
-    "agent": {
-        "mentions": [
-            "workos.com"
-        ]
+    "extensions": {
+        "reforma": {
+            "mcpServers": "./mcp.json",
+            "logo": "assets/logo.png",
+            "interface": {
+                "displayName": "WorkOS",
+                "brandColor": "#6366F1",
+                "logo": "assets/logo.png"
+            },
+            "agent": {
+                "mentions": [
+                    "workos.com"
+                ]
+            }
+        }
     }
 }

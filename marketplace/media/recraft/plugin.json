@@ -1,22 +1,27 @@
 {
+    "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
     "name": "recraft",
     "description": "Generate and edit images with Recraft’s design models",
     "author": {
         "name": "Recraft",
         "url": "https://www.recraft.ai"
     },
-    "mcpServers": "./mcp.json",
-    "logo": "assets/logo.png",
-    "interface": {
-        "displayName": "Recraft",
-        "brandColor": "#000000",
-        "logo": "assets/logo.png",
-        "logoSmall": "assets/logo-small.png"
-    },
-    "logoSmall": "assets/logo-small.png",
-    "agent": {
-        "mentions": [
-            "recraft.ai"
-        ]
+    "extensions": {
+        "reforma": {
+            "mcpServers": "./mcp.json",
+            "logo": "assets/logo.png",
+            "interface": {
+                "displayName": "Recraft",
+                "brandColor": "#000000",
+                "logo": "assets/logo.png",
+                "logoSmall": "assets/logo-small.png"
+            },
+            "logoSmall": "assets/logo-small.png",
+            "agent": {
+                "mentions": [
+                    "recraft.ai"
+                ]
+            }
+        }
     }
 }

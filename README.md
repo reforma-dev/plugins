@@ -1,6 +1,6 @@
 # Reforma plugins
 
-Marketplace plugins for Reforma. Each plugin is a folder with root `plugin.json` ([Agent Plugins](https://agent-plugins.org/plugin-authors/build-an-agent-plugin) layout). Pack hoists `.cursor-plugin`, `.codex-plugin`, `.claude-plugin`, or legacy `.reforma-plugin` to that root when the file is missing. Packed output keeps portable identity at the top level and folds Reforma / vendor extras into `extensions.reforma`.
+Marketplace plugins for Reforma. Each plugin is a folder with root `plugin.json` ([Agent Plugins](https://agent-plugins.org/plugin-authors/build-an-agent-plugin) layout): portable identity at the top level, Reforma extras under `extensions.reforma`. Pack hoists `.cursor-plugin`, `.codex-plugin`, `.claude-plugin`, or legacy `.reforma-plugin` to that root when the file is missing, then folds vendor extras into the same bag.
 
 ## Plugins
 
@@ -66,7 +66,7 @@ Marketplace plugins for Reforma. Each plugin is a folder with root `plugin.json`
 | composio              | [Composio](marketplace/automation/composio)                              | Composio      | Automation | A hub of app connections — Gmail, Notion, Slack, and the rest of the stack                                              |
 | make                  | [Make](marketplace/automation/make)                                      | Make          | Automation | Visual automations from Make — run scenarios and use the results in the app                                             |
 
-Author is `plugin.json` `author.name` when present, else Reforma. Shelf is the parent `categories[]` entry — `plugin.json` has no `category`. `description` is the marketplace pitch: what the product is for the person installing it. Not MCP verbs, not “needs an API key.” `agent.mentions` lists the product hosts (`supabase.com`, `higgsfield.ai`) so a pasted service URL lights up `InstallPlugin`. Pack always unions those with the plugin id and display name. `mentions: []` or `false` turns matching off.
+Author is `plugin.json` `author.name` when present, else Reforma. Shelf is the parent `categories[]` entry — `plugin.json` has no `category`. `description` is the marketplace pitch: what the product is for the person installing it. Not MCP verbs, not “needs an API key.” `extensions.reforma.agent.mentions` lists the product hosts (`supabase.com`, `higgsfield.ai`) so a pasted service URL lights up `InstallPlugin`. Pack always unions those with the plugin id and display name. `mentions: []` or `false` turns matching off.
 
 ## Repository structure
 
@@ -92,7 +92,7 @@ marketplace/<category>/<name>/
 └── …convention folders (skills/, rules/, hooks/, …)
 ```
 
-`interface.brandColor` is the hex plate behind the market `logo`. Optional `interface.brandColorDark` is the same plate in dark theme. Optional `logoSmall` is the chip / chat-chrome mark — not the plated card art.
+`extensions.reforma.interface.brandColor` is the hex plate behind the market `logo`. Optional `brandColorDark` is the same plate in dark theme. Optional `logoSmall` is the chip / chat-chrome mark — not the plated card art.
 
 ```sh
 bun install
@@ -101,7 +101,7 @@ bun run pack              # writes dist/catalog/ and dist/catalog.tar.gz
 
 CI pack (`main` / `dev`) uploads logo files to the public CDN and stamps `https://cdn-public.reforma.ai/plugins/<sha256>.<ext>` into packed `plugin.json`. Local pack without `S3_URL` / `S3_PUBLIC_URL` skips that and is not a source for the API — pull the GitHub `catalog-<sha>` snapshot instead.
 
-Pack discovers convention folders (`skills/`, `agents/`, `rules/`, `hooks/`, `tools/`, `mcp.json` or `.mcp.json`) — no path fields needed in source `plugin.json`. Custom paths are remapped into that layout. If you import a Cursor/vendor plugin, pack also normalizes `rules/*.mdc`, `.cursor/rules/`, and `instructions/` to plain `rules/*.md`, renames `.mcp.json` → `mcp.json`, and renames a lone MCP server key to the marketplace plugin name (`chatgpt_app_mcp` → `dropbox`). HTTP MCP with no `tools` / `resources` / `resourceTemplates` in `mcp.json`: pack calls `initialize`, then `tools/list`, `resources/list`, and `resources/templates/list` for whichever are missing. Bodies are not packed. Stdio MCP is not probed. Packed `plugin.json` keeps Reforma extras under `extensions.reforma` (`hooks`, `hookOffers`, `tools`, `toolOffers`). Skills/agents/rules/mcp paths are stripped — catalog and sandbox discover the folders.
+Pack discovers convention folders (`skills/`, `agents/`, `rules/`, `hooks/`, `tools/`, `mcp.json` or `.mcp.json`) — no path fields needed in source `plugin.json`. Custom paths are remapped into that layout. If you import a Cursor/vendor plugin, pack also normalizes `rules/*.mdc`, `.cursor/rules/`, and `instructions/` to plain `rules/*.md`, renames `.mcp.json` → `mcp.json`, and renames a lone MCP server key to the marketplace plugin name (`chatgpt_app_mcp` → `dropbox`). HTTP MCP with no `tools` / `resources` / `resourceTemplates` in `mcp.json`: pack calls `initialize`, then `tools/list`, `resources/list`, and `resources/templates/list` for whichever are missing. Bodies are not packed. Stdio MCP is not probed. Packed `plugin.json` matches first-party sources: Reforma extras under `extensions.reforma` (`hooks`, `hookOffers`, `tools`, `toolOffers`). Skills/agents/rules/mcp paths are stripped — catalog and sandbox discover the folders.
 
 Pack **bundles** `tools/*.ts` into one `tools.mjs` (`@reforma/plugin-sdk` / `ai` / `zod` stay external). Export `defineTool` as the file default; name = filename (`Grep.ts` → `Grep`); `override: true` = bare name, shadows.
 

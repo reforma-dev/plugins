@@ -1,4 +1,5 @@
 {
+    "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
     "name": "clerk",
     "description": "Drop-in auth — sign-in, organizations, and user accounts for the app",
     "author": {
@@ -6,17 +7,21 @@
         "email": "ai@clerk.dev",
         "url": "https://clerk.com"
     },
-    "logo": "assets/logo.svg",
-    "mcpServers": "./mcp.json",
-    "interface": {
-        "displayName": "Clerk",
-        "brandColor": "#131316",
-        "logoSmall": "assets/logo-small.svg"
-    },
-    "logoSmall": "assets/logo-small.svg",
-    "agent": {
-        "mentions": [
-            "clerk.com"
-        ]
+    "extensions": {
+        "reforma": {
+            "logo": "assets/logo.svg",
+            "mcpServers": "./mcp.json",
+            "interface": {
+                "displayName": "Clerk",
+                "brandColor": "#131316",
+                "logoSmall": "assets/logo-small.svg"
+            },
+            "logoSmall": "assets/logo-small.svg",
+            "agent": {
+                "mentions": [
+                    "clerk.com"
+                ]
+            }
+        }
     }
 }

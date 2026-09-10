@@ -1,7 +1,7 @@
 {
+    "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
     "name": "web-design-guidelines",
     "description": "Catch accessibility, form, and focus issues before they ship",
-    "logo": "assets/logo.svg",
     "author": {
         "name": "Vercel",
         "url": "https://vercel.com"
@@ -9,10 +9,15 @@
     "homepage": "https://github.com/vercel-labs/agent-skills/tree/main/skills/web-design-guidelines",
     "repository": "https://github.com/vercel-labs/agent-skills",
     "license": "MIT",
-    "interface": {
-        "displayName": "Web Design Guidelines",
-        "brandColor": "#000000",
-        "logoSmall": "assets/logo-small.svg"
-    },
-    "logoSmall": "assets/logo-small.svg"
+    "extensions": {
+        "reforma": {
+            "logo": "assets/logo.svg",
+            "interface": {
+                "displayName": "Web Design Guidelines",
+                "brandColor": "#000000",
+                "logoSmall": "assets/logo-small.svg"
+            },
+            "logoSmall": "assets/logo-small.svg"
+        }
+    }
 }

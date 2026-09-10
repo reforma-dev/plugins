@@ -1,20 +1,25 @@
 {
+    "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
     "name": "amplitude",
     "description": "Product analytics — events and charts so you see what people do",
     "author": {
         "name": "Amplitude",
         "url": "https://amplitude.com"
     },
-    "mcpServers": "./mcp.json",
-    "logo": "assets/logo.png",
-    "interface": {
-        "displayName": "Amplitude",
-        "brandColor": "#1E61ED",
-        "logo": "assets/logo.png"
-    },
-    "agent": {
-        "mentions": [
-            "amplitude.com"
-        ]
+    "extensions": {
+        "reforma": {
+            "mcpServers": "./mcp.json",
+            "logo": "assets/logo.png",
+            "interface": {
+                "displayName": "Amplitude",
+                "brandColor": "#1E61ED",
+                "logo": "assets/logo.png"
+            },
+            "agent": {
+                "mentions": [
+                    "amplitude.com"
+                ]
+            }
+        }
     }
 }

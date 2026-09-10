@@ -1,9 +1,14 @@
 {
+    "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
     "name": "ship-it",
     "description": "Cuts scope, kills gold-plating, and gets the smallest working change merged.",
-    "logo": "assets/logo.svg",
-    "interface": {
-        "displayName": "Ship It",
-        "brandColor": "#22C55E"
+    "extensions": {
+        "reforma": {
+            "logo": "assets/logo.svg",
+            "interface": {
+                "displayName": "Ship It",
+                "brandColor": "#22C55E"
+            }
+        }
     }
 }

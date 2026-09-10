@@ -1,9 +1,14 @@
 {
+    "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
     "name": "zen-mode",
     "description": "Quiet. Do the work. No status talk — just the outcome.",
-    "logo": "assets/logo.svg",
-    "interface": {
-        "displayName": "Zen Mode",
-        "brandColor": "#14B8A6"
+    "extensions": {
+        "reforma": {
+            "logo": "assets/logo.svg",
+            "interface": {
+                "displayName": "Zen Mode",
+                "brandColor": "#14B8A6"
+            }
+        }
     }
 }

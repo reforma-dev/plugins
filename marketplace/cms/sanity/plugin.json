@@ -1,22 +1,27 @@
 {
+    "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
     "name": "sanity",
     "description": "Structured content editors can change and the app can render",
     "author": {
         "name": "Sanity",
         "url": "https://www.sanity.io"
     },
-    "mcpServers": "./mcp.json",
-    "logo": "assets/logo.svg",
-    "interface": {
-        "displayName": "Sanity",
-        "brandColor": "#0D0E12",
-        "logo": "assets/logo.svg",
-        "logoSmall": "assets/logo-small.svg"
-    },
-    "logoSmall": "assets/logo-small.svg",
-    "agent": {
-        "mentions": [
-            "sanity.io"
-        ]
+    "extensions": {
+        "reforma": {
+            "mcpServers": "./mcp.json",
+            "logo": "assets/logo.svg",
+            "interface": {
+                "displayName": "Sanity",
+                "brandColor": "#0D0E12",
+                "logo": "assets/logo.svg",
+                "logoSmall": "assets/logo-small.svg"
+            },
+            "logoSmall": "assets/logo-small.svg",
+            "agent": {
+                "mentions": [
+                    "sanity.io"
+                ]
+            }
+        }
     }
 }

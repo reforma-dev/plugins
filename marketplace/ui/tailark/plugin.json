@@ -1,20 +1,25 @@
 {
+    "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
     "name": "tailark",
     "description": "Marketing landing blocks and pages — heroes, pricing, footers",
-    "logo": "assets/logo.svg",
     "author": {
         "name": "Tailark"
     },
     "homepage": "https://tailark.com",
-    "agent": {
-        "installApproval": false,
-        "mentions": [
-            "tailark.com"
-        ]
-    },
-    "interface": {
-        "displayName": "Tailark",
-        "brandColor": "#9FA87F",
-        "logo": "assets/logo.svg"
+    "extensions": {
+        "reforma": {
+            "logo": "assets/logo.svg",
+            "agent": {
+                "installApproval": false,
+                "mentions": [
+                    "tailark.com"
+                ]
+            },
+            "interface": {
+                "displayName": "Tailark",
+                "brandColor": "#9FA87F",
+                "logo": "assets/logo.svg"
+            }
+        }
     }
 }

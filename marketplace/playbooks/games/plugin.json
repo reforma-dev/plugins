@@ -1,4 +1,5 @@
 {
+    "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
     "name": "games",
     "description": "Create a browser games — 2D with Phaser or 3D with Three.js",
     "author": {
@@ -6,10 +7,14 @@
         "url": "https://github.com/playableintelligence/game-creator"
     },
     "homepage": "https://github.com/playableintelligence/game-creator",
-    "interface": {
-        "displayName": "Game Creator",
-        "brandColor": "#7C3AED",
-        "logo": "assets/logo.svg"
-    },
-    "logo": "assets/logo.svg"
+    "extensions": {
+        "reforma": {
+            "interface": {
+                "displayName": "Game Creator",
+                "brandColor": "#7C3AED",
+                "logo": "assets/logo.svg"
+            },
+            "logo": "assets/logo.svg"
+        }
+    }
 }
