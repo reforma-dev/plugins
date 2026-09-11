@@ -1,6 +1,8 @@
 {
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
   "mcpServers": {
     "21st": {
+      "type": "streamable-http",
       "url": "https://21st.dev/api/mcp",
       "headers": {
         "x-api-key": "${API_KEY}"
