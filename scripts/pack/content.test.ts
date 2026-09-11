@@ -99,6 +99,38 @@ describe("normalizePackedMcpServerId", () => {
     });
   });
 
+  it("preserves $schema when rewriting mcp.json", () => {
+    const dir = mkdtempSync(join(tmpdir(), "schema-"));
+    const pluginDir = join(dir, "google-drive");
+
+    dirs.push(dir);
+    mkdirSync(pluginDir, { recursive: true });
+    writeFileSync(
+      join(pluginDir, "mcp.json"),
+      `${JSON.stringify({
+        $schema: "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+        mcpServers: {
+          "google-drive": {
+            type: "streamable-http",
+            url: "https://drivemcp.googleapis.com/mcp/v1",
+          },
+        },
+      })}\n`,
+    );
+
+    normalizePackedMcpServerId(pluginDir);
+
+    expect(JSON.parse(readFileSync(join(pluginDir, "mcp.json"), "utf8"))).toEqual({
+      $schema: "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+      mcpServers: {
+        "google-drive": {
+          type: "streamable-http",
+          url: "https://drivemcp.googleapis.com/mcp/v1",
+        },
+      },
+    });
+  });
+
   it("lowercases every server key when a plugin ships several", () => {
     const dir = mkdtempSync(join(tmpdir(), "motion-"));
     const pluginDir = join(dir, "motion");
