@@ -275,7 +275,12 @@ export function normalizePackedMcpServerId(pluginDir: string): void {
 
   servers = normalizeServerKeys(servers, pluginName);
 
-  const next = { mcpServers: servers };
+  const schema =
+    isRecord(raw) && typeof raw.$schema === "string" ? raw.$schema : undefined;
+  const next: Record<string, unknown> = {
+    ...(schema ? { $schema: schema } : {}),
+    mcpServers: servers,
+  };
   const current = isRecord(raw) && isRecord(raw.mcpServers) ? raw : undefined;
 
   if (

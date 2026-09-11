@@ -1,6 +1,8 @@
 {
+    "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
     "mcpServers": {
         "composio": {
+            "type": "streamable-http",
             "url": "https://connect.composio.dev/mcp"
         }
     }
